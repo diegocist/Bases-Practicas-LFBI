@@ -1,1 +1,23 @@
+\subsection*{Pregunta 5}
 \addcontentsline{toc}{subsection}{Pregunta 5}
+\textbf{¿Qué son las bases de datos NoSQL?}
+
+Son sistemas de almacenamiento de datos diseñados para manejar aplicaciones con volúmenes masivos de datos que no requieren de un modelo estructurado o esquema rígido prediseñado. Priorizan el alto rendimiento, la flexibilidad y la alta disponibilidad continua mediante replicación distribuida, ofreciendo a cambio modelos de consistencia más relajados y lenguajes de consulta más sencillos que los del modelo relacional tradicional (Elmasri y Navathe, 2016, pp. 884--888).\\
+
+\textbf{Ventajas y desventajas contra las bases relacionales.}
+
+\textbf{Ventajas}
+\begin{enumerate}
+    \item \textbf{Flexibilidad sin esquema:} No requieren definir una estructura fija de tablas y campos de antemano; permiten almacenar datos semiestructurados en formatos como JSON, lo que facilita adaptar la estructura de los datos sin modificar la base de datos.
+    
+    \item \textbf{Escalabilidad horizontal sencilla y económica:} Se expanden añadiendo más servidores/nodos estándar al sistema en pleno funcionamiento para distribuir la carga de almacenamiento y procesamiento a medida que crecen los datos.
+
+    \item \textbf{Alta disponibilidad y rendimiento:} Utilizan replicación transparente entre múltiples nodos, garantizando que el sistema continúe funcionando si un nodo falla y acelerando las lecturas al servirlas desde distintas copias.
+\end{enumerate}
+
+\textbf{Desventajas}
+\begin{enumerate}
+    \item \textbf{Consistencia eventual:} Al no exigir una consistencia serializable inmediata en cada escritura, utilizan consistencia eventual; esto implica que puede haber ventanas de tiempo donde diferentes nodos o réplicas muestren datos temporalmente inconsistentes hasta que se sincronicen.
+    \item \textbf{Lenguajes de consulta menos potentes:} No ofrecen todo el poder del lenguaje SQL; carecen habitualmente de operaciones nativas de combinación (JOINs), por lo que esa lógica debe ser implementada manualmente por el programador en el código de la aplicación.
+    \item \textbf{Falta de validación y restricciones integradas:} Al carecer de un esquema estricto para especificar reglas de integridad, la base de datos no valida restricciones automáticamente; toda la lógica de validación de datos recae directamente en los programas de aplicación.
+\end{enumerate}
