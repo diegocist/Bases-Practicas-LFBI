@@ -7,55 +7,22 @@
 
 Un Sistema Manejador de Base de Datos (SMBD) es software orientado a comunicar a los usuarios y aplicaciones con las bases de datos, permitiendo así las modificaciones y consultas de la información almacenada, a su vez manteniendo la seguridad e integridad de ésta de forma estructurada y eficiente. 
 
-Otros SMBDs, con respecto al instalado en esta práctica, son:
+Algunos otros SMBDs son, junto con algunas diferencias con respecto al instalado en esta práctica: \textit{Oracle Database}, \textit{Microsoft SQL Server}, \textit{MongoDB}, \textit{Redis} y \textit{SQLite}. Sus principales diferencias radican en el costo de licenciamiento, la velocidad provista, los principales propósitos que tienen, el público objetivo y el soporte a ciertos tipos. Por ejemplo, algunas de las muchas diferencias son:
 
-\begin{table}[h!]
-\centering
-\small
-\begin{tabular}{|p{2.8cm}|p{5.5cm}|p{5.5cm}|}
-\hline
-& \textbf{Ventajas} & \textbf{Desventajas} \\ \hline
-\textbf{MySQL} & 
-\textbullet ~ Instalación y configuración más sencilla. \newline
-\textbullet ~ Rendimiento sobresaliente en lecturas masivas simples. \newline
-\textbullet ~ Hosting amplio y económico. & 
-\textbullet ~ Menor soporte para consultas complejas y análisis. \newline
-\textbullet ~ Sistema de tipado más limitado. \\ \hline
-
-\textbf{Oracle Database} & 
-\textbullet ~ Potencia superior para entornos corporativos gigantes. \newline
-\textbullet ~ Herramientas avanzadas de particionamiento y alta disponibilidad. \newline
-\textbullet ~ Soporte técnico empresarial dedicado. & 
-\textbullet ~ Alto coste de licenciamiento. \newline
-\textbullet ~ Código cerrado y dependiente del proveedor. \newline
-\textbullet ~ Requiere administración altamente especializada. \\ \hline
-
-\textbf{Microsoft SQL Server} & 
-\textbullet ~ Integración óptima con ecosistemas de Microsoft. \newline
-\textbullet ~ Gran rendimiento en Windows. & 
-\textbullet ~ Alto coste de licenciamiento. \newline
-\textbullet ~ Menor flexibilidad para arquitecturas no Windows. \\ \hline
-
-\textbf{MongoDB} & 
-\textbullet ~ Esquema flexible sin estructura fija. \newline
-\textbullet ~ Simpleza en la escalabilidad horizontal. \newline
-\textbullet ~ Recomendable para desarrollo ágil y prototipado rápido. & 
-\textbullet ~ Consumo de memoria más elevado. \newline
-\textbullet ~ Consultas analíticas complejas menos eficientes. \\ \hline
-
-\textbf{Redis} & 
-\textbullet ~ Latencias de microsegundos al trabajar en RAM. \newline
-\textbullet ~ Estructuras de datos complejas integradas. \newline
-\textbullet ~ Consumo de caché eficiente. & 
-\textbullet ~ Limitaciones por la memoria RAM física. \newline
-\textbullet ~ No está diseñado para ser la base de datos persistente principal. \newline
-\textbullet ~ Limitación en consultas avanzadas. \\ \hline
-
-\textbf{SQLite} & 
-\textbullet ~ No requiere servidor ni instalación. \newline
-\textbullet ~ Un solo archivo portable de tamaño mínimo. \newline
-\textbullet ~ Alta velocidad para aplicaciones locales. & 
-\textbullet ~ Limitaciones para escrituras concurrentes y tráfico alto. \newline
-\textbullet ~ Sin gestión de usuarios ni permisos de acceso. \\ \hline
-\end{tabular}
-\end{table}
+\textbf{MySQL}
+\begin{itemize}
+        \item Cuenta con una implementación e interfaz de usuario más amigable.
+    \item No admite tipos de datos más avanzados (geométricos, enumerados, matrices, rangos, XML, direcciones de red, hstore), sino que se limita a tipos numéricos, de caracteres, de fecha y hora, espaciales y JSON.
+\end{itemize}
+\textbf{MongoDB}
+\begin{itemize}
+    \item MongoDB Utiliza documentos JSON serializados con pares clave-valor, mientras que PostgreSQL utiliza una fila (tupla) como unidad básica de almacenamiento.
+    \item MongoDB tiene un menor nivel de madurez comunitaria; pese a esto, ofrece controladores para múltiples lenguajes de programación.
+    \item No soporta una variedad tan extensa de comandos SQL y tipos de datos (como arrays, json y hstore) como PostgreSQL.
+\end{itemize}
+\textbf{Microsoft SQL Server}
+\begin{itemize}
+    \item Es un producto comercial desarrollado por Microsoft que implica altos costos por licencias, soporte y funciones avanzadas.
+    \item Ofrece mayor velocidad por sus capacidades de bases de datos en memoria y alto rendimiento.
+\end{itemize}
+\newpage
