@@ -6,12 +6,10 @@
 \usepackage{graphicx}
 \usepackage{makecell}
 \usepackage{geometry}
-
-% --------------------- Comandos para pie de página ---------------------
-\usepackage[style=verbose, backend=biber]{biblatex}
-\usepackage{hyperref}
 \usepackage{url}
+\usepackage[hidelinks]{hyperref}
 
+% --------------------- Comandos para URL y pie de página ---------------------
 \makeatletter
 \g@addto@macro{\UrlBreaks}{\UrlOrds}
 \makeatother
@@ -23,10 +21,8 @@
 }
 % -----------------------------------------------------------------------
 
-\addbibresource{referencias.bib}
 \geometry{letterpaper, margin=2.5cm}
 \setlength{\parskip}{1em}
-
 \begin{document}
 \begin{titlepage}
 \begin{center}
