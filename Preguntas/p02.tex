@@ -1,11 +1,9 @@
 \addcontentsline{toc}{subsection}{Pregunta 2}
 
-\section*{2} 
-
-\textbf{¿Cuáles son las principales diferencias con PostgreSQL?}\\
+\section*{Pregunta 2} 
+\textbf{¿Cuáles son las principales diferencias con PostgreSQL?}
 
 Para hacer la comparativa, primero explicaré brevemente lo que leí en el libro ``Fundamentals of Database Systems'' \cite{FDS-Elmasri-Navathe} y las notas de clase \cite{01ConceptosBasicos} sobre cómo podemos clasificar los SMBD y qué significa cada uno:
-
 \begin{enumerate}
     \item \textbf{Modelo de Datos:} Describe la estructura de una base de datos, nos proporciona las herramientas para estructurar los datos, implementar restricciones y manipularlos a través de operaciones. Los más utilizados son el Modelo Relacional, donde los datos se perciben como tablas ``rígidas''; el Modelo Objeto-Relacional, que es una extensión del modelo relacional que implementa características de la programación orientada a objetos; y el Modelo Semiestructurado o NoSQL, donde los datos no tienen una estructura ``rígida'' ni predefinida.
     
@@ -34,3 +32,4 @@ Así podemos crear una tabla para notar las diferencias más claras entre Postgr
 \end{table}
 
 Como puede notarse, los demás SMBD difieren de PostgreSQL en al menos uno de los siguientes aspectos: el modelo de datos, la arquitectura o su licenciamiento y costo. Por ejemplo, Oracle Database pareciera ser muy similar a PostgreSQL, pero en realidad uno es de código abierto y el otro es comercialmente cerrado y bastante costoso, usándose habitualmente en empresas grandes que requieren soporte especializado. Por lo tanto, será cuestión del contexto y los requerimientos del proyecto decidir qué SMBD será el ideal para cada caso.
+\newpage
