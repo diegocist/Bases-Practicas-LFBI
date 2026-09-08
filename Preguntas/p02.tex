@@ -1,2 +1,36 @@
-
 \addcontentsline{toc}{subsection}{Pregunta 2}
+
+\section*{2} 
+
+\textbf{¿Cuáles son las principales diferencias con PostgreSQL?}\\
+
+Para hacer la comparativa, primero explicaré brevemente lo que leí en el libro ``Fundamentals of Database Systems'' \cite{FDS-Elmasri-Navathe} y las notas de clase \cite{01ConceptosBasicos} sobre cómo podemos clasificar los SMBD y qué significa cada uno:
+
+\begin{enumerate}
+    \item \textbf{Modelo de Datos:} Describe la estructura de una base de datos, nos proporciona las herramientas para estructurar los datos, implementar restricciones y manipularlos a través de operaciones. Los más utilizados son el Modelo Relacional, donde los datos se perciben como tablas ``rígidas''; el Modelo Objeto-Relacional, que es una extensión del modelo relacional que implementa características de la programación orientada a objetos; y el Modelo Semiestructurado o NoSQL, donde los datos no tienen una estructura ``rígida'' ni predefinida.
+    
+    \item \textbf{Arquitectura (de sitios/usuarios):} Es la forma en la que el SMBD se comunica con el sistema operativo y hardware, así como la gestión de múltiples usuarios. Las que se mencionan son la Arquitectura Cliente-Servidor, en la cual se separa el frontend del backend, y la Arquitectura Embebida, donde el SMBD se ejecuta directamente en el espacio de memoria de la aplicación. Como adicional, el sistema Redis está diseñado para operar en la memoria RAM del servidor, otorgando una gran velocidad pero limitando la cantidad de datos a guardar.
+
+    \item \textbf{Costos y licenciamiento:} Este simplemente toma en cuenta la accesibilidad económica y legal de los sistemas; esta última se divide en Código Abierto, Comercial Cerrado y Dominio Público.
+\end{enumerate}
+
+Así podemos crear una tabla para notar las diferencias más claras entre PostgreSQL y los demás SMBD según la clasificación explicada arriba:
+
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{l l l l}
+\hline \hline
+\textbf{SMBD} & \textbf{Modelo de Datos} & \textbf{Arquitectura} & \textbf{Licenciamiento y Costo} \\ 
+\hline
+\textbf{PostgreSQL} & Objeto-Relacional & Cliente-Servidor & Código Abierto / Gratuito \\ 
+\textbf{Oracle Database} & Objeto-Relacional & Cliente-Servidor & Comercial Cerrado / Costoso \\ 
+\textbf{Microsoft SQL Server} & Relacional & Cliente-Servidor & Comercial Cerrado / Costoso \\ 
+\textbf{MongoDB} & NoSQL & Cliente-Servidor & Código Abierto / Gratuito \\ 
+\textbf{Redis} & NoSQL & Cliente-Servidor & Código Abierto / Gratuito \\ 
+\textbf{SQLite} & Relacional & Embebido & Dominio Público / Gratuito \\ 
+\hline \hline
+\end{tabular}
+\end{table}
+
+Como puede notarse, los demás SMBD difieren de PostgreSQL en al menos uno de los siguientes aspectos: el modelo de datos, la arquitectura o su licenciamiento y costo. Por ejemplo, Oracle Database pareciera ser muy similar a PostgreSQL, pero en realidad uno es de código abierto y el otro es comercialmente cerrado y bastante costoso, usándose habitualmente en empresas grandes que requieren soporte especializado. Por lo tanto, será cuestión del contexto y los requerimientos del proyecto decidir qué SMBD será el ideal para cada caso.
