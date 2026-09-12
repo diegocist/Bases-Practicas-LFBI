@@ -1,3 +1,51 @@
+\section{Analisis de Requerimientos.}
+\subsection*{1. Enumerar los requerimientos candidato.}
+\begin{enumerate}
+    \item Sucursal
+    \item Cliente
+    \item Tarjeta
+    \item Máquina
+    \item Juego
+    \begin{itemize}
+        \item Disparos
+        \item Destreza
+        \item Ritmo
+        \item Velocidad
+    \end{itemize}
+    \item Partida
+    \item Recarga
+    \item Premio
+    \item Canje
+    \item Personal
+    \begin{itemize}
+        \item Gerente
+        \item Cajero
+        \item Encargado de premios
+        \item Técnico
+    \end{itemize}
+    \item Mantenimiento
+\end{enumerate}
+
+\subsection*{2. Comprensión del contexto del sistema}
+
+\begin{enumerate}
+    \item Un cliente puede comprar varias tarjetas, pero solo pueden tener 1 registrada bajo su identidad.
+    \item Una tarjeta puede recibir varias recargas.
+    \item Una sucursal tiene varias máquinas.
+    \item Una máquina tiene un único juego.
+    \item Una máquina pertenece exclusivamente a 1 sucursal, pero un juego puede estar en varias sucursales.
+    \item Una máquina puede tener varias partidas, cada una con una única tarjeta registrada.
+    \item Una sucursal puede tener varios premios en su inventario.
+    \item Un cliente en diferentes sucursales puede realizar canjes por varios premios.
+    \item Un empleado está registrado en una única sucursal.
+    \item Un gerente administra una única sucursal.
+    \item Un cajero vende varias tarjetas.
+    \item Un cajero puede efectuar múltiples recargas.
+    \item Un encargado procesa varios canjes, y otorga varios premios.
+    \item Un técnico realiza mantenimiento a varias máquinas, si están averiadas.
+    \item Una sucursal puede tener varias máquinas, incluso del mismo juego
+\end{enumerate}
+
 \subsection*{Enumeración de los requerimientos de los candidatos}
 
 \begin{enumerate}
@@ -145,19 +193,26 @@
 
 \subsection*{3. Captura de requerimientos no funcionales.}
 \subsubsection*{Asociados a requerimientos funcionales.}
-\begin{itemize}
+\begin{enumerate}
     \item Cada cliente puede tener únicamente una tarjeta activa.
     \item Las máquinas son exclusivas de cada sucursal
     \item Un juego puede existir en múltiples sucursales
     \item El costo de los juegos y las recargas a las tarjetas solo se pueden ser múltiplos de 10.
-\end{itemize}
+    \item Un cliente registra una visita si emplea su tarjeta en cualquier sucursal por primera vez en un día.
+\item Un cliente puede obtener el rango VIP si asiste al menos 10 veces en un mes, pero dicho rango solo se conserva durante el siguiente mes.
+\item Un cliente con rango VIP recibe el 10\% adicional de puntos obtenidos por partida.
+\item Un cliente no puede recibir un premio por encima de su rango de edad.
+\item Un cliente solo puede realizar un canje si su acumulación de puntos es suficiente.
+\item El costo de puntos de un premio debe rondar el doble de su precio de adquisición.
+\item La tarjeta debe reducir el puntaje invertido en cada canje realizado.
+\end{enumerate}
 
 \subsubsection*{No asociados a requerimientos funcionales.}
-\begin{itemize}
+\begin{enumerate}
     \item Suficiente almacenamiento en el sistema.
     \item Proteger la privacidad de los empleados y de los usuarios.
     \item Escalabilidad.
-\end{itemize}
+\end{enumerate}
 
 
 
