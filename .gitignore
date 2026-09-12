@@ -7,7 +7,6 @@
 *.fls
 *.fdb_latexmk
 *.synctex.gz
-*.pdf
 *~
 *.bcf
 *.xml

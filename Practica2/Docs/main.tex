@@ -6,12 +6,10 @@
 \usepackage{graphicx}
 \usepackage{makecell}
 \usepackage{geometry}
-
-% --------------------- Comandos para pie de página ---------------------
-\usepackage[style=verbose, backend=biber]{biblatex}
-\usepackage{hyperref}
 \usepackage{url}
+\usepackage[hidelinks]{hyperref}
 
+% --------------------- Comandos para URL y pie de página ---------------------
 \makeatletter
 \g@addto@macro{\UrlBreaks}{\UrlOrds}
 \makeatother
@@ -23,10 +21,8 @@
 }
 % -----------------------------------------------------------------------
 
-\addbibresource{referencias.bib}
 \geometry{letterpaper, margin=2.5cm}
 \setlength{\parskip}{1em}
-
 \begin{document}
 \begin{titlepage}
 \begin{center}
@@ -45,7 +41,7 @@
         \includegraphics[width=0.8\linewidth]{imagenes/Logo_FC.png}
     \end{minipage}
     \vspace{3cm}
-    \textbf{\large Practica 1}\\
+    \textbf{\large Practica 2}\\
     Licenciatura en Ciencias de la Computación\\
     Profesor: Gerardo Avilés Rosas \\
     \vspace{2cm}
@@ -56,7 +52,7 @@
     Reynoso Ascencio Alexa \\
     Vega Navas Saúl \\
     \vspace{2cm}
-    \textbf{Fecha de entrega: } 07 de septiembre del 2026
+    \textbf{Fecha de entrega: } 14 de septiembre del 2026
     \vfill
 \end{center}
 \end{titlepage}
@@ -64,13 +60,10 @@
 \newpage
 
 % Preguntas
-
+ \input{Preguntas/analisis.tex}
  \input{Preguntas/p01.tex}
  \input{Preguntas/p02.tex}
- \input{Preguntas/p03.tex}
- \input{Preguntas/p04.tex}
- \input{Preguntas/p05.tex} 
 
 % Referencias
- \input{Preguntas/referencias.tex}
+% \input{Preguntas/referencias.tex}
 \end{document}
