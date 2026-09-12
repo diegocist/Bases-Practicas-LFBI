@@ -1,0 +1,69 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{parskip}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{makecell}
+\usepackage{geometry}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+
+% --------------------- Comandos para URL y pie de página ---------------------
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+
+\renewcommand{\footnoterule}{%
+  \kern -3pt                         % Espacio vertical sobre la línea
+  \hrule width \textwidth height 0.4pt % Ancho total de la página y grosor
+  \kern 2.6pt                        % Espacio vertical debajo de la línea
+}
+% -----------------------------------------------------------------------
+
+\geometry{letterpaper, margin=2.5cm}
+\setlength{\parskip}{1em}
+\begin{document}
+\begin{titlepage}
+\begin{center}
+    % Logos
+    \begin{minipage}{0.3\textwidth}
+        \includegraphics[width=0.8\linewidth]{imagenes/UNAM_Logo.png}
+    \end{minipage}\hfill
+    \begin{minipage}{0.4\textwidth}
+        \begin{center}
+            \textbf{\Large Universidad Nacional Autónoma de México}\\[0.2cm]
+            \textbf{Facultad de Ciencias}\\[0.2cm]
+        \textbf{Bases de Datos}
+        \end{center}
+    \end{minipage}\hfill
+    \begin{minipage}{0.3\textwidth}
+        \includegraphics[width=0.8\linewidth]{imagenes/Logo_FC.png}
+    \end{minipage}
+    \vspace{3cm}
+    \textbf{\large Practica 2}\\
+    Licenciatura en Ciencias de la Computación\\
+    Profesor: Gerardo Avilés Rosas \\
+    \vspace{2cm}
+    \textbf{Integrantes: }\\
+    Cisneros Tenorio Diego Alexander\\
+    Nuñez Ruiz José Manuel \\
+    Olmos Ortiz Andrea Lucia\\
+    Reynoso Ascencio Alexa \\
+    Vega Navas Saúl \\
+    \vspace{2cm}
+    \textbf{Fecha de entrega: } 14 de septiembre del 2026
+    \vfill
+\end{center}
+\end{titlepage}
+\tableofcontents
+\newpage
+
+% Preguntas
+ \input{Preguntas/analisis.tex}
+ \input{Preguntas/p01.tex}
+ \input{Preguntas/p02.tex}
+
+% Referencias
+% \input{Preguntas/referencias.tex}
+\end{document}
