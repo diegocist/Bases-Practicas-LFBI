@@ -1,0 +1,163 @@
+\subsection*{Enumeración de los requerimientos de los candidatos}
+
+\begin{enumerate}
+    \item Sucursal
+    \begin{itemize}
+        \item Dirección
+        \begin{itemize}
+            \item Calle
+            \item Número interior
+            \item Número exterior
+            \item Colonia
+            \item Estado
+        \end{itemize}
+        \item Máquinas
+        \item Premios en inventario
+    \end{itemize}
+
+    \item Tarjeta
+    \begin{itemize}
+        \item Saldo
+        \item Puntos
+    \end{itemize}
+
+    \item Jugador
+    \begin{itemize}
+        \item Nombre completo
+        \begin{itemize}
+            \item Nombre
+            \item Apellido paterno
+            \item Apellido materno
+        \end{itemize}
+        \item Fecha de nacimiento
+        \item Edad
+        \item Sexo
+        \item Correos electrónicos
+        \item Teléfonos
+        \item Tarjeta
+        \item Cantidad de visitas en el mes
+        \item Rango de VIP
+        \begin{itemize}
+            \item ¿Es VIP?
+            \item ¿En qué mes es VIP?
+        \end{itemize}
+    \end{itemize}
+
+    \item Máquina
+    \begin{itemize}
+        \item Sucursal
+        \item Juego
+        \item Nombre
+        \item Tipo
+        \item Costo
+        \item Estado: Activo, fuera de servicio o en mantenimiento.
+    \end{itemize}
+
+    \item Partida
+    \begin{itemize}
+        \item Puntaje
+        \item Tarjeta registrada
+        \item Fecha de partida
+        \item Hora de finalización
+        \item Puntos obtenidos
+        \item Máquina
+    \end{itemize}
+
+    \item Recarga
+    \begin{itemize}
+        \item Tarjeta de recarga
+        \item Monto de abono
+        \item Fecha de transacción
+        \item Hora de transacción
+        \item Sucursal
+        \item Método de abono
+    \end{itemize}
+
+    \item Juego
+    \begin{itemize}
+        \item Nombre
+        \item Costo
+    \end{itemize}
+    \begin{enumerate}
+        \item Disparos
+        \item Destreza
+        \item Ritmo
+        \begin{itemize}
+            \item Primeros 5 lugares
+        \end{itemize}
+        \item Velocidad
+        \begin{itemize}
+            \item Primeros 5 lugares
+        \end{itemize}
+    \end{enumerate}
+
+    \item Premio
+    \begin{itemize}
+        \item Nombre
+        \item Categoria
+        \item Rango de edad
+        \item Precio de adquisición
+        \item Costo en puntos
+        \item Cantidad en sucursal
+    \end{itemize}
+
+    \item Canje
+    \begin{itemize}
+        \item Fecha
+        \item Hora
+        \item Cliente
+        \item Premios obtenidos
+        \item Puntos gastados
+    \end{itemize}
+
+    \item Personal
+    \begin{itemize}
+        \item RFC
+        \item CURP
+        \item Nombre
+        \item Fecha de nacimiento
+        \item Telefono
+        \item Correo
+        \item Fecha de contratación
+        \item Salario
+        \item Horario de trabajo
+    \end{itemize}
+    \begin{enumerate}
+        \item Gerente
+        \item Cajero
+        \item Encargado de premios
+        \item Técnico
+        \begin{itemize}
+            \item Especialidad
+            \item Certificaciones
+        \end{itemize}
+    \end{enumerate}
+    \item Mantenimiento
+    \begin{itemize}
+        \item Fecha
+        \item Tipo
+        \item Sucursal
+        \item Máquina
+        \item Problema
+    \end{itemize}
+
+\end{enumerate}
+
+\subsection*{3. Captura de requerimientos no funcionales.}
+\subsubsection*{Asociados a requerimientos funcionales.}
+\begin{itemize}
+    \item Cada cliente puede tener únicamente una tarjeta activa.
+    \item Las máquinas son exclusivas de cada sucursal
+    \item Un juego puede existir en múltiples sucursales
+    \item El costo de los juegos y las recargas a las tarjetas solo se pueden ser múltiplos de 10.
+\end{itemize}
+
+\subsubsection*{No asociados a requerimientos funcionales.}
+\begin{itemize}
+    \item Suficiente almacenamiento en el sistema.
+    \item Proteger la privacidad de los empleados y de los usuarios.
+    \item Escalabilidad.
+\end{itemize}
+
+
+
