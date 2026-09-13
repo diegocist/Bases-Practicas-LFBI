@@ -16,7 +16,7 @@
     \item Recarga
     \item Premio
     \item Canje
-    \item Personal
+    \item Empleado
     \begin{itemize}
         \item Gerente
         \item Cajero
@@ -29,21 +29,22 @@
 \subsection*{2. Comprensión del contexto del sistema}
 
 \begin{enumerate}
-    \item Un cliente puede comprar varias tarjetas, pero solo pueden tener 1 registrada bajo su identidad.
+    \item Un cliente posee una única tarjeta registrada bajo su identidad.
     \item Una tarjeta puede recibir varias recargas.
     \item Una sucursal tiene varias máquinas.
     \item Una máquina tiene un único juego.
-    \item Una máquina pertenece exclusivamente a 1 sucursal, pero un juego puede estar en varias sucursales.
-    \item Una máquina puede tener varias partidas, cada una con una única tarjeta registrada.
+    \item Una máquina pertenece exclusivamente a una sucursal.
+    \item Una máquina puede registrar varias partidas, cada una con una única tarjeta registrada.
+    \item Un juego puede instalarse en multiples maquinas de diferentes sucursales.
     \item Una sucursal puede tener varios premios en su inventario.
-    \item Un cliente en diferentes sucursales puede realizar canjes por varios premios.
-    \item Un empleado está registrado en una única sucursal.
+    \item Un cliente puede usar su tarjeta para realizar canjes por varios premios en diferentes sucursales.
+    \item Una sucursal emplea a multiples empleados, pero cada empleado esta registrado en una unica sucursal.
     \item Un gerente administra una única sucursal.
-    \item Un cajero vende varias tarjetas.
+    \item Un cajero puede vender varias tarjetas.
     \item Un cajero puede efectuar múltiples recargas.
     \item Un encargado procesa varios canjes, y otorga varios premios.
     \item Un técnico realiza mantenimiento a varias máquinas, si están averiadas.
-    \item Una sucursal puede tener varias máquinas, incluso del mismo juego
+    \item Una maquina puede recibir multiples servicios de mantenimiento en el tiempo.
 \end{enumerate}
 
 \subsection*{Enumeración de los requerimientos de los candidatos}
@@ -51,7 +52,10 @@
 \begin{enumerate}
     \item Sucursal
     \begin{itemize}
-        \item Dirección
+    \item Nombre
+    \item Telefono
+    \item Horario
+    \item Dirección      
         \begin{itemize}
             \item Calle
             \item Número interior
@@ -150,7 +154,9 @@
     \end{itemize}
 
     \item Canje
-    \begin{itemize}
+      \begin{itemize}
+      \item Sucursal
+      \item Cantidad de Premios
         \item Fecha
         \item Hora
         \item Cliente
@@ -158,7 +164,7 @@
         \item Puntos gastados
     \end{itemize}
 
-    \item Personal
+    \item Empleado
     \begin{itemize}
         \item RFC
         \item CURP
@@ -171,7 +177,10 @@
         \item Horario de trabajo: 7:00-15:00 y 15:00-23:00,
     \end{itemize}
     \begin{enumerate}
-        \item Gerente
+    \item Gerente
+      \begin{itemize}
+        \item Cédula Profesional
+        \end{itemize}
         \item Cajero
         \item Encargado de premios
         \item Técnico
