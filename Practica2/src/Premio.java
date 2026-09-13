@@ -1,11 +1,27 @@
 public class Premio {
-	private String idPremio;
+	private String idPremio; // Llave primaria
 	private String nombre;
 	private String categoria;
 	private String rangoEdad;
 	private double valorAproximado;
 	private double puntosCanjeo;
 	private int cantidadDisponible;
+
+	// Constructor vacío
+	public Premio() {
+	}
+
+	// Constructor completo
+	public Premio(String idPremio, String nombre, String categoria, String rangoEdad, double valorAproximado,
+			double puntosCanjeo, int cantidadDisponible) {
+		this.idPremio = idPremio;
+		this.nombre = nombre;
+		this.categoria = categoria;
+		this.rangoEdad = rangoEdad;
+		this.valorAproximado = valorAproximado;
+		this.puntosCanjeo = puntosCanjeo;
+		this.cantidadDisponible = cantidadDisponible;
+	}
 
 	// Getters
 	public String getIdPremio() {

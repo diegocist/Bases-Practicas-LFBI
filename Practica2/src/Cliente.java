@@ -1,5 +1,5 @@
 public class Cliente {
-	private String idCliente;
+	private String idCliente; // Llave primaria
 	private String curp;
 	private String nombre;
 	private String apellidoPaterno;
@@ -7,9 +7,28 @@ public class Cliente {
 	private String fechaNacimiento;
 	private String edad;
 	private String sexo; // Restricción a Masculino, Femenino o No binario
-	private String correos; // Con alguna notación para identificar cada uno
-	private String telefonos; // Análogo a correos
-	
+	private String correos; // Propongo la notacion: correo1|correo2|...
+	private String telefonos; // Análogo a la notación de correos
+
+	// Constructor vacío
+	public Cliente() {
+	}
+
+	// Constructor completo
+	public Cliente(String idCliente, String curp, String nombre, String apellidoPaterno, String apellidoMaterno,
+			String fechaNacimiento, String edad, String sexo, String correos, String telefonos) {
+		this.idCliente = idCliente;
+		this.curp = curp;
+		this.nombre = nombre;
+		this.apellidoPaterno = apellidoPaterno;
+		this.apellidoMaterno = apellidoMaterno;
+		this.fechaNacimiento = fechaNacimiento;
+		this.edad = edad;
+		this.sexo = sexo;
+		this.correos = correos;
+		this.telefonos = telefonos;
+	}
+
 	// Getters
 	public String getIdCliente() {
 		return idCliente;

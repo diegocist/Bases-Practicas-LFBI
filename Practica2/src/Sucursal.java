@@ -10,7 +10,26 @@ public class Sucursal {
 	// Dividiré el atributo de horario
 	private String horarioApertura;
 	private String horarioCierre;
-	
+
+	// Constructor vacío
+	public Sucursal() {
+	}
+
+	// Constructor completo
+	public Sucursal(String idSucursal, String nombre, String calle, String numeroInt, String numeroExt,
+			String colonia, String estado, String telefono, String horarioApertura, String horarioCierre) {
+		this.idSucursal = idSucursal;
+		this.nombre = nombre;
+		this.calle = calle;
+		this.numeroInt = numeroInt;
+		this.numeroExt = numeroExt;
+		this.colonia = colonia;
+		this.estado = estado;
+		this.telefono = telefono;
+		this.horarioApertura = horarioApertura;
+		this.horarioCierre = horarioCierre;
+	}
+
 	// Getters
 	public String getIdSucursal() {
 		return idSucursal;
