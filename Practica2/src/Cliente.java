@@ -107,4 +107,29 @@ public class Cliente {
 		this.telefonos = telefonos;
 	}
 
+public String toCSV() {
+		return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s",
+				this.idCliente,
+                this.curp,
+                this.nombre,
+                this.apellidoMaterno,
+                this.apellidoPaterno,
+                this.fechaNacimiento,
+                this.edad,
+                this.sexo,
+                this.correos,
+                this.telefonos);
+	}
+
+	/**
+	 * Convierte una sucursal guardada en CSV a un objeto Sucursal
+	 */
+	public static Cliente fromCSV(String lineaCSV) {
+		String[] r = lineaCSV.split(",");
+		if (r.length != 10) {
+			throw new IllegalArgumentException("La línea del CSV no tiene el número de campos requerido.");
+		}
+		return new Cliente(r[0], r[1], r[2], r[3], r[4], r[5], r[6], r[7], r[8], r[9]);
+	}
+
 }

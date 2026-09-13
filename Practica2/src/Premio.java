@@ -76,4 +76,27 @@ public class Premio {
 	public void setCantidadDisponible(int cantidadDisponible) {
 		this.cantidadDisponible = cantidadDisponible;
 	}
+
+	public String toCSV() {
+		// Usamos String.format para unir cada variable separada por una coma
+		return String.format("%s,%s,%s,%s,%s,%s,%s",
+				this.idPremio,
+				this.nombre,
+				this.categoria,
+                this.rangoEdad,
+                this.valorAproximado,
+                this.puntosCanjeo,
+                this.cantidadDisponible);
+	}
+
+	/**
+	 * Convierte una Premio guardada en CSV a un objeto Sucursal
+	 */
+	public static Premio fromCSV(String lineaCSV) {
+		String[] r = lineaCSV.split(",");
+		if (r.length != 7) {
+			throw new IllegalArgumentException("La línea del CSV no tiene el número de campos requerido.");
+		}
+		return new Premio (r[0], r[1], r[2], r[3], Double.parseDouble(r[4]), Double.parseDouble(r[5]), Integer.parseInt(r[6]));
+    }
 }
