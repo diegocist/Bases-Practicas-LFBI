@@ -4,7 +4,7 @@ public class Premio {
 	private String categoria;
 	private String rangoEdad;
 	private double valorAproximado;
-	private double puntosCanjeo;
+	private int puntosCanjeo;
 	private int cantidadDisponible;
 
 	// Constructor vacío
@@ -13,7 +13,7 @@ public class Premio {
 
 	// Constructor completo
 	public Premio(String idPremio, String nombre, String categoria, String rangoEdad, double valorAproximado,
-			double puntosCanjeo, int cantidadDisponible) {
+			int puntosCanjeo, int cantidadDisponible) {
 		this.idPremio = idPremio;
 		this.nombre = nombre;
 		this.categoria = categoria;
@@ -44,7 +44,7 @@ public class Premio {
 		return valorAproximado;
 	}
 
-	public double getPuntosCanjeo() {
+	public int getPuntosCanjeo() {
 		return puntosCanjeo;
 	}
 
@@ -69,7 +69,7 @@ public class Premio {
 		this.valorAproximado = valorAproximado;
 	}
 
-	public void setPuntosCanjeo(double puntosCanjeo) {
+	public void setPuntosCanjeo(int puntosCanjeo) {
 		this.puntosCanjeo = puntosCanjeo;
 	}
 
@@ -83,20 +83,21 @@ public class Premio {
 				this.idPremio,
 				this.nombre,
 				this.categoria,
-                this.rangoEdad,
-                this.valorAproximado,
-                this.puntosCanjeo,
-                this.cantidadDisponible);
+				this.rangoEdad,
+				String.valueOf(this.valorAproximado),
+				String.valueOf(this.puntosCanjeo),
+				String.valueOf(this.cantidadDisponible));
 	}
 
 	/**
-	 * Convierte una Premio guardada en CSV a un objeto Sucursal
+	 * Convierte una Premio guardada en CSV a un objeto Premio
 	 */
 	public static Premio fromCSV(String lineaCSV) {
 		String[] r = lineaCSV.split(",");
 		if (r.length != 7) {
 			throw new IllegalArgumentException("La línea del CSV no tiene el número de campos requerido.");
 		}
-		return new Premio (r[0], r[1], r[2], r[3], Double.parseDouble(r[4]), Double.parseDouble(r[5]), Integer.parseInt(r[6]));
-    }
+		return new Premio(r[0], r[1], r[2], r[3], Double.parseDouble(r[4]), Integer.parseInt(r[5]),
+				Integer.parseInt(r[6]));
+	}
 }
