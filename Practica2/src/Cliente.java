@@ -106,4 +106,5 @@ public class Cliente {
 	public void setTelefonos(String telefonos) {
 		this.telefonos = telefonos;
 	}
+
 }

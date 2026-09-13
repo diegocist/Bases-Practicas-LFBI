@@ -107,4 +107,36 @@ public class Sucursal {
 	public void setHorarioCierre(String horarioCierre) {
 		this.horarioCierre = horarioCierre;
 	}
+
+	// Deberiamos usar trim() por seguridad de evitar espacios?
+	/**
+	 * Convierte el objeto Sucursal a una línea separada por comas para pasarlo a
+	 * CSV
+	 */
+	public String toCSV() {
+		// Usamos String.format para unir cada variable separada por una coma
+		return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s",
+				this.idSucursal,
+				this.nombre,
+				this.calle,
+				this.numeroInt,
+				this.numeroExt,
+				this.colonia,
+				this.estado,
+				this.telefono,
+				this.horarioApertura,
+				this.horarioCierre);
+	}
+
+	/**
+	 * Convierte una sucursal guardada en CSV a un objeto Sucursal
+	 */
+	public static Sucursal fromCSV(String lineaCSV) {
+		String[] r = lineaCSV.split(",");
+		if (r.length != 10) {
+			throw new IllegalArgumentException("La línea del CSV no tiene el número de campos requerido.");
+		}
+		return new Sucursal(r[0], r[1], r[2], r[3], r[4], r[5], r[6], r[7], r[8], r[9]);
+	}
+
 }
