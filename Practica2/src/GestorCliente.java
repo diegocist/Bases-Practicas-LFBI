@@ -131,49 +131,31 @@ public class GestorCliente {
 	}
 
 	/**
-	 * Edita la información de un cliente que ya existe buscando por su idCliente y actualiza la información.
-	 * 
-	 * @param idCliente Llave primaria del cliente a modificar
-	 * @param curp Nueva CURP
-	 * @param nombre Nuevo nombre
-	 * @param apPat Nuevo apellido paterno
-	 * @param apMat Nuevo apellido materno
-	 * @param fechaNac Nueva fecha de nacimiento
-	 * @param edad Nueva edad
-	 * @param sexo Nuevo sexo
-	 * @param correos Nuevos correos electrónicos
-	 * @param telefonos Nuevos numeros de telefonos
-	 * @return {@code true} si la edición fue exitosa; {@code false} si no se encontró el idCliente
-	 */
-	public boolean editar(String idCliente, String curp, String nombre, String apPat, String apMat,
-						 String fechaNac, String edad, String sexo, String correos, String telefonos) {
-		List<Cliente> clientes = obtenerTodos();
-		boolean encontrado = false;
+     * Modifica los datos de un cliente existente en el archivo CSV a partir de su objeto.
+     * 
+     * @param cli Objeto {@link Cliente} con los datos actualizados.
+     * @return {@code true} si la actualización fue exitosa; {@code false} si no se encontró el cliente.
+     */
+    public boolean editar(Cliente cli) {
+        List<Cliente> clientes = obtenerTodos();
+        boolean encontrado = false;
 
-		for (Cliente c : clientes) {
-			if (c.getIdCliente().equalsIgnoreCase(idCliente.trim())) {
-				c.setCurp(curp);
-				c.setNombre(nombre);
-				c.setApellidoPaterno(apPat);
-				c.setApellidoMaterno(apMat);
-				c.setFechaNacimiento(fechaNac);
-				c.setEdad(edad);
-				c.setSexo(sexo);
-				c.setCorreos(correos);
-				c.setTelefonos(telefonos);
-				encontrado = true;
-				break;
-			}
-		}
-
-		if (encontrado) {
-			reescribirArchivo(clientes);
-			System.out.println("Cliente editado con éxito.");
-			return true;
-		}
-		System.out.println("No se encontró el cliente con ID: " + idCliente);
-		return false;
-	}
+        String idBuscado = cli.getIdCliente().trim();
+        for (int i = 0; i < clientes.size(); i++) {
+            if (clientes.get(i).getIdCliente().trim().equals(idBuscado)) {
+                clientes.set(i, cli);
+                encontrado = true;
+                break;
+            }
+        }
+        if (encontrado) {
+            reescribirArchivo(clientes);
+            System.out.println("Cliente actualizado correctamente.");
+            return true;
+        }
+        System.out.println("No se encontró el cliente a editar con ID: " + cli.getIdCliente());
+        return false;
+    }
 
 	/**
 	 * Elimina un registro de un cliente del archivo CSV mediante su llave primaria.
