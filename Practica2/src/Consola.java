@@ -70,4 +70,22 @@ public class Consola {
             }
         }
     }
+
+    /**
+     * Muestra un mensaje al usuario y lee un número decimal desde consola.
+     * Repitr la petición hasta que se ingrese un valor válido.
+     *
+     * @param precio texto ingresado el usuario
+     * @return el número tipo double ingresado por el usuario
+     */
+    public double leerDouble(String precio) {
+        while (true) {
+            try {
+                System.out.print(precio);
+                return Double.parseDouble(scanner.nextLine().trim());
+            } catch (NumberFormatException e) {
+                System.out.println("Ingresa un número válido");
+            }
+        }
+    }
 }

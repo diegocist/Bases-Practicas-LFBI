@@ -7,69 +7,8 @@ import java.util.Scanner;
  */
 public class MenuPremio {
 
-    private Scanner scanner = new Scanner(System.in);  
-
+    private Consola consola = new Consola();
     private GestorPremio gestorPremio = new GestorPremio("Premios.csv");
-
-    /**
-     * Muestra un mensaje al usuario y lee una línea de texto desde consola.
-     * Es estricto: no acepta campos vacíos ni comas (,) para mantener la integridad
-     * de los datos en los archivos csv.
-     *
-     * @param mensaje texto para solicitar el dato.
-     * @return la cadena ingresada por el usuario limpia de espacios.
-     */
-    private String leerString(String mensaje) {
-        while (true) {
-            System.out.print(mensaje);
-            String entrada = scanner.nextLine().trim();
-
-            if (entrada.isEmpty()) {
-                System.out.println("Error: El campo no puede estar vacío. Inténtalo de nuevo.");
-            } else if (entrada.contains(",")) {
-                System.out.println("Error: El texto no puede contener comas (,). Inténtalo de nuevo.");
-            } else {
-                return entrada;
-            }
-        }
-    }
-
-    /**
-     * Muestra un mensaje al usuario y lee un número entero desde consola.
-     * Repite la petición hasta que se ingrese un valor válido.
-     *
-     * @param mensaje texto ingresado el usuario
-     * @return el número tipo int ingresado por el usuario
-     */
-    private int leerInt(String mensaje) {
-        while (true) {
-            try {
-                System.out.print(mensaje);
-                return Integer.parseInt(scanner.nextLine().trim());
-            } catch (NumberFormatException e) {
-                System.out.println("Ingresa un número entero");
-            }
-        }
-    }
-
-    /**
-     * Muestra un mensaje al usuario y lee un número decimal desde consola.
-     * Repitr la petición hasta que se ingrese un valor válido.
-     *
-     * @param precio texto ingresado el usuario
-     * @return el número tipo double ingresado por el usuario
-     */
-
-    private double leerDouble(String precio) {
-        while (true) {
-            try {
-                System.out.print(precio);
-                return Double.parseDouble(scanner.nextLine().trim());
-            } catch (NumberFormatException e) {
-                System.out.println("Ingresa un número válido");
-            }
-        }
-    }
 
     /**
      * Menú principal de gestión de premios.
@@ -84,7 +23,7 @@ public class MenuPremio {
         System.out.println("3. Editar Premio");
         System.out.println("4. Eliminar Premio");
         System.out.println("5. Regresar");       
-        opcion = leerInt("\nElige una opción: ");
+        opcion = consola.leerInt("\nElige una opción: ");
         switch (opcion) {
                 case 1: menuAgregar(); break;
                 case 2: menuConsultar(); break;
@@ -102,13 +41,13 @@ public class MenuPremio {
      */
     private void menuAgregar() {
         System.out.println("\nProporcione los siguientes datos: ");
-        String idPremio = leerString("\nID del premio: ");
-        String nombre = leerString("\nNombre: ");
-        String categoria = leerString("Categoría: ");
-        String rangoEdad = leerString("Rango de edad: ");
-        double valorAproximado = leerDouble("Valor aproximado: ");
-        int puntosCanjeo = leerInt("Puntos de canjeo: ");
-        int cantidadDisponible = leerInt("Cantidad disponible: ");
+        String idPremio = consola.leerString("\nID del premio: ");
+        String nombre = consola.leerString("\nNombre: ");
+        String categoria = consola.leerString("Categoría: ");
+        String rangoEdad = consola.leerString("Rango de edad: ");
+        double valorAproximado = consola.leerDouble("Valor aproximado: ");
+        int puntosCanjeo = consola.leerInt("Puntos de canjeo: ");
+        int cantidadDisponible = consola.leerInt("Cantidad disponible: ");
 
         Premio nuevoPremio = new Premio(idPremio, nombre, categoria, rangoEdad, valorAproximado, puntosCanjeo, cantidadDisponible);
         gestorPremio.agregar(nuevoPremio);
@@ -120,7 +59,7 @@ public class MenuPremio {
      * Si no se encuentra, informa al usuario.
      */
     private void menuConsultar() {
-        String id = leerString("\nID del premio a consultar: ");
+        String id = consola.leerString("\nID del premio a consultar: ");
         Premio premio = gestorPremio.buscarPorLlave(id);
         if (premio == null) {
             System.out.println("\nNo se encontró el premio");
@@ -141,7 +80,7 @@ public class MenuPremio {
      * submenú, permite editar uno o varios de sus campos 
      */
     private void menuEditar() {
-        String id = leerString("\nID del premio a editar: ");
+        String id = consola.leerString("\nID del premio a editar: ");
         Premio premioOriginal = gestorPremio.buscarPorLlave(id);
         if (premioOriginal == null) {
             System.out.println("\nNo se encontró el premio con ID: " + id);
@@ -165,30 +104,30 @@ public class MenuPremio {
             System.out.println("6. Editar Cantidad disponible (Actual: " + premioEditado.getCantidadDisponible() + ")");
             System.out.println("7. Regresar");
 
-            opcion = leerInt("\nElige una opción: ");
+            opcion = consola.leerInt("\nElige una opción: ");
             switch (opcion) {
                 case 1:
-                   String nuevoNombre =  leerString("\nIngresa nuevo nombre: ");
+                   String nuevoNombre =  consola.leerString("\nIngresa nuevo nombre: ");
                     premioEditado.setNombre(nuevoNombre);
                     gestorPremio.editar(premioEditado); break;
                 case 2:                    
-                    String nuevaCategoria =  leerString("\nIngresa nueva categoria: ");
+                    String nuevaCategoria =  consola.leerString("\nIngresa nueva categoria: ");
                     premioEditado.setCategoria(nuevaCategoria);
                     gestorPremio.editar(premioEditado); break;
                 case 3:
-                    String nuevoRangoDeEdad =  leerString("\nIngresa nuevo Rango de edad: ");
+                    String nuevoRangoDeEdad =  consola.leerString("\nIngresa nuevo Rango de edad: ");
                     premioEditado.setRangoEdad(nuevoRangoDeEdad);
                     gestorPremio.editar(premioEditado); break;
                 case 4:
-                    double nuevoValorAproximado =  leerDouble("\nIngresa nuevo. Valor Aproximado: ");
+                    double nuevoValorAproximado =  consola.leerDouble("\nIngresa nuevo. Valor Aproximado: ");
                     premioEditado.setValorAproximado(nuevoValorAproximado);
                     gestorPremio.editar(premioEditado); break;
                 case 5:
-                    int nuevosPuntosDeCanjeo =  leerInt("\nIngresa nuevos Puntos de canjeo: ");
+                    int nuevosPuntosDeCanjeo =  consola.leerInt("\nIngresa nuevos Puntos de canjeo: ");
                     premioEditado.setPuntosCanjeo(nuevosPuntosDeCanjeo);
                     gestorPremio.editar(premioEditado); break;
                 case 6: 
-                    int nuevaCantidadDisponible =  leerInt("\nIngresa nueva Cantidad Disponible: ");
+                    int nuevaCantidadDisponible =  consola.leerInt("\nIngresa nueva Cantidad Disponible: ");
                     premioEditado.setCantidadDisponible(nuevaCantidadDisponible);
                     gestorPremio.editar(premioEditado); break;
                 case 7: return;
@@ -202,7 +141,7 @@ public class MenuPremio {
      * Solicita al usuario el ID de un premio y lo elimina
      */
     private void menuEliminar() {
-        String id = leerString("\nID del premio a eliminar: ");
+        String id = consola.leerString("\nID del premio a eliminar: ");
         Premio premio = gestorPremio.buscarPorLlave(id);
         if (premio == null) {
             System.out.println("No se encontró el premio con ID: " + id);
