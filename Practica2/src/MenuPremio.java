@@ -97,7 +97,7 @@ public class MenuPremio {
                                              premioOriginal.getCantidadDisponible());
         int opcion = -1;
         while (opcion != 7) {
-            System.out.println("\n1. Editar Nombre: " + premioOriginal.getIdPremio());
+            System.out.println("\n1. Editar Nombre");
             System.out.println("2. Editar Categoría");
             System.out.println("3. Editar Rango de Edad");
             System.out.println("4. Editar Valor Aproximado");
