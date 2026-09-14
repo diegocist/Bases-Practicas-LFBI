@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 /**
  * Menú de consola para gestionar sucursales (agregar, consultar, editar y
  * eliminar)
@@ -7,53 +5,8 @@ import java.util.Scanner;
  */
 public class MenuSucursal {
 
-    private Scanner scanner = new Scanner(System.in);
     private GestorSucursal gestorSucursal = new GestorSucursal("Sucursal.csv");
-
-    /**
-     * Muestra un mensaje al usuario y lee una línea de texto desde consola.
-     * Es estricto: no acepta campos vacíos ni comas (,) para mantener la integridad
-     * de los datos en los archivos csv.
-     *
-     * @param mensaje texto para solicitar el dato.
-     * @return la cadena ingresada por el usuario limpia de espacios.
-     */
-    private String leerString(String mensaje) {
-        while (true) {
-            System.out.print(mensaje);
-            String entrada = scanner.nextLine().trim();
-
-            if (entrada.isEmpty()) {
-                System.out.println("Error: El campo no puede estar vacío. Inténtalo de nuevo.");
-            } else if (entrada.contains(",")) {
-                System.out.println("Error: El texto no puede contener comas (,). Inténtalo de nuevo.");
-            } else {
-                return entrada;
-            }
-        }
-    }
-
-    /**
-     * Muestra un mensaje al usuario y lee una línea de texto desde consola.
-     * Es opcional: si está vacío devuelve "S/N", pero rechaza comas (,).
-     *
-     * @param mensaje texto para solicitar el dato.
-     * @return la cadena ingresada o "S/N".
-     */
-    private String leerStringOpcional(String mensaje) {
-        while (true) {
-            System.out.print(mensaje);
-            String entrada = scanner.nextLine().trim();
-
-            if (entrada.isEmpty()) {
-                return "S/N";
-            } else if (entrada.contains(",")) {
-                System.out.println("Error: El texto no puede contener comas (,). Inténtalo de nuevo.");
-            } else {
-                return entrada;
-            }
-        }
-    }
+    private Consola consola = new Consola();
 
     /**
      * Muestra un mensaje al usuario y lee una línea de texto desde consola
@@ -64,29 +17,11 @@ public class MenuSucursal {
      */
     private String leerTelefono(String mensaje) {
         while (true) {
-            String entrada = leerString(mensaje); // Aprovechamos que ya valida vacíos y comas
+            String entrada = consola.leerString(mensaje); // Aprovechamos que ya valida vacíos y comas
             if (entrada.matches("\\d+")) { // Valida que sean puros dígitos numéricos
                 return entrada;
             } else {
                 System.out.println("Error: El teléfono solo debe contener números. Inténtalo de nuevo.");
-            }
-        }
-    }
-
-    /**
-     * Muestra un mensaje al usuario y lee un número entero desde consola.
-     * Repite la petición en caso de recibir caracteres no válidos.
-     *
-     * @param mensaje texto para solicitar el dato.
-     * @return el número entero validado.
-     */
-    private int leerInt(String mensaje) {
-        while (true) {
-            try {
-                System.out.print(mensaje);
-                return Integer.parseInt(scanner.nextLine().trim());
-            } catch (NumberFormatException e) {
-                System.out.println("Ingresa un número entero.");
             }
         }
     }
@@ -105,7 +40,7 @@ public class MenuSucursal {
             System.out.println("4. Eliminar Sucursal");
             System.out.println("5. Regresar");
 
-            opcion = leerInt("\nElige una opción: ");
+            opcion = consola.leerInt("\nElige una opción: ");
             switch (opcion) {
                 case 1:
                     menuAgregar();
@@ -133,16 +68,16 @@ public class MenuSucursal {
      */
     private void menuAgregar() {
         System.out.println("\nProporcione los siguientes datos: ");
-        String idSucursal = leerString("ID de la Sucursal: ");
-        String nombre = leerString("Nombre: ");
-        String calle = leerString("Calle: ");
-        String numeroInt = leerStringOpcional("Número interior (Presiona Enter si no tiene): ");
-        String numeroExt = leerString("Número exterior: ");
-        String colonia = leerString("Colonia: ");
-        String estado = leerString("Estado: ");
+        String idSucursal = consola.leerString("ID de la Sucursal: ");
+        String nombre = consola.leerString("Nombre: ");
+        String calle = consola.leerString("Calle: ");
+        String numeroInt = consola.leerStringOpcional("Número interior (Presiona Enter si no tiene): ");
+        String numeroExt = consola.leerString("Número exterior: ");
+        String colonia = consola.leerString("Colonia: ");
+        String estado = consola.leerString("Estado: ");
         String telefono = leerTelefono("Teléfono: ");
-        String horarioApertura = leerString("Horario de Apertura (ej. 7:00): ");
-        String horarioCierre = leerString("Horario de Cierre (ej. 19:00): ");
+        String horarioApertura = consola.leerString("Horario de Apertura (ej. 7:00): ");
+        String horarioCierre = consola.leerString("Horario de Cierre (ej. 19:00): ");
 
         Sucursal nuevaSucursal = new Sucursal(idSucursal, nombre, calle, numeroInt, numeroExt, colonia, estado,
                 telefono,
@@ -156,7 +91,7 @@ public class MenuSucursal {
      * Si no se encuentra, informa al usuario.
      */
     private void menuConsultar() {
-        String idSucursal = leerString("\nProporcione el ID de la Sucursal a consultar: ");
+        String idSucursal = consola.leerString("\nProporcione el ID de la Sucursal a consultar: ");
 
         Sucursal sucOriginal = gestorSucursal.buscarPorLlave(idSucursal);
 
@@ -180,7 +115,7 @@ public class MenuSucursal {
      * submenú para permitir editar uno o varios de sus campos.
      */
     private void menuEditar() {
-        String idSucursal = leerString("\nProporcione el ID de la Sucursal a editar: ");
+        String idSucursal = consola.leerString("\nProporcione el ID de la Sucursal a editar: ");
 
         Sucursal sucOriginal = gestorSucursal.buscarPorLlave(idSucursal);
 
@@ -209,37 +144,37 @@ public class MenuSucursal {
             System.out.println("9. Editar Horario de Cierre (Actual: " + sucEditada.getHorarioCierre() + ")");
             System.out.println("10. Regresar");
 
-            opcion = leerInt("\nElige el campo que deseas modificar (Ingrese solo el número): ");
+            opcion = consola.leerInt("\nElige el campo que deseas modificar (Ingrese solo el número): ");
 
             switch (opcion) {
                 case 1:
-                    String nuevoNombre = leerString("\nIngresa el nuevo nombre: ");
+                    String nuevoNombre = consola.leerString("\nIngresa el nuevo nombre: ");
                     sucEditada.setNombre(nuevoNombre);
                     gestorSucursal.editar(sucEditada);
                     break;
                 case 2:
-                    String nuevaCalle = leerString("\nIngresa la nueva calle: ");
+                    String nuevaCalle = consola.leerString("\nIngresa la nueva calle: ");
                     sucEditada.setCalle(nuevaCalle);
                     gestorSucursal.editar(sucEditada);
                     break;
                 case 3:
-                    String nuevoNumInt = leerStringOpcional(
+                    String nuevoNumInt = consola.leerStringOpcional(
                             "\nIngresa el nuevo número interior (Presiona Enter si no tiene): ");
                     sucEditada.setNumeroInt(nuevoNumInt);
                     gestorSucursal.editar(sucEditada);
                     break;
                 case 4:
-                    String nuevoNumExt = leerString("\nIngresa el nuevo número exterior: ");
+                    String nuevoNumExt = consola.leerString("\nIngresa el nuevo número exterior: ");
                     sucEditada.setNumeroExt(nuevoNumExt);
                     gestorSucursal.editar(sucEditada);
                     break;
                 case 5:
-                    String nuevaColonia = leerString("\nIngresa la nueva colonia: ");
+                    String nuevaColonia = consola.leerString("\nIngresa la nueva colonia: ");
                     sucEditada.setColonia(nuevaColonia);
                     gestorSucursal.editar(sucEditada);
                     break;
                 case 6:
-                    String nuevoEstado = leerString("\nIngresa el nuevo estado: ");
+                    String nuevoEstado = consola.leerString("\nIngresa el nuevo estado: ");
                     sucEditada.setEstado(nuevoEstado);
                     gestorSucursal.editar(sucEditada);
                     break;
@@ -249,12 +184,14 @@ public class MenuSucursal {
                     gestorSucursal.editar(sucEditada);
                     break;
                 case 8:
-                    String nuevoHorarioApertura = leerString("\nIngresa el nuevo horario de apertura (ej. 7:00): ");
+                    String nuevoHorarioApertura = consola
+                            .leerString("\nIngresa el nuevo horario de apertura (ej. 7:00): ");
                     sucEditada.setHorarioApertura(nuevoHorarioApertura);
                     gestorSucursal.editar(sucEditada);
                     break;
                 case 9:
-                    String nuevoHorarioCierre = leerString("\nIngresa el nuevo horario de cierre (ej. 19:00): ");
+                    String nuevoHorarioCierre = consola
+                            .leerString("\nIngresa el nuevo horario de cierre (ej. 19:00): ");
                     sucEditada.setHorarioCierre(nuevoHorarioCierre);
                     gestorSucursal.editar(sucEditada);
                     break;
@@ -271,10 +208,10 @@ public class MenuSucursal {
      * operación a {@link GestorSucursal}.
      */
     private void menuEliminar() {
-        String idSucursal = leerString("Proporcione el ID de la Sucursal a eliminar: ");
+        String idSucursal = consola.leerString("Proporcione el ID de la Sucursal a eliminar: ");
         Sucursal suc = gestorSucursal.buscarPorLlave(idSucursal);
         if (suc == null) {
-            System.out.println("No se encontró el premio con ID: " + idSucursal);
+            System.out.println("No se encontró la Sucursal con ID: " + idSucursal);
             return;
         }
         gestorSucursal.eliminar(idSucursal);
