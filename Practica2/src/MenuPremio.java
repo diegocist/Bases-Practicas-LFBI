@@ -13,14 +13,25 @@ public class MenuPremio {
 
     /**
      * Muestra un mensaje al usuario y lee una línea de texto desde consola.
+     * Es estricto: no acepta campos vacíos ni comas (,) para mantener la integridad
+     * de los datos en los archivos csv.
      *
-     * @param mensaje texto ingresado por el usario
-     * @return la cadena ingresada por el usuario
+     * @param mensaje texto para solicitar el dato.
+     * @return la cadena ingresada por el usuario limpia de espacios.
      */
     private String leerString(String mensaje) {
-        System.out.print(mensaje);
-        return scanner.nextLine().trim();
+        while (true) {
+            System.out.print(mensaje);
+            String entrada = scanner.nextLine().trim();
 
+            if (entrada.isEmpty()) {
+                System.out.println("Error: El campo no puede estar vacío. Inténtalo de nuevo.");
+            } else if (entrada.contains(",")) {
+                System.out.println("Error: El texto no puede contener comas (,). Inténtalo de nuevo.");
+            } else {
+                return entrada;
+            }
+        }
     }
 
     /**
@@ -55,7 +66,7 @@ public class MenuPremio {
                 System.out.print(precio);
                 return Double.parseDouble(scanner.nextLine().trim());
             } catch (NumberFormatException e) {
-                System.out.println("Ingresa un número");
+                System.out.println("Ingresa un número válido");
             }
         }
     }
@@ -67,6 +78,7 @@ public class MenuPremio {
     public void menuPremios() {
         int opcion = -1;
         while (opcion != 5) {
+        System.out.println("\n--> GESTIÓN DE PREMIOS <--");
         System.out.println("\n1. Agregar Premio");
         System.out.println("2. Consultar Premio");
         System.out.println("3. Editar Premio");
@@ -89,6 +101,7 @@ public class MenuPremio {
      * objeto {@link Premio} correspondiente
      */
     private void menuAgregar() {
+        System.out.println("\nProporcione los siguientes datos: ");
         String idPremio = leerString("\nID del premio: ");
         String nombre = leerString("\nNombre: ");
         String categoria = leerString("Categoría: ");
@@ -109,16 +122,18 @@ public class MenuPremio {
     private void menuConsultar() {
         String id = leerString("\nID del premio a consultar: ");
         Premio premio = gestorPremio.buscarPorLlave(id);
-        if (premio != null) {
+        if (premio == null) {
+            System.out.println("\nNo se encontró el premio");
+            return;
+        }
+            System.out.println("\nDATOS DEL PREMIO");
+            System.out.println("ID: " + premio.getIdPremio());
             System.out.println("\nNombre: " + premio.getNombre());
             System.out.println("Categoría: " + premio.getCategoria());
             System.out.println("Rango de Edad: " + premio.getRangoEdad());
             System.out.println("Valor Aproximado: " + premio.getValorAproximado());
             System.out.println("Puntos de canjeo: " + premio.getPuntosCanjeo());
             System.out.println("Cantidad disponible: " + premio.getCantidadDisponible());
-        } else {
-            System.out.println("\nNo se encontró el premio");
-        }
     }
 
     /**
@@ -141,19 +156,13 @@ public class MenuPremio {
                                              premioOriginal.getCantidadDisponible());
         int opcion = -1;
         while (opcion != 7) {
-            System.out.println("\nDATOS DEL PREMIO" );
-            System.out.println("\nNombre: " + premioEditado.getNombre());
-            System.out.println("Categoría: " + premioEditado.getCategoria());
-            System.out.println("Rango de Edad: " + premioEditado.getRangoEdad());
-            System.out.println("Valor Aproximado: " + premioEditado.getValorAproximado());
-            System.out.println("Puntos de canjeo: " + premioEditado.getPuntosCanjeo());
-            System.out.println("Cantidad disponible: " + premioEditado.getCantidadDisponible());
-            System.out.println("\n1. Editar Nombre");
-            System.out.println("2. Editar Categoría");
-            System.out.println("3. Editar Rango de Edad");
-            System.out.println("4. Editar Valor Aproximado");
-            System.out.println("5. Editar Puntos de canjeo");
-            System.out.println("6. Editar Cantidad disponible");
+            System.out.println("\nEDITAR PREMIO");
+            System.out.println("\n1. Editar Nombre (Actual: " + premioEditado.getNombre() + ")");
+            System.out.println("2. Editar Categoría (Actual: " + premioEditado.getCategoria() + ")");
+            System.out.println("3. Editar Rango de Edad (Actual: " + premioEditado.getRangoEdad() + ")");
+            System.out.println("4. Editar Valor Aproximado (Actual: " + premioEditado.getValorAproximado() + ")");
+            System.out.println("5. Editar Puntos de canjeo (Actual: " + premioEditado.getPuntosCanjeo() + ")");
+            System.out.println("6. Editar Cantidad disponible (Actual: " + premioEditado.getCantidadDisponible() + ")");
             System.out.println("7. Regresar");
 
             opcion = leerInt("\nElige una opción: ");
