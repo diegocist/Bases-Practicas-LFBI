@@ -9,7 +9,7 @@ public class MenuPremio {
 
     private Scanner scanner = new Scanner(System.in);  
 
-    private GestorPremio gestorPremio = new GestorPremio("premios.csv");
+    private GestorPremio gestorPremio = new GestorPremio("Premios.csv");
 
     /**
      * Muestra un mensaje al usuario y lee una línea de texto desde consola.
@@ -64,7 +64,7 @@ public class MenuPremio {
      * Menú principal de gestión de premios.
      * Redirige al submenú correspondiente según la opción elegida.
      */
-    private void menuPremios() {
+    public void menuPremios() {
         int opcion = -1;
         while (opcion != 5) {
         System.out.println("\n1. Agregar Premio");
@@ -77,7 +77,8 @@ public class MenuPremio {
                 case 1: menuAgregar(); break;
                 case 2: menuConsultar(); break;
                 case 3: menuEditar(); break;
-                case 4: menuEliminar(); break; 
+                case 4: menuEliminar(); break;
+                case 5: return;
                 default: System.out.println("\nIngresa un número del 1-5");
             }
         }
@@ -88,8 +89,8 @@ public class MenuPremio {
      * objeto {@link Premio} correspondiente
      */
     private void menuAgregar() {
-        String idPremio = leerString("ID del premio: ");
-        String nombre = leerString("Nombre: ");
+        String idPremio = leerString("\nID del premio: ");
+        String nombre = leerString("\nNombre: ");
         String categoria = leerString("Categoría: ");
         String rangoEdad = leerString("Rango de edad: ");
         double valorAproximado = leerDouble("Valor aproximado: ");
@@ -106,18 +107,17 @@ public class MenuPremio {
      * Si no se encuentra, informa al usuario.
      */
     private void menuConsultar() {
-        String id = leerString("ID del premio a consultar: ");
+        String id = leerString("\nID del premio a consultar: ");
         Premio premio = gestorPremio.buscarPorLlave(id);
         if (premio != null) {
-            System.out.println("ID: " + premio.getIdPremio());
-            System.out.println("Nombre: " + premio.getNombre());
+            System.out.println("\nNombre: " + premio.getNombre());
             System.out.println("Categoría: " + premio.getCategoria());
             System.out.println("Rango de Edad: " + premio.getRangoEdad());
             System.out.println("Valor Aproximado: " + premio.getValorAproximado());
             System.out.println("Puntos de canjeo: " + premio.getPuntosCanjeo());
             System.out.println("Cantidad disponible: " + premio.getCantidadDisponible());
         } else {
-            System.out.println("No se encontró el premio");
+            System.out.println("\nNo se encontró el premio");
         }
     }
 
@@ -126,10 +126,10 @@ public class MenuPremio {
      * submenú, permite editar uno o varios de sus campos 
      */
     private void menuEditar() {
-        String id = leerString("ID del premio a editar: ");
+        String id = leerString("\nID del premio a editar: ");
         Premio premioOriginal = gestorPremio.buscarPorLlave(id);
         if (premioOriginal == null) {
-            System.out.println("No se encontró el premio con ID: " + id);
+            System.out.println("\nNo se encontró el premio con ID: " + id);
             return;
         }       
         Premio premioEditado = new Premio(premioOriginal.getIdPremio(),
@@ -141,6 +141,13 @@ public class MenuPremio {
                                              premioOriginal.getCantidadDisponible());
         int opcion = -1;
         while (opcion != 7) {
+            System.out.println("\nDATOS DEL PREMIO" );
+            System.out.println("\nNombre: " + premioEditado.getNombre());
+            System.out.println("Categoría: " + premioEditado.getCategoria());
+            System.out.println("Rango de Edad: " + premioEditado.getRangoEdad());
+            System.out.println("Valor Aproximado: " + premioEditado.getValorAproximado());
+            System.out.println("Puntos de canjeo: " + premioEditado.getPuntosCanjeo());
+            System.out.println("Cantidad disponible: " + premioEditado.getCantidadDisponible());
             System.out.println("\n1. Editar Nombre");
             System.out.println("2. Editar Categoría");
             System.out.println("3. Editar Rango de Edad");
@@ -186,7 +193,7 @@ public class MenuPremio {
      * Solicita al usuario el ID de un premio y lo elimina
      */
     private void menuEliminar() {
-        String id = leerString("ID del premio a eliminar: ");
+        String id = leerString("\nID del premio a eliminar: ");
         Premio premio = gestorPremio.buscarPorLlave(id);
         if (premio == null) {
             System.out.println("No se encontró el premio con ID: " + id);

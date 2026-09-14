@@ -53,20 +53,21 @@ public class GestorPremio {
 
 	/**
 	 * Agrega un nuevo premio al archivo CSV.
-	 * @param prem Objeto {@link Premio} a registrar.
+	 * @param premio Objeto {@link Premio} a registrar.
 	 */
     public boolean agregar(Premio premio) {
         if (buscarPorLlave(premio.getIdPremio()) != null) {
-            System.out.println("Ya existe un premio con esa llave (IdPremio): " + premio.getIdPremio());
+            System.out.println("\nYa existe un premio con ese Id, usa otro");
             return false;
         }
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(this.rutaArchivo, true))) {
+            bw.newLine();
             bw.write(premio.toCSV());
             bw.newLine();
-            System.out.println("Premio guardado correctamente.");
+            System.out.println("\nPremio guardado correctamente.");
             return true;
         } catch (IOException e) {
-            System.out.println("Error al escribir en el archivo: " + e.getMessage());
+            System.out.println("\nError al escribir en el archivo: " + e.getMessage());
             return false;
         }
     }
@@ -93,7 +94,7 @@ public class GestorPremio {
             }
 
         } catch (IOException e) {
-            System.out.println("Error al leer el archivo: " + e.getMessage());
+            System.out.println("\nError al leer el archivo: " + e.getMessage());
         }
         return null;
     }
@@ -116,7 +117,7 @@ public class GestorPremio {
             }
 
         } catch (IOException e) {
-            System.out.println("Error al leer el archivo: " + e.getMessage());
+            System.out.println("\nError al leer el archivo: " + e.getMessage());
         }
         return listaPrem;
     }
@@ -136,7 +137,7 @@ public class GestorPremio {
 			}
 
 		} catch (IOException e) {
-			System.out.println("No se pudo actualizar el archivo: " + e.getMessage());
+			System.out.println("\nNo se pudo actualizar el archivo: " + e.getMessage());
 		}
 	}
     /**
@@ -159,10 +160,10 @@ public class GestorPremio {
 
         if (encontrado) {
             reescribirArchivo(listaPremios);
-            System.out.println("Premio editado con éxito.");
+            System.out.println("\nPremio editado con éxito.");
             return true;
         }
-        System.out.println("No se encontró el premio con ID: " + premioEditado.getIdPremio());
+        System.out.println("\nNo se encontró el premio con ID: " + premioEditado.getIdPremio());
         return false;
     }
 
@@ -177,10 +178,10 @@ public class GestorPremio {
 
 		if (removido) {
 			reescribirArchivo(premios);
-			System.out.println("Premio eliminado con éxito.");
+			System.out.println("\nPremio eliminado con éxito.");
 			return true;
 		}
-		System.out.println("No se encontró el premio con ID: " + idPremio);
+		System.out.println("\nNo se encontró el premio con ID: " + idPremio);
 		return false;
 	}
 }
