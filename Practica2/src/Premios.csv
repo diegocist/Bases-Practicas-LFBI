@@ -1,7 +1,9 @@
-idPremio,nombre,categoria,rangoEdad,valorAproximado,puntosCanjeo,cantidadDisponible
+idPremio,Nombre,Categoría,Rango de Edad,Valor Aproximado,Puntos de Canjeo,Cantidad Disponible
 1001,Elefante de peluche,Medio,Infantil,1000.0,2000,5
 1002,Patineta azul,Medio,Juvenil,1750.0,3500,3
 1003,Dulces,Bajo,Infantil,10.0,20,80
 1004,Set de Legos ,Medio,Infantil,1350.0,2700,14
 1005,Audifonos rojos,Alto,Juvenil,3500.0,7000,78
-1006,Playera,alta,juvenil,2000.0,4000,80
+1006,Playera,Alto,Juvenil,2000.0,4000,80
+1007,Telefono,Alto,+Adulto,5000.0,10000,5
+1008,Conejo de Peluche,Alto,Infantil,200.0,400,60
