@@ -1,0 +1,20 @@
+\newpage
+\section{Preguntas}
+
+\begin{enumerate}
+    \item Menciona 5 diferencias entre almacenar la información utilizando un sistema de archivos a almacenarla utilizando una base de datos.
+    
+    Entre las principales diferencias están:
+    \begin{itemize}
+        \item Seguridad: Por un lado, en el sistema de archivos diseñado anteriormente, la persistencia se realizó mediante el uso de archivos .CSV, de modo que los datos están expuestos a cualquier sistema capaz de leer dicho archivo. Por otro lado, al diseñar una base de datos en un SMBD, el sistema nos otorga filtros de seguridad para el acceso a la base de datos, como lo es el inicio de sesión.
+        \item Auditabilidad: En un sistema de archivos se vuelve complicado realizar una implementación que permita guardar un historial de cambios en los datos, por lo que es complicado rastrear cambios no deseados, mientras que los SMBD ofrecen herramientas que permiten rastrear estos cambios no deseados.
+        \item Integridad a gran escala: En los sistemas de archivos, a medida que la cantidad de datos aumenta, se vuelve difícil implementar restricciones como el manejo de información duplicada, pues se debe realizar una inspección sobre los archivos que hacen persistente la información (.CSV), lo que ralentiza el sistema. En su contraparte, los SMBD al estar diseñados para manejar datos a gran escala, ofrecen herramientas que garantizan la integridad de los datos almacenados y su manipulación de formas más eficientes.
+        \item Trabajo multiusuario: Los sistemas de archivos trabajan con los datos almacenados mediante canales de comunicación entre el sistema y el archivo con los datos, de este modo si múltiples personas realizan consultas y modificaciones a los datos, se tiene el riesgo de corromper el archivo. Por su parte los SMBD implementan medidas para coordinar las acciones de los usuarios y no corromper la información.
+        \item Estructura de almacenamiento: En los sistemas de archivos es común utilizar clases para modelar las entidades y darles una estructura a los datos almacenados. Mientras que las bases de datos suelen seguir estructuras como tablas de datos asociadas entre sí mediante atributos llave.
+    \end{itemize}
+
+    \newpage
+  \item Describe cuál es más conveniente utilizar (sistema de archivos o base de datos).
+    
+    Consideramos que en general, para aplicaciones comerciales o en sistemas a gran escala, es más conveniente utilizar una Base de Datos, ya que esta nos garantiza integridad, coherencia y seguridad en los datos, además de que es la opción más escalable y útil en sistemas donde múltiples personas estarán empleando la base de datos.
+\end{enumerate}
