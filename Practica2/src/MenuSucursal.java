@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class MenuSucursal {
 
     private Scanner scanner = new Scanner(System.in);
-    private GestorSucursal gestorSucursal = new GestorSucursal("src/Sucursal.csv");
+    private GestorSucursal gestorSucursal = new GestorSucursal("Sucursal.csv");
 
     /**
      * Muestra un mensaje al usuario y lee una línea de texto desde consola.
