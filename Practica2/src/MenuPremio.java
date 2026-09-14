@@ -1,15 +1,35 @@
 import java.util.Scanner;
 
+/**
+ * Menú de consola para gestionar premios (agregar, consultar,editar y eliminar) 
+ * mediante interacción con el usuario a través de {@link Scanner}. 
+ * Que delega las operaciones sobre los datos a {@link GestorPremio}.
+ */
 public class MenuPremio {
+
     private Scanner scanner = new Scanner(System.in);  
+
     private GestorPremio gestorPremio = new GestorPremio("premios.csv");
 
+    /**
+     * Muestra un mensaje al usuario y lee una línea de texto desde consola.
+     *
+     * @param mensaje texto ingresado por el usario
+     * @return la cadena ingresada por el usuario
+     */
     private String leerString(String mensaje) {
         System.out.print(mensaje);
         return scanner.nextLine().trim();
 
     }
 
+    /**
+     * Muestra un mensaje al usuario y lee un número entero desde consola.
+     * Repite la petición hasta que se ingrese un valor válido.
+     *
+     * @param mensaje texto ingresado el usuario
+     * @return el número tipo int ingresado por el usuario
+     */
     private int leerInt(String mensaje) {
         while (true) {
             try {
@@ -20,6 +40,14 @@ public class MenuPremio {
             }
         }
     }
+
+    /**
+     * Muestra un mensaje al usuario y lee un número decimal desde consola.
+     * Repitr la petición hasta que se ingrese un valor válido.
+     *
+     * @param precio texto ingresado el usuario
+     * @return el número tipo double ingresado por el usuario
+     */
 
     private double leerDouble(String precio) {
         while (true) {
@@ -32,6 +60,10 @@ public class MenuPremio {
         }
     }
 
+    /**
+     * Menú principal de gestión de premios.
+     * Redirige al submenú correspondiente según la opción elegida.
+     */
     private void menuPremios() {
         int opcion = -1;
         while (opcion != 5) {
@@ -51,7 +83,10 @@ public class MenuPremio {
         }
     }
 
-
+    /**
+     * Solicita al usuario los atributos de un nuevo premioy construye el
+     * objeto {@link Premio} correspondiente
+     */
     private void menuAgregar() {
         String idPremio = leerString("ID del premio: ");
         String nombre = leerString("Nombre: ");
@@ -66,6 +101,10 @@ public class MenuPremio {
 
     }
 
+    /**
+     * Solicita al usuario el ID de un premio y si existe muestra sus datos. 
+     * Si no se encuentra, informa al usuario.
+     */
     private void menuConsultar() {
         String id = leerString("ID del premio a consultar: ");
         Premio premio = gestorPremio.buscarPorLlave(id);
@@ -82,11 +121,16 @@ public class MenuPremio {
         }
     }
 
+    /**
+     * Solicita al usuario el ID de un premio existente y despliega un
+     * submenú, permite editar uno o varios de sus campos 
+     */
     private void menuEditar() {
         String id = leerString("ID del premio a editar: ");
         Premio premioOriginal = gestorPremio.buscarPorLlave(id);
         if (premioOriginal == null) {
             System.out.println("No se encontró el premio con ID: " + id);
+            return;
         }       
         Premio premioEditado = new Premio(premioOriginal.getIdPremio(),
                                              premioOriginal.getNombre(), 
@@ -138,8 +182,16 @@ public class MenuPremio {
         }
     }
 
+    /**
+     * Solicita al usuario el ID de un premio y lo elimina
+     */
     private void menuEliminar() {
         String id = leerString("ID del premio a eliminar: ");
+        Premio premio = gestorPremio.buscarPorLlave(id);
+        if (premio == null) {
+            System.out.println("No se encontró el premio con ID: " + id);
+            return;
+        } 
         gestorPremio.eliminar(id);
     }
 }
