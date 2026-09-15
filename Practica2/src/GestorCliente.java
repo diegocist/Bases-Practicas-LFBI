@@ -32,7 +32,7 @@ public class GestorCliente {
 	private void verificarArchivo() {
 		try {
 			File archivo = new File(this.rutaArchivo);
-			if (!archivo.exists()) {
+			if (!archivo.exists()|| archivo.length() == 0) {
 				archivo.createNewFile();
 				try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivo))) {
 					bw.write("idCliente,curp,nombre,apellidoPaterno,apellidoMaterno,fechaNacimiento,edad,sexo,correos,telefonos");

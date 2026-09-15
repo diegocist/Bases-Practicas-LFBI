@@ -12,6 +12,7 @@ public class Main {
 
         MenuPremio premios = new MenuPremio();
         MenuSucursal sucursales = new MenuSucursal();
+        MenuCliente clientes = new MenuCliente();
 
         System.out.println("████  █   █ █████ █     █      ███      ███   ███  █   █ █████ ");
         System.out.println("█   █ █   █ █     █     █     █   █    █     █   █ ██ ██ █    "); 
@@ -30,7 +31,7 @@ public class Main {
             switch (opcion) {
                 case 1: sucursales.menuSucursales(); break;
                 case 2: premios.menuPremios(); break;
-                case 3: break;
+                case 3: clientes.menuClientes(); break;
                 case 4: System.out.println("\nHasta luego :)"); break;
                 default: System.out.println("\\nIngresa un número del 1-4");
             }
