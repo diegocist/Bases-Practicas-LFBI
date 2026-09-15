@@ -27,6 +27,55 @@ public class MenuCliente {
     }
 
     /**
+     * Solicita la CURP validando que tenga exactamente 18 caracteres.
+     *
+     * @param mensaje Texto para la solicitud.
+     * @return CURP de 18 caracteres en mayúsculas.
+     */
+    private String leerCurp(String mensaje) {
+        while (true) {
+            String entrada = consola.leerString(mensaje).toUpperCase();
+            if (entrada.matches("^[A-Za-z0-9]{18}$")) {
+                return entrada;
+            }
+            System.out.println("Error: La CURP debe contener exactamente 18 caracteres (letras y números).");
+        }
+    }
+
+    /**
+     * Solicita el sexo del cliente permitiendo únicamente 'F' o 'M'.
+     *
+     * @param mensaje Texto para la solicitud.
+     * @return 'F' o 'M' en mayúscula.
+     */
+    private String leerSexo(String mensaje) {
+        while (true) {
+            String entrada = consola.leerString(mensaje).toUpperCase();
+            if (entrada.equals("F") || entrada.equals("M")) {
+                return entrada;
+            }
+            System.out.println("Error: Ingrese únicamente 'F' para Femenino o 'M' para Masculino.");
+        }
+    }
+
+    /**
+     * Solicita la fecha de nacimiento en formato DD/MM/AAAA o YYYY-MM-DD.
+     *
+     * @param mensaje Texto para la solicitud.
+     * @return Cadena con el formato de fecha válido.
+     */
+    private String leerFechaNacimiento(String mensaje) {
+        while (true) {
+            String entrada = consola.leerString(mensaje);
+            // Valida tanto formato DD/MM/AAAA como AAAA-MM-DD
+            if (entrada.matches("^(\\d{2}/\\d{2}/\\d{4}|\\d{4}-\\d{2}-\\d{2})$")) {
+                return entrada;
+            }
+            System.out.println("Error: La fecha debe tener el formato DD/MM/AAAA (ej. 15/05/2003) o AAAA-MM-DD.");
+        }
+    }
+
+    /**
      * Solicita números telefónicos permitiendo únicamente dígitos y el separador '|'.
      *
      * @param mensaje Texto para la solicitud.
@@ -90,13 +139,13 @@ public class MenuCliente {
             return;
         }
 
-        String curp = consola.leerString("CURP: ");
+        String curp = leerCurp("CURP: ");
         String nombre = leerSoloTexto("Nombre: ");
         String apellidoPaterno = leerSoloTexto("Apellido Paterno: ");
         String apellidoMaterno = leerSoloTexto("Apellido Materno: ");
-        String fechaNacimiento = consola.leerString("Fecha de Nacimiento (DD/MM/AAAA): ");
+        String fechaNacimiento = leerFechaNacimiento("Fecha de Nacimiento (DD/MM/AAAA): ");
         String edad = String.valueOf(consola.leerInt("Edad: "));
-        String sexo = leerSoloTexto("Sexo: ");
+        String sexo = leerSexo("Sexo (F/M): ");
         String correos = consola.leerString("Correos (separados por | si son varios): ");
         String telefonos = leerTelefonos("Teléfonos (separados por | si son varios): ");
 
@@ -168,7 +217,7 @@ public class MenuCliente {
 
             switch (opcion) {
                 case 1:
-                    String nuevaCurp = consola.leerString("\nIngresa la nueva CURP: ");
+                    String nuevaCurp = leerCurp("\nIngresa la nueva CURP: ");
                     cliEditado.setCurp(nuevaCurp);
                     gestorCliente.editar(cliEditado);
                     break;
@@ -188,7 +237,7 @@ public class MenuCliente {
                     gestorCliente.editar(cliEditado);
                     break;
                 case 5:
-                    String nuevaFechaNac = consola.leerString("\nIngresa la nueva fecha de nacimiento (DD/MM/AAAA): ");
+                    String nuevaFechaNac = leerFechaNacimiento("\nIngresa la nueva fecha de nacimiento: ");
                     cliEditado.setFechaNacimiento(nuevaFechaNac);
                     gestorCliente.editar(cliEditado);
                     break;
@@ -198,7 +247,7 @@ public class MenuCliente {
                     gestorCliente.editar(cliEditado);
                     break;
                 case 7:
-                    String nuevoSexo = leerSoloTexto("\nIngresa el nuevo sexo: ");
+                    String nuevoSexo = leerSexo("\nIngresa el nuevo sexo (F/M): ");
                     cliEditado.setSexo(nuevoSexo);
                     gestorCliente.editar(cliEditado);
                     break;

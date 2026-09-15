@@ -1,0 +1,6 @@
+idCliente,curp,nombre,apellidoPaterno,apellidoMaterno,fechaNacimiento,edad,sexo,correos,telefonos
+01,REAA030515MDFRSC01,Alexa,Reynoso,Ascencio,15/05/2003,23,F,alexa@example.com,5512345678
+02,CIDA020820HDFSTN02,Diego Alexander,Cisneros,Tenorio,20/08/2002,24,M,diego@example.com,5587654321
+03,OOAL031110MDFRRT03,Andrea Lucia,Olmos,Ortiz,10/11/2003,22,F,lucia@example.com,5523456789
+04,VENS010305HDFGVN04,Saul,Vega,Navas,05/03/2001,25,M,saul@example.com,5534567890
+05,NURJ030130HDFNZR05,José Manuel,Nuñéz,Ruiz,30/01/2003,23,M,jose@example.com,5545678901
