@@ -1,4 +1,4 @@
-idPremio,Nombre,Categoría,Rango de Edad,Valor Aproximado,Puntos de Canjeo,Cantidad Disponible
+idPremio,nombre,categoria,rangoEdad,valorAproximado,puntosCanjeo,cantidadDisponible
 1001,Elefante de peluche,Medio,Infantil,1000.0,2000,5
 1002,Patineta azul,Medio,Juvenil,1750.0,3500,3
 1003,Dulces,Bajo,Infantil,10.0,20,80

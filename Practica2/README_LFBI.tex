@@ -1,59 +1,70 @@
-\documentclass{article}
+\documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
-\usepackage{parskip}
+\usepackage[T1]{fontenc}
 \usepackage[spanish]{babel}
-\usepackage{graphicx} % Required for inserting images
-\usepackage{enumitem}
-\usepackage{float}
 \usepackage{geometry}
-\usepackage{makecell}
-\usepackage{url}
-\usepackage[hidelinks]{hyperref}
-
-\geometry{a4paper, tmargin=1in, bmargin=1in, lmargin=1in, rmargin=1in}
-\graphicspath{{}}
+\geometry{margin=2cm}
+\usepackage{parskip}
+\usepackage{pdfpages}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{minted}
+\usepackage{enumitem}
+\usepackage{listings}
+\lstset{
+  backgroundcolor=\color{gray!10},
+  basicstyle=\ttfamily\small,
+  frame=single,
+  breaklines=true,
+  keywordstyle=\color{blue}
+}
 
 \begin{document}
-
-\newcommand{\linea}{\rule{\linewidth}{0.7mm}}                 
-
-% Inicia el entorno de la portada
 \begin{titlepage}
-\centering
-
-\includegraphics[width=0.25\textwidth]{imagenes/UNAM_Logo.png}\\[0.02cm]
-\vspace{1 cm}
-
-   {\Large Universidad Nacional Autónoma de México}\\
-   {\Large Facultad De Ciencias 2027-1}\\
-   {\Large Fundamentos De Bases De Datos}
-
-\vspace{1 cm}
-\linea \\
-\vspace{1.5 cm}
-\textbf{\Large README:}\\[0.2cm] 
-\textbf{\Large Los Fundamentados Basados Informados}\\[0.8cm] 
-\textbf{\Large Los FBI}\\[0.8cm]
-\linea \\
-\vfil
-    \textbf{INTEGRANTES: }\\ 
-    \vspace{0.5 cm}
+\begin{center}
+    % Logos
+    \begin{minipage}{0.3\textwidth}
+        \includegraphics[width=0.8\linewidth]{UNAM_Logo(1).png}
+    \end{minipage}\hfill
+    \begin{minipage}{0.4\textwidth}
+        \begin{center}
+            \textbf{\Large Universidad Nacional Autónoma de México}\\[0.2cm]
+            \textbf{Facultad de Ciencias, 2027-1}\\[0.2cm]
+        \textbf{Fundamentos de Bases de Datos}
+        \end{center}
+    \end{minipage}\hfill
+    \begin{minipage}{0.3\textwidth}
+        \includegraphics[width=0.8\linewidth]{Logo_FC(1).png}
+    \end{minipage}
+    
+    \vspace{1cm}
+    \textbf{\Large READ ME \\ 
+    Los Fundamentados Basados Informados\\ 
+    (LFBI)}\\
+    \vspace{1cm}
+    \large{Integrantes:\\
     Diego Alexander Cisneros Tenorio (322251050)\\
-    \vspace{0.5 cm}
     José Manuel Nuñez Ruiz (322112072)\\
-    \vspace{0.5 cm}
     Andrea Lucia Olmos Ortiz (322149977)\\
-    \vspace{0.5 cm}
     Alexa Reynoso Ascencio (322179457)\\
-    \vspace{0.5 cm}
-    Saúl Vega Navas (322088267)\\
-
-    \vspace{1 cm}
-
-    {\Large September 14, 2026}\\
-
-\end{titlepage} % Termina la portada, el texto vuelve a la normalidad
-
+    Saúl Vega Navas (322088267}\\
+    \vspace{1cm}
+    \textbf{Profesor: }\\
+    Gerardo Avilés Rosas\\
+    \vspace{0.5cm}
+    \textbf{Ayudantes de Teoría: }\\
+    Oscar Daniel Flores Linares\\
+    Claudia Itzel Gutiérrez Sánchez \\
+    \vspace{0.5cm}
+    \textbf{Ayudantes de Laboratorio: }\\
+    Ricardo Badillo Macias \\
+    Rocío Aylin Huerta González \\
+    \vspace{2cm}    
+    \textbf{Fecha de entrega: } 07 de Septiembre de 2026
+    \vfill
+\end{center}
+\end{titlepage}
 En esta entrega se tienen dos carpetas:
 \begin{itemize}
     \item Docs: Con un archivo Practica02.pdf que contiene el análisis de requerimientos para el caso de uso del "PuellaGame"
@@ -96,5 +107,6 @@ Para el programa se agregaron algunos premios, clientes y sucursales sugeridos p
     \item \textbf{5}, PuellaGame Lindavista, Av Montevideo, S/N, 363, Gustavo A. Madero, Ciudad de México, 5557263100, 11:00, 8:30
     \item \textbf{6}, PuellaGame Pilgrim, Puella, 25, 432, Liverpool, Guadalajara, 5599382819, 7:00, 5:00
 \end{itemize}
+
 
 \end{document}
