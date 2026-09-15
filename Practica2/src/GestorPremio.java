@@ -35,7 +35,7 @@ public class GestorPremio {
         try {
             File archivo = new File(this.rutaArchivo);
 
-            if (!archivo.exists()) {
+            if (!archivo.exists() || archivo.length() == 0) {
                 archivo.createNewFile();
 
                 try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivo))) {
