@@ -1,0 +1,5 @@
+idSucursal,nombre,calle,numeroInt,numeroExt,colonia,estado,telefono,horarioApertura,horarioCierre
+1,PuellaGame CU,Invetigación Cientifica,S/N,04510,Coyoacán,Ciudad de México,5583748932,9:00,20:00
+3,PuellaGame Aragon,Av. Carlos Hank Gonzáles,S/N,120,Ecatepect de Morelos,Estado de México,5513239904,9:00,10:00
+5,PuellaGame Lindavista,Av Montevideo,S/N,363,Gustavo A. Madero,Ciudad de México,5557263100,11:00,8:30
+6,PuellaGame Pilgrim,Puella,25,432,Liverpool,Guadalajara,5599382819,7:00,5:00
