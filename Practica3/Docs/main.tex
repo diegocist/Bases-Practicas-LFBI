@@ -41,7 +41,8 @@
         \includegraphics[width=0.8\linewidth]{imagenes/Logo_FC.png}
     \end{minipage}
     \vspace{3cm}
-    \textbf{\large Practica 2}\\
+    \textbf{\large Practica 3 (Parte 2)}\\
+
     Licenciatura en Ciencias de la Computación\\
     Profesor: Gerardo Avilés Rosas \\
     \vspace{2cm}
@@ -52,12 +53,155 @@
     Reynoso Ascencio Alexa \\
     Vega Navas Saúl \\
     \vspace{2cm}
-    \textbf{Fecha de entrega: } 14 de septiembre del 2026
+    \textbf{Fecha de entrega: } 01 de octubre del 2026
     \vfill
 \end{center}
 \end{titlepage}
+
 \tableofcontents
 \newpage
-\section*{Restricciones del modelo:}
+
+\section*{Correcciones respecto a la práctica pasada}
+\addcontentsline{toc}{section}{Correcciones respecto a la práctica pasada}
+
+\newpage
+\section*{Consideraciones de diseño}
+\addcontentsline{toc}{section}{Consideraciones de diseño}
+
+En cuanto al diseño de las entidades:
+\begin{itemize}
+    \item Se optó por otorgarles identificadores a algunas entidades que consideramos son lo suficientemente importantes como para mantenerse como entidades fuertes: Sucursal, juego, partida, tarjeta, canje, cliente y premio.
+    \item Por otro lado, se optó por usar recarga y mantenimiento como entidades débiles pues consideramos que estas entidades están fuertemente ligadas a otras y no pueden existir por sí mismas.
+    \item En cuanto a los empleados, se decidió usar herencia, pues en el caso de uso los trabajadores comparten la mayoría de sus atributos y además cada uno tiene al menos uno más por sí mismo. A pesar de que gerente, cajero y encargado de premios tienen exactamente los mismos atributos, cada entidad tiene acciones y formas diferentes de interactuar con el resto de entidades, por lo que consideramos que es mejor seguir el caso de uso y mantenerlas por separado.
+    \item En cuanto a los juegos, consideramos mapear tal cual el caso de uso, dividiéndolos en 4 tipos, asignándoles un atributo sobre los puntos que generan cada uno y análogamente a los empleados se decidió mantenerlas por separado pues son distintos juegos a clasificar.
+    \item Para todas las entidades que tienen como atributos una fecha, hora o nombre, se decidió hacer un atributo compuesto para garantizar la atomicidad de los atributos.
+\end{itemize}
+
+\newpage
+\section*{Relaciones fuertes}
+\addcontentsline{toc}{section}{Relaciones fuertes}
+
+\begin{enumerate}
+    \item \textbf{REGISTRAR} Cliente -- Tarjeta (1:1)
+    \begin{itemize}
+        \item \textbf{Cliente:} total (1,1). Todo cliente registrado en el sistema debe poseer obligatoriamente una y solo una tarjeta activa para ser identificado.
+        \item \textbf{Tarjeta:} total (1,1). Una tarjeta en el sistema debe estar asociada a un único cliente registrado.
+        \item Todo cliente requiere de únicamente una tarjeta, por lo que cada tarjeta está asignada a un único cliente.
+    \end{itemize}
+
+    \item \textbf{JUGAR} Partida -- Tarjeta (N:1)
+    \begin{itemize}
+        \item \textbf{Partida:} total (1,M). Una partida requiere ser jugada mediante al menos una tarjeta activa.
+        \item \textbf{Tarjeta:} parcial (0,N). Una tarjeta puede no haber jugado una tarjeta todavía o haber jugado múltiples partidas a lo largo del tiempo.
+        \item Para iniciar una partida se requiere de una tarjeta activada y se pueden registrar varias tarjetas para una misma partida en multijugador, mientras que una misma tarjeta puede participar en múltiples partidas.
+    \end{itemize}
+
+    \item \textbf{REPRODUCIR} Máquina -- Partida (1:N)
+    \begin{itemize}
+        \item \textbf{Máquina:} parcial (0,N). Una máquina recién instalada o fuera de servicio puede no tener partidas registradas, o haber reproducido muchas partidas si está activa.
+        \item \textbf{Partida:} total (1,1). Toda partida debe ejecutarse necesariamente en una máquina física específica.
+        \item Una máquina puede generar varias partidas durante un cierto lapso de tiempo, pero cada partida solo se ejecuta en una única máquina.
+    \end{itemize}
+
+    \item \textbf{TENER} Sucursal -- Premio (N:M)
+    \begin{itemize}
+        \item \textbf{Sucursal:} parcial (0,N). Una sucursal puede estar temporalmente sin un premio en particular o tener múltiples premios.
+        \item \textbf{Premio:} parcial (0,M). Un tipo de premio puede no estar disponible en una sucursal específica o formar parte del inventario de varias sucursales.
+        \item Una sucursal puede almacenar múltiples premios, mientras que un mismo tipo de premio puede estar disponible en múltiples sucursales.
+    \end{itemize}
+
+    \item \textbf{PERTENECER} Sucursal -- Máquina (1:N)
+    \begin{itemize}
+        \item \textbf{Sucursal:} parcial (0,N). Una sucursal en remodelación puede no contar con máquinas asignadas, mientras que una sucursal activa alberga muchas.
+        \item \textbf{Máquina:} parcial (0,1). Una máquina física puede estar en traslado, mantenimiento o sin asignación, o estar ubicada en a lo más una sucursal.
+        \item Una sucursal puede no tener máquinas, si apenas se está construyendo o remodelando, y una máquina puede pertenecer a lo más en una sucursal o por ejemplo en reparación fuera de una sucursal.
+    \end{itemize}
+
+    \item \textbf{INSTALAR} Máquina -- Juego (N:1)
+    \begin{itemize}
+        \item \textbf{Máquina:} total (1,1). Toda máquina debe de tener instalado obligatoriamente un juego para poder operar.
+        \item \textbf{Juego:} parcial (0,N). Un juego puede no estar instalado todavía en ninguna máquina o estar instalado en múltiples máquinas.
+        \item Toda máquina debe de tener instalada un juego, mientras que un mismo juego puede estar instalado en varias máquinas o estar en desarrollo.
+    \end{itemize}
+
+    \item \textbf{REPARAR} Técnico -- Máquina (N:M)
+    \begin{itemize}
+        \item \textbf{Técnico:} parcial (0,N). Un técnico contratado puede no haber realizado reparaciones aún o haber reparado múltiples máquinas.
+        \item \textbf{Máquina:} parcial (0,M). Una máquina nueva puede no haber necesitado reparaciones o ser reparada a lo largo de su vida útil.
+        \item Un técnico puede reparar múltiples máquinas y una máquina puede ser reparada por distintos técnicos en diferentes ocasiones.
+    \end{itemize}
+
+    \item \textbf{TRABAJAR} Empleados -- Sucursal (N:M)
+    \begin{itemize}
+        \item \textbf{Empleados:} total (1,N). Todo empleado debe estar asignado obligatoriamente a al menos una sucursal para trabajar.
+        \item \textbf{Sucursal:} total (1,M). Una sucursal debe contar obligatoriamente con un equipo de al menos un empleado para poder operar.
+        \item Una sucursal cuenta con múltiples empleados y un empleado debe trabajar en una o más sucursales.
+    \end{itemize}
+
+    \item \textbf{ADMINISTRAR} Gerente -- Sucursal (1:1)
+    \begin{itemize}
+        \item \textbf{Gerente:} parcial (0,1). Un gerente puede no tener una sucursal asignada en un momento dado o administrar a lo más una sucursal.
+        \item \textbf{Sucursal:} total (1,1). Toda sucursal requiere tener obligatoriamente un único gerente asignado.
+        \item Un gerente puede administrar una única sucursal y una sucursal debe ser administrada por un único gerente.
+    \end{itemize}
+
+    \item \textbf{REALIZAR} Cajero -- Recarga (1:N)
+    \begin{itemize}
+        \item \textbf{Cajero:} parcial (0,1). Un cajero puede no haber realizado recargas aún o realizar una gran cantidad de recargas.
+        \item \textbf{Recarga:} total (1,N). Toda recarga tiene que ser procesada y cobrada obligatoriamente por un único cajero.
+        \item Un cajero puede hacer muchas recargas, mientras que una recarga debe ser hecha por un único cajero.
+    \end{itemize}
+
+    \item \textbf{EFECTUAR} Tarjeta -- Canje (1:N)
+    \begin{itemize}
+        \item \textbf{Tarjeta:} parcial (0,N). Una tarjeta puede no haber realizado ningún canje de premios aún o haber acumulado múltiples canjes.
+        \item \textbf{Canje:} total (1,1). Todo canje registrado debe estar asociado obligatoriamente a la tarjeta que utilizó sus puntos.
+        \item Una tarjeta puede realizar múltiples canjes a lo largo del tiempo, mientras que un transacción de canje pertenece a una sola tarjeta.
+    \end{itemize}
+
+    \item \textbf{ATENDER} EncargadoPremios -- Canje (1:N)
+    \begin{itemize}
+        \item \textbf{EncargadoPremios:} parcial (0,N). Un encargado de premios puede no haber procesado ningún canje aún o haber atendido múltiples solicitudes.
+        \item \textbf{Canje:} total (1,1). Todo canje de premios debe ser procesado y entregado obligatoriamente por un único encargado de premios.
+        \item Un encargado de premios puede procesar varios canjes durante su jornada, pero cada canje es atendido por un solo encargado.
+    \end{itemize}
+    
+    \item \textbf{OCURRIR\_EN} Sucursal -- Canje (1:N)
+    \begin{itemize}
+        \item \textbf{Sucursal:} parcial (0,N). Una sucursal nueva puede no registrar canjes aún o llevar a cabo una gran cantidad de ellos.
+        \item \textbf{Canje:} total (1,1). Todo canje debe realizarse obligatoriamente dentro de las instalaciones de una sucursal específica.
+        \item En una sucursal se pueden llevar a cabo múltiples canjes de premios, mientras que cada transacción de canje ocurre en una única sucursal.
+    \end{itemize}
+
+    \item \textbf{INCLUIR} Canje -- Premio (M:N)
+    \begin{itemize}
+        \item \textbf{Canje:} total (1,N). Todo canje registrado debe incluir obligatoriamente al menos un premio entregado al cliente.
+        \item \textbf{Premio:} parcial (0,M). Un premio del catálogo puede no haber sido reclamado todavía en ningún canje o haber sido incluido en múltiples canjes.
+        \item Un canje puede involucrar la entrega de uno o varios premios, y un mismo tipo de premio puede ser parte de múltiples canjes distintos.
+    \end{itemize}
+
+    \item \textbf{REGISTRAR\_EN} Sucursal -- Recarga (1:N)
+    \begin{itemize}
+        \item \textbf{Sucursal:} parcial (0,N). Una sucursal puede estar recién abierta y no registrar recargas aún, o haber procesado múltiples recargas.
+        \item \textbf{Recarga:} total (1,1). Toda recarga de saldo debe registrarse obligatoriamente en la sucursal física donde fue efectuada.
+        \item Una sucursal puede procesar numerosas recargas de tarjetas, mientras que cada operación de recarga se efectúa en una sola sucursal.
+    \end{itemize}
+    
+\end{enumerate}
+
+\newpage
+\section*{Relaciones débiles}
+\addcontentsline{toc}{section}{Relaciones débiles}
+
+\begin{enumerate}
+    \item \textbf{PEDIR} Tarjeta -- Recarga (1:N)
+    \begin{itemize}
+        \item \textbf{Tarjeta:} parcial (0,N). Una tarjeta recién adquirida puede no haber realizado recargas o contar con múltiples recargas registradas.
+        \item \textbf{Recarga:} total (1,1). Una recarga no puede existir sin estar ligada a la tarjeta que recibe el saldo.
+        \item Una tarjeta puede recibir múltiples recargas, mientras que una recarga pertenece a una única tarjeta.
+    \end{itemize}
+\end{enumerate}
+
+
 
 \end{document}
