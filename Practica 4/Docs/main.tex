@@ -67,7 +67,7 @@
 \newpage
 \section*{Dominio de los atributos y restricciones.}
 
-\section*{Sucursal}
+\subsection*{Sucursal}
 
 \begin{longtable}{p{2.8cm} p{2.5cm} p{7.0cm} p{1.2cm}}
 \label{tab:sucursal}\\
@@ -86,17 +86,17 @@
 
 idSucursal 
 & int 
-& NOT NULL; autoincremental 
+& NOT NULL
 & PK \\
 
 idAdministrador 
-& int 
+& varchar(18)  
 & NOT NULL
 & FK \\
 
 Teléfono 
 & varchar(10) 
-& NOT NULL; solo dígitos 
+& NOT NULL, solo dígitos 
 & \\
 
 Nombre 
@@ -121,7 +121,7 @@ Calle
 
 Núm. Exterior 
 & int 
-& NOT NULL; valor mayor que 0 
+& NOT NULL, valor mayor que 0 
 & \\
 
 Núm. Interior 
@@ -132,6 +132,342 @@ Núm. Interior
 \end{longtable}
 
 \vspace{2pt}
-\textbf{Llave primaria:} idSucursal\\
+\textbf{Llave primaria:} idSucursal\\ 
 \textbf{Llave foránea:} idAdministrador $\rightarrow$ Gerente (CURP)
+
+\subsection*{Premio}
+\begin{longtable}{p{3.1cm} p{2.6cm} p{6.7cm} p{1.3cm}}
+\label{tab:Premio}\\
+\toprule
+\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+idPremio 
+& int 
+& NOT NULL
+& PK \\
+
+Nombre 
+& varchar(50) 
+& NOT NULL 
+&  \\
+
+CategoriaEdad 
+& varchar(?) 
+& NOT NULL dominio: \{Infantil, Juvenil, Adulto\} 
+&  \\
+
+ValorAproximado 
+& float 
+& NOT NULL, mayor que 0 
+&  \\
+
+CostoPuntos 
+& int 
+& NOT NULL, mayor que 0 
+&  \\
+
+CategoriaPuntos 
+& varchar(?) 
+& NOT NULL dominio: \{Bajos, Medios, Grandes\} 
+&  \\
+
+\end{longtable}
+
+\textbf{Llave primaria:} idPremio\\
+\textbf{Llaves foráneas:} ninguna.\\
+
+
+\subsection*{Almacenamiento}
+
+Almacenamiento es una tabla que representa la relación entre Sucursal y Premio.
+
+\begin{longtable}{p{4.6cm} p{3.4cm} p{6.1cm} p{1.3cm}}
+\label{tab:Almacenamiento}\\
+\toprule
+\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+idSucursal 
+& int 
+& NOT NULL 
+& PK,FK \\
+
+idPremio 
+& int 
+& NOT NULL 
+& PK,FK \\
+
+CantidadDisponible 
+& int 
+& NOT NULL, valor igual o mayor que 0 
+&  \\
+
+\end{longtable}
+
+\textbf{Llave primaria:} idSucursal, idPremio\\ 
+\textbf{Llaves foráneas:} idSucursal $\rightarrow$ Sucursal (idSucursal) y idPremio $\rightarrow$ Premio (idPremio)
+
+\subsection*{DiaApertura}
+
+\begin{longtable}{p{3.9cm} p{3.7cm} p{7.2cm} p{1.3cm}}
+\label{tab:DiaApertura}\\
+\toprule
+\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+idSucursal 
+& int 
+& NOT NULL 
+& PK,FK \\
+
+diaSemana 
+& varchar(2)
+& NOT NULL, dominio: \{LU,MA,..,DO\}
+& PK \\
+
+HoraApertura 
+& time 
+& NOT NULL 
+&  \\
+
+HoraCierre 
+& time 
+& NOT NULL
+&  \\
+\end{longtable}
+
+\textbf{Llave primaria:} idSucursal, diaSemana\\
+\textbf{Llaves foráneas:}idSucursal $\rightarrow$ Sucursal (idSucursal)
+
+\subsection*{CantidadInicial}
+Registro a través del tiempo de lo que pasa con Almacenamiento, y no una entidad totalmente aislada.
+\begin{longtable}{p{3.4cm} p{3.6cm} p{6.1cm} p{1.3cm}}
+\toprule
+\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+idSucursal 
+& int 
+& NOT NULL 
+& PK,FK \\
+
+idPremio 
+& int 
+& NOT NULL 
+& PK,FK \\
+
+fechaRotacion 
+& date 
+& NOT NULL 
+& PK \\
+
+CantidadRecibida 
+& int 
+& NOT NULL, mayor que 0 
+&  \\
+\end{longtable}
+\vspace{2pt}
+\textbf{Llave primaria:} idSucursal, idPremio, fechaRotacion\\
+\textbf{Llaves foráneas:}(idSucursal, idPremio) $\rightarrow$ Almacenamiento (idSucursal, idPremio)
+
+
+
+\subsection*{Cliente}
+\begin{longtable}{p{3.5cm} p{2.6cm} p{7.9cm} p{1.3cm}}
+\toprule
+\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+idCliente 
+& int 
+& NOT NULL
+& PK \\
+
+Nombre 
+& varchar(50) 
+& NOT NULL 
+&  \\
+
+ApellidoPaterno 
+& varchar(50) 
+& NOT NULL 
+&  \\
+
+ApellidoMaterno 
+& varchar(50) 
+& NULL permitido 
+&  \\
+
+FechaNacimiento 
+& date 
+& NOT NULL, igual o menor que fecha actual 
+&  \\
+
+Sexo 
+& varchar(2) 
+& dominio: \{M, F, NB\} 
+&  \\
+
+\end{longtable}
+\vspace{2pt}
+\textbf{Llave primaria:} idCliente\\
+\textbf{Llaves foráneas:} ninguna.\\
+
+
+
+\subsection*{TelefonoCliente}
+Multivaluado de Cliente.
+\begin{longtable}{p{3.1cm} p{3.6cm} p{6.1cm} p{2.3cm}}
+\toprule
+\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+idCliente 
+& int 
+& NOT NULL 
+& PK,FK \\
+
+telefono 
+& varchar(10) 
+& NOT NULL, solo dígitos 
+& PK \\
+\end{longtable}
+\vspace{2pt}
+\textbf{Llave primaria:} (idCliente, telefono)\\
+\textbf{Llaves foráneas:} idCliente $\rightarrow$ Cliente (idCliente)
+
+\subsection*{CorreoCliente}
+Multivaluado de Cliente.
+\begin{longtable}{p{3.1cm} p{2.6cm} p{7.1cm} p{1.3cm}}
+\toprule
+\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+idCliente & int & NOT NULL & PK,FK \\
+correo & varchar(100) & NOT NULL, formato de correo válido & PK \\
+\end{longtable}
+\vspace{2pt}
+\textbf{Llave primaria:} (idCliente, correo)\\
+\textbf{Llaves foráneas:} idCliente $\rightarrow$ Cliente (idCliente)
+\vspace{6pt}
+
+\subsection*{MesVIP}
+Multivaluado de Cliente.Registra los periodos mensuales en los que el cliente obtuvo estatus VIP.
+\begin{longtable}{p{3.1cm} p{2.6cm} p{6.1cm} p{1.3cm}}
+\toprule
+\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+idCliente 
+& int 
+& NOT NULL 
+& PK,FK \\
+
+mes 
+& int 
+& NOT NULL, dominio: \{1..12\} 
+& PK \\
+
+año 
+& varchar(4) 
+& NOT NULL, 4 dígitos numéricos 
+& PK \\
+\end{longtable}
+\vspace{2pt}
+\textbf{Llave primaria:} (idCliente, mes, anio)\\
+\textbf{Llaves foráneas:}
+\begin{itemize}[leftmargin=1.2em, itemsep=1pt, topsep=2pt]
+\item idCliente $\rightarrow$ Cliente (idCliente)
+\end{itemize}
+
+\subsection*{Visitar}
+Almacenamiento es una tabla que representa la relación entre Sucursal y Cliente.
+\begin{longtable}{p{3.1cm} p{3.6cm} p{5.5cm} p{2.3cm}}
+\toprule
+\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+idCliente 
+& int 
+& NOT NULL 
+& PK,FK \\
+
+idSucursal 
+& int 
+& NOT NULL 
+& PK,FK \\
+
+fecha 
+& date 
+& NOT NULL 
+& PK \\
+\end{longtable}
+\vspace{2pt}
+\textbf{Llave primaria:} (idCliente, idSucursal, fecha)\\
+\textbf{Llaves foráneas:} idCliente $\rightarrow$ Cliente (idCliente) y idSucursal $\rightarrow$ Sucursal (idSucursal)
+
 \end{document}
