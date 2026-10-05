@@ -8,6 +8,11 @@
 \usepackage{geometry}
 \usepackage{url}
 \usepackage[hidelinks]{hyperref}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{titlesec}
 
 % --------------------- Comandos para URL y pie de página ---------------------
 \makeatletter
@@ -62,5 +67,71 @@
 \newpage
 \section*{Dominio de los atributos y restricciones.}
 
+\section*{Sucursal}
 
+\begin{longtable}{p{2.8cm} p{2.5cm} p{7.0cm} p{1.2cm}}
+\label{tab:sucursal}\\
+\toprule
+\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+idSucursal 
+& int 
+& NOT NULL; autoincremental 
+& PK \\
+
+idAdministrador 
+& int 
+& NOT NULL
+& FK \\
+
+Teléfono 
+& varchar(10) 
+& NOT NULL; solo dígitos 
+& \\
+
+Nombre 
+& varchar(50) 
+& NOT NULL 
+& \\
+
+Colonia 
+& varchar(50) 
+& NOT NULL 
+& \\
+
+Estado 
+& varchar(50) 
+& NOT NULL 
+& \\
+
+Calle 
+& varchar(50) 
+& NOT NULL 
+& \\
+
+Núm. Exterior 
+& int 
+& NOT NULL; valor mayor que 0 
+& \\
+
+Núm. Interior 
+& int 
+& NULL permitido 
+& \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} idSucursal\\
+\textbf{Llave foránea:} idAdministrador $\rightarrow$ Gerente (CURP)
 \end{document}
