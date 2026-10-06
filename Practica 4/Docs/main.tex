@@ -67,6 +67,7 @@
 \newpage
 \section*{Dominio de los atributos y restricciones.}
 
+
 \subsection*{Sucursal}
 
 \begin{longtable}{p{2.8cm} p{2.5cm} p{7.0cm} p{1.2cm}}
@@ -162,8 +163,8 @@ Nombre
 &  \\
 
 CategoriaEdad 
-& varchar(?) 
-& NOT NULL dominio: \{Infantil, Juvenil, Adulto\} 
+& varchar(8) 
+& NOT NULL dominio: \{Infantil, Juvenil, Adulto\} %Corregir
 &  \\
 
 ValorAproximado 
@@ -177,8 +178,8 @@ CostoPuntos
 &  \\
 
 CategoriaPuntos 
-& varchar(?) 
-& NOT NULL dominio: \{Bajos, Medios, Grandes\} 
+& varchar(7) 
+& NOT NULL dominio: \{Bajos, Medios, Grandes\} %Corregir
 &  \\
 
 \end{longtable}
@@ -470,4 +471,147 @@ fecha
 \textbf{Llave primaria:} (idCliente, idSucursal, fecha)\\
 \textbf{Llaves foráneas:} idCliente $\rightarrow$ Cliente (idCliente) y idSucursal $\rightarrow$ Sucursal (idSucursal)
 
+
+
+\subsection*{Tarjeta}
+\begin{longtable}{p{3.1cm} p{2.9cm} p{7.7cm} p{1.3cm}}
+\toprule
+\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+idTarjeta 
+& int 
+& NOT NULL
+& PK \\
+
+Estado 
+& varchar(9) 
+& dominio: \{Activa, Cancelada\} 
+&  \\
+\end{longtable}
+\vspace{2pt}
+\textbf{Llave primaria:} idTarjeta\\
+\textbf{Llaves foráneas:} ninguna\\
+
+\subsection*{Recarga}
+\begin{longtable}{p{3.1cm} p{3.6cm} p{7.7cm} p{1.3cm}}
+\toprule
+\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+idTarjeta 
+& int 
+& NOT NULL 
+& PK,FK \\
+
+numRecarga 
+& int 
+& NOT NULL 
+& PK \\
+
+idSucursal 
+& int 
+& NOT NULL 
+& FK \\
+
+idEncargado 
+& varchar(18) 
+& NOT NULL 
+& FK \\
+
+Monto 
+& float 
+& NOT NULL, mayor que 0
+&  \\
+
+MétodoPago 
+& varchar(8) 
+& NOT NULL dominio: \{Efectivo, Crédito, Débito, Paypal \} 
+&  \\
+
+Hora 
+& time 
+& NOT NULL 
+&  \\
+
+Fecha 
+& date 
+& NOT NULL 
+&  \\
+\end{longtable}
+
+idEncargado - identifica al Cajero que procesó la recarga \\
+
+\textbf{Llave primaria:} (idTarjeta, numRecarga)\\
+\textbf{Llaves foráneas:} idTarjeta $\rightarrow$ Tarjeta (idTarjeta),  idSucursal $\rightarrow$ Sucursal (idSucursal)y idEncargado $\rightarrow$ Cajero (CURP)
+
+\subsection*{Canje}
+\begin{longtable}{p{3.1cm} p{2.6cm} p{7.1cm} p{1.3cm}}
+\toprule
+\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+idCanje 
+& int 
+& NOT NULL 
+& PK \\
+
+idSucursal 
+& int 
+& NOT NULL 
+& FK \\
+
+idTarjeta 
+& int 
+& NOT NULL 
+& FK \\
+
+idEncargado 
+& varchar(18) 
+& NOT NULL
+& FK \\
+
+Hora 
+& time 
+& NOT NULL 
+&  \\
+
+Fecha 
+& date 
+& NOT NULL 
+&  \\
+
+PuntosGastados 
+& int 
+& NOT NULL, mayor que 0
+&  \\
+
+CantidadPremios 
+& int 
+& NOT NULL, mayor que 0
+&  \\
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} idCanje\\
+\textbf{Llaves foráneas:} idSucursal $\rightarrow$ Sucursal (idSucursal), idTarjeta $\rightarrow$ Tarjeta (idTarjeta) y  idEncargado $\rightarrow$ EncargadoPremios (CURP)
 \end{document}
