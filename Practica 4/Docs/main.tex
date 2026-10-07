@@ -614,4 +614,733 @@ CantidadPremios
 \vspace{2pt}
 \textbf{Llave primaria:} idCanje\\
 \textbf{Llaves foráneas:} idSucursal $\rightarrow$ Sucursal (idSucursal), idTarjeta $\rightarrow$ Tarjeta (idTarjeta) y  idEncargado $\rightarrow$ EncargadoPremios (CURP)
+
+\section*{Máquina}
+
+\begin{longtable}{p{3.2cm} p{2.2cm} p{4.8cm} p{4.2cm} p{1.2cm}}
+\label{tab:maquina}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+idMaquina 
+& int
+& Numeros mayores a 0
+& NOT NULL (autoincremental)
+& PK \\
+
+idSucursal 
+& int 
+& Numeros mayores a 0
+& NOT NULL; 
+
+Revisar: (idSucursal $>$ 0)
+& FK \\
+
+idJuego 
+& int 
+& Numeros mayores a 0
+& NOT NULL; 
+
+Revisar: (idJuego $>$ 0)
+& FK \\
+
+EstadoMaquina 
+& varchar(15)
+& Cadenas dentro de la lista (activo, fuera de servicio, mantenimiento)
+& NOT NULL; 
+
+Revisar que el valor sea uno en (activo, fuera de servicio, mantenimiento)
+& \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} idMaquina\\
+\textbf{Llaves foráneas:} idSucursal $\rightarrow$ Sucursal (idSucursal), idJuego $\rightarrow$ Juego (idJuego)\\
+
+
+\section*{Empleado}
+
+\begin{longtable}{p{3.2cm} p{2.2cm} p{4.8cm} p{4.2cm} p{1.2cm}}
+\label{tab:empleado}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+CURP 
+& varchar(18) 
+& Cadenas con el formato estándar: 4 letras, 6 dígitos, 6 letras, 1 carácter alfanumérico y 1 dígito.
+& NOT NULL;
+
+Revisar que se cumpla el formato estándar.
+& PK \\
+
+FechaNacimiento 
+& date 
+& Cualquier valor de tipo date que sea al menos 18 años menor a la fecha actual.
+& NOT NULL;
+
+Revisar que FechaNacimiento sea menor por al menos 18 años de la actual.
+& \\
+
+Nombre 
+& varchar(50)
+& Cadenas atómicas compuestas únicamente por letras.
+& NOT NULL;
+
+Revisar que esté compuesto solo por letras.
+& \\
+
+Apellido 
+& varchar(50) 
+& Cadenas atómicas compuestas únicamente por letras.
+& NOT NULL;
+
+Revisar que esté compuesto solo por letras.
+& \\
+
+RFC 
+& varchar(13) 
+& Cadenas con el formato estándar: 4 letras, 6 números, 3 letras.
+& NOT NULL;
+
+Revisar que se cumpla el formato estándar.
+& \\
+
+tipoEmpleado
+& int
+& solo en el intervalo [0-3]: ((0, Gerente) (1, Técnico), (2, EncargadoPremios) (3, Cajero))
+& NOT NULL;
+
+Revisar (0 $\leq$ tipoEmpleado $\leq$ 3)
+& \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} CURP\\
+
+
+\section*{Gerente}
+
+\begin{longtable}{p{3.2cm} p{2.2cm} p{4.8cm} p{4.2cm} p{1.2cm}}
+\label{tab:gerente}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+CURP 
+& varchar(18) 
+& Cadenas con el formato estándar: 4 letras, 6 dígitos, 6 letras, 1 carácter alfanumérico y 1 dígito.
+& NOT NULL;
+
+Revisar que se cumpla
+el formato estándar.
+& PK, FK \\
+
+cedula 
+& varchar(20)
+& Cualquier cadena con 7 u 8 números.
+& NOT NULL;
+
+Revisar que esté compuesta únicamente con números.
+& \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} CURP\\
+\textbf{Llave foránea:} CURP $\rightarrow$ Empleado (CURP)\\
+
+
+\section*{Técnico}
+
+\begin{longtable}{p{3.2cm} p{2.2cm} p{4.8cm} p{4.2cm} p{1.2cm}}
+\label{tab:tecnico}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+CURP 
+& varchar(18) 
+& Cadenas con el formato estándar: 4 letras, 6 dígitos, 6 letras, 1 carácter alfanumérico y 1 dígito.
+& NOT NULL;
+
+Revisar que se cumpla
+el formato estándar.
+& PK, FK \\
+
+especialidad 
+& varchar(100)
+& Cadenas que indiquen una especialidad como: Simuladores, Juegos electromecánicos, entre otras.
+& NOT NULL
+& \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} CURP\\
+\textbf{Llave foránea:} CURP $\rightarrow$ Empleado (CURP)\\
+
+\section*{Certificacion}
+
+\begin{longtable}{p{3.2cm} p{2.2cm} p{4.8cm} p{4.2cm} p{1.2cm}}
+\label{tab:certificacion}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+CURPTecnico 
+& varchar(18) 
+& Cadenas con el formato estándar: 4 letras, 6 dígitos, 6 letras, 1 carácter alfanumérico y 1 dígito.
+& NOT NULL;
+
+Revisar que se cumpla
+el formato estándar.
+& PK, FK \\
+
+TituloCertificacion 
+& varchar(100) 
+& Cadenas que indiquen una certificación, como: mecánica, electrónica, hidráulica, software.
+& NOT NULL 
+& PK \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria compuesta:} CURPTecnico, TituloCertificacion\\
+\textbf{Llave foránea:} CURPTecnico $\rightarrow$ Tecnico (CURP)\\
+
+
+\section*{EncargadoPremios}
+
+\begin{longtable}{p{3.2cm} p{2.2cm} p{4.8cm} p{4.2cm} p{1.2cm}}
+\label{tab:encargadopremios}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+CURP 
+& varchar(18) 
+& Cadenas con el formato estándar: 4 letras, 6 dígitos, 6 letras, 1 carácter alfanumérico y 1 dígito.
+& NOT NULL;
+
+Revisar que se cumpla
+el formato estándar.
+& PK, FK \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} CURP\\
+\textbf{Llave foránea:} CURP $\rightarrow$ Empleado (CURP)\\
+
+
+\section*{Cajero}
+
+\begin{longtable}{p{3.2cm} p{2.2cm} p{4.8cm} p{4.2cm} p{1.2cm}}
+\label{tab:cajero}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+CURP 
+& varchar(18) 
+& Cadenas con el formato estándar: 4 letras, 6 dígitos, 6 letras, 1 carácter alfanumérico y 1 dígito.
+& NOT NULL; 
+
+Revisar que se cumpla
+el formato estándar.
+& PK, FK \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} CURP\\
+\textbf{Llave foránea:} CURP $\rightarrow$ Empleado (CURP)\\
+
+
+
+\section*{Reparar}
+
+\begin{longtable}{p{3.2cm} p{2.2cm} p{4.8cm} p{4.2cm} p{1.2cm}}
+\label{tab:reparar}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+idMaquina 
+& int 
+& Numeros mayores a 0
+& NOT NULL;
+
+Revisar
+
+(idMaquina $>$ 0)
+& PK, FK \\
+
+CURP 
+& varchar(18) 
+& Cadenas con el formato estándar: 4 letras, 6 dígitos, 6 letras, 1 carácter alfanumérico y 1 dígito.
+& NOT NULL;
+
+Revisar que se cumpla
+el formato estándar.
+& PK, FK \\
+
+Tipo 
+& varchar(50)
+& Cadena con detalles sobre el tipo de mantenimiento.
+& NOT NULL 
+& \\
+
+Problema 
+& varchar(300)
+& Cadena con los detalles específicos de la falla.
+& NOT NULL 
+& \\
+
+Fecha 
+& date 
+& Cualquier valor de tipo date menor o igual a la fecha actual.
+& NOT NULL;
+
+Revisar que el valor de la fecha sea menor o igual a la actual.
+& \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria compuesta:} idMaquina, CURP\\
+\textbf{Llaves foráneas:} idMaquina $\rightarrow$ Maquina (idMaquina), CURP $\rightarrow$ Tecnico (CURP)\\
+
+
+\section*{Partida}
+
+\begin{longtable}{p{3.2cm} p{2.2cm} p{4.8cm} p{4.2cm} p{1.2cm}}
+\label{tab:partida}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+numPartida 
+& int 
+& Numeros mayores a cero
+& NOT NULL (Autoincremental);
+& PK \\
+
+idMaquina 
+& int 
+& Numeros mayores a cero
+& NOT NULL;
+
+Revisar (idMaquina $>$ 0)
+& PK, FK \\
+
+idTarjeta 
+& int 
+& Numeros mayores a cero
+& NOT NULL;
+
+Revisar (idTarjeta $>$ 0)
+& FK \\
+
+FechaPartida 
+& date 
+& Cualquier valor de tipo date, menor o igual a la fecha actual.
+& NOT NULL;
+
+Revisar que la fecha sea menor o igual a la fecha actual
+& \\
+
+HoraFin 
+& time
+& Cualquier valor de tipo time.
+& NOT NULL 
+& \\
+
+PuntosObtenidos 
+& float 
+& mayor o igual a 0 
+& NOT NULL; 
+
+Revisar (PuntosObtenidos $\geq$ 0) 
+& \\
+
+Puntaje 
+& float 
+& mayor o igual a 0 
+& NOT NULL;
+
+Revisar (Puntaje $\geq$ 0)
+& \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria compuesta:} numPartida, idMaquina\\
+\textbf{Llaves foráneas:} idMaquina $\rightarrow$ Maquina (idMaquina), idTarjeta $\rightarrow$ Tarjeta (idTarjeta)\\
+
+
+\section*{Trabajar}
+
+\begin{longtable}{p{3.2cm} p{2.2cm} p{4.8cm} p{4.2cm} p{1.2cm}}
+\label{tab:trabajar}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+idSucursal 
+& int 
+& Numeros mayores a 0
+& NOT NULL;
+
+Revisar (idSucursal $>$ 0)
+& PK, FK \\
+
+CURP 
+& varchar(18) 
+& Cadenas con el formato estándar: 4 letras, 6 dígitos, 6 letras, 1 carácter alfanumérico y 1 dígito.
+& NOT NULL;
+
+Revisar que se cumpla el formato estándar.
+& PK, FK \\
+
+FechaContratación 
+& date 
+& Cualquier valor de tipo date menor o igual a la fecha actual.
+& NOT NULL;
+
+Revisar que FechaContratacion sea menor o igual al valor de la fecha actual
+& \\
+
+Salario 
+& float 
+& Mayor o igual a 0 
+& NOT NULL;
+
+Revisar (Salario $\geq$ 0)
+& \\
+
+HorarioInicio 
+& time
+& Para Encargados de premios o cajeros, solo puede ser (7:00 AM o 3:00PM). En otro caso el dominio es cualquier valor de tipo time.
+& NOT NULL
+& \\
+
+HorarioFin 
+& time
+& Para Encargados de premios o cajeros, el valor debe ser 8 horas mas que el valor de HoraInicio (3:00 PM o 11:00PM). En otro caso el dominio es cualquier valor de tipo time.
+& NOT NULL
+& \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria compuesta:} idSucursal, CURP\\
+\textbf{Llave foránea:} idSucursal $\rightarrow$ Sucursal (idSucursal), CURP $\rightarrow$ Empleado (CURP)\\
+
+\section*{Juego}
+
+\begin{longtable}{p{3.2cm} p{2.2cm} p{4.8cm} p{4.2cm} p{1.2cm}}
+\label{tab:juego}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+idJuego 
+& int
+& Numeros mayores a 0 
+& NOT NULL (Autoincremental);
+& PK \\
+
+Nombre 
+& varchar(50)
+& Cadenas con el nombre de un juego.
+& NOT NULL 
+& \\
+
+Costo 
+& int
+& Mayor a 0 y múltiplo de 10.
+& NOT NULL;
+
+Revisar (Costo $>$ 0 \& $Costo \% 10 = 0$)
+& \\
+
+Categoria 
+& int
+& Solo en el intervalo [0-3]: ((0, Disparos) (1, Destreza), (2, Ritmo) (3, Velocidad))
+& NOT NULL;
+
+Revisar (0 $\leq$ Categoria $\leq$ 3)
+& \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} idJuego\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Disparos}
+
+\begin{longtable}{p{3.2cm} p{2.2cm} p{4.8cm} p{4.2cm} p{1.2cm}}
+\label{tab:disparos}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+idJuego 
+& int 
+& Numeros mayores a 0
+& NOT NULL;
+
+Revisar (idJuego $>$ 0)
+& PK, FK \\
+
+PuntosPorAcierto 
+& int
+& debe ser 1
+& NOT NULL;
+
+Revisar (PuntosPorAcierto = 1)
+& \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} idJuego\\
+\textbf{Llave foránea:} idJuego $\rightarrow$ Juego (idJuego)\\
+
+
+\section*{Destreza}
+
+\begin{longtable}{p{3.2cm} p{2.2cm} p{4.8cm} p{4.2cm} p{1.2cm}}
+\label{tab:destreza}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+idJuego 
+& int 
+& Numeros mayores a 0
+& NOT NULL;
+
+Revisar (idJuego $>$ 0)
+& PK, FK \\
+
+PuntosPorAcierto 
+& int
+& debe ser 1
+& NOT NULL;
+
+Revisar (PuntosPorAcierto = 1)
+& \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} idJuego\\
+\textbf{Llave foránea:} idJuego $\rightarrow$ Juego (idJuego)\\
+
+
+\section*{Ritmo}
+
+\begin{longtable}{p{3.2cm} p{2.2cm} p{4.8cm} p{4.2cm} p{1.2cm}}
+\label{tab:ritmo}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+idJuego 
+& int
+& Numeros mayores a 0
+& NOT NULL;
+
+Revisar (idJuego $>$ 0)
+& PK, FK \\
+
+PuntosTop5 
+& int
+& debe ser 20
+& NOT NULL;
+
+Revisar (PuntosTop5 = 20)
+& \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} idJuego\\
+\textbf{Llave foránea:} idJuego $\rightarrow$ Juego (idJuego)\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Velocidad}
+
+\begin{longtable}{p{3.2cm} p{2.2cm} p{4.8cm} p{4.2cm} p{1.2cm}}
+\label{tab:velocidad}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+idJuego 
+& int
+& Numeros mayores a 0
+& NOT NULL;
+
+Revisar (idJuego $>$ 0)
+& PK, FK \\
+
+PuntosTop5 
+& int
+& debe ser 20
+& NOT NULL;
+
+Revisar (PuntosTop5 = 20)
+& \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} idJuego\\
+\textbf{Llave foránea:} idJuego $\rightarrow$ Juego (idJuego)\\
+
 \end{document}
