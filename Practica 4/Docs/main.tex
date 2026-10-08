@@ -68,552 +68,693 @@
 \section*{Dominio de los atributos y restricciones.}
 
 
-\subsection*{Sucursal}
+\section*{Sucursal}
 
-\begin{longtable}{p{2.8cm} p{2.5cm} p{7.0cm} p{1.2cm}}
+\begin{longtable}{p{2.2cm} p{2.2cm} p{5.8cm} p{4.2cm} p{1.2cm}}
 \label{tab:sucursal}\\
 \toprule
-\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
 \midrule
 \endfirsthead
 
 \toprule
-\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
 \midrule
 \endhead
 
 \bottomrule
 \endfoot
+
 
 idSucursal 
 & int 
-& NOT NULL
+& Numeros mayores a 0
+& NOT NULL (autoincremental)
 & PK \\
 
-idAdministrador 
-& varchar(18)  
-& NOT NULL
+CURP 
+& varchar(18) 
+& Cadenas con el formato estándar: 4 letras, 6 dígitos, 6 letras, 1 carácter alfanumérico y 1 dígito.
+& NOT NULL;
+
+Revisar que se cumpla el formato estándar.
 & FK \\
 
-Teléfono 
+Telefono 
 & varchar(10) 
-& NOT NULL, solo dígitos 
-& \\
+& Cadenas compuestas únicamente por 10 dígitos.
+& NOT NULL;
+
+Revisar que esté compuesto solo por 10 dígitos.
+&  \\
 
 Nombre 
 & varchar(50) 
-& NOT NULL 
-& \\
+& Cadenas de hasta 50 caracteres.
+& NOT NULL
+&  \\
 
 Colonia 
 & varchar(50) 
-& NOT NULL 
-& \\
+& Cadenas de hasta 50 caracteres.
+& NOT NULL
+&  \\
 
 Estado 
 & varchar(50) 
-& NOT NULL 
-& \\
+& Cadenas de hasta 50 caracteres.
+& NOT NULL
+&  \\
 
 Calle 
 & varchar(50) 
-& NOT NULL 
-& \\
+& Cadenas de hasta 50 caracteres.
+& NOT NULL
+&  \\
 
-Núm. Exterior 
+NúmExterior 
 & int 
-& NOT NULL, valor mayor que 0 
-& \\
+& Numeros mayores a 0
+& NOT NULL;
 
-Núm. Interior 
+Revisar: (NúmExterior $>$ 0)
+&  \\
+
+NúmInterior 
 & int 
-& NULL permitido 
-& \\
+& Numeros mayores a 0
+& NULL permitido;
+
+Revisar: (NúmInterior $>$ 0) cuando no sea NULL
+&  \\
 
 \end{longtable}
 
-\vspace{2pt}
-\textbf{Llave primaria:} idSucursal\\ 
-\textbf{Llave foránea:} idAdministrador $\rightarrow$ Gerente (CURP)
+\textbf{Llave primaria:} idSucursal\\
+\textbf{Llaves foráneas:} CURP $\rightarrow$ Gerente (CURP)
 
-\subsection*{Premio}
-\begin{longtable}{p{3.1cm} p{2.6cm} p{6.7cm} p{1.3cm}}
-\label{tab:Premio}\\
+
+\section*{Premio}
+
+\begin{longtable}{p{3.2cm} p{2.2cm} p{5.8cm} p{4.2cm} p{1.2cm}}
+\label{tab:premio}\\
 \toprule
-\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
 \midrule
 \endfirsthead
 
 \toprule
-\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
 \midrule
 \endhead
 
 \bottomrule
 \endfoot
 
+
 idPremio 
 & int 
-& NOT NULL
+& Numeros mayores a 0
+& NOT NULL (autoincremental)
 & PK \\
 
 Nombre 
-& varchar(50) 
-& NOT NULL 
+& varchar(100) 
+& Cadenas de hasta 100 caracteres.
+& NOT NULL
 &  \\
 
 CategoriaEdad 
-& varchar(8) 
-& NOT NULL dominio: \{Infantil, Juvenil, Adulto\} %Corregir
+& varchar(50) 
+& Cadenas dentro de la lista (Infantil, Juvenil, Adulto, Todas)
+& NOT NULL;
+
+Revisar que el valor sea uno en (Infantil, Juvenil, Adulto, Todas)
 &  \\
 
 ValorAproximado 
-& float 
-& NOT NULL, mayor que 0 
+& decimal(10,2) 
+& Numeros decimales mayores a 0
+& NOT NULL;
+
+Revisar: (ValorAproximado $>$ 0)
 &  \\
 
 CostoPuntos 
 & int 
-& NOT NULL, mayor que 0 
+& Numeros mayores a 0
+& NOT NULL;
+
+Revisar: (CostoPuntos $>$ 0)
 &  \\
 
 CategoriaPuntos 
-& varchar(7) 
-& NOT NULL dominio: \{Bajos, Medios, Grandes\} %Corregir
+& varchar(50) 
+& Cadenas dentro de la lista (Bajos, Medios, Grandes)
+& NOT NULL;
+
+Revisar que el valor sea uno en (Bajos, Medios, Grandes)
 &  \\
 
 \end{longtable}
 
 \textbf{Llave primaria:} idPremio\\
-\textbf{Llaves foráneas:} ninguna.\\
 
 
-\subsection*{Almacenamiento}
+\section*{Almacenamiento}
 
-Almacenamiento es una tabla que representa la relación entre Sucursal y Premio.
-
-\begin{longtable}{p{4.6cm} p{3.4cm} p{6.1cm} p{1.3cm}}
-\label{tab:Almacenamiento}\\
+\begin{longtable}{p{3.5cm} p{2.2cm} p{4.8cm} p{4.2cm} p{1.2cm}}
+\label{tab:almacenamiento}\\
 \toprule
-\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
 \midrule
 \endfirsthead
 
 \toprule
-\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
 \midrule
 \endhead
 
 \bottomrule
 \endfoot
 
+
 idSucursal 
 & int 
-& NOT NULL 
-& PK,FK \\
+& Numeros mayores a 0
+& NOT NULL;
+
+Revisar: (idSucursal $>$ 0)
+& PK, FK \\
 
 idPremio 
 & int 
-& NOT NULL 
-& PK,FK \\
+& Numeros mayores a 0
+& NOT NULL;
+
+Revisar: (idPremio $>$ 0)
+& PK, FK \\
 
 CantidadDisponible 
 & int 
-& NOT NULL, valor igual o mayor que 0 
+& Numeros mayores o iguales a 0
+& NOT NULL;
+
+Revisar: (CantidadDisponible $\geq$ 0)
 &  \\
 
 \end{longtable}
 
-\textbf{Llave primaria:} idSucursal, idPremio\\ 
-\textbf{Llaves foráneas:} idSucursal $\rightarrow$ Sucursal (idSucursal) y idPremio $\rightarrow$ Premio (idPremio)
+\textbf{Llave primaria:} (idSucursal, idPremio)\\
+\textbf{Llaves foráneas:} idSucursal $\rightarrow$ Sucursal (idSucursal); idPremio $\rightarrow$ Premio (idPremio)
 
-\subsection*{DiaApertura}
+ 
 
-\begin{longtable}{p{3.9cm} p{3.7cm} p{7.2cm} p{1.3cm}}
-\label{tab:DiaApertura}\\
+\section*{DiaApertura}
+
+\begin{longtable}{p{2.7cm} p{2.2cm} p{4.8cm} p{4.2cm} p{1.2cm}}
+\label{tab:diaapertura}\\
 \toprule
-\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
 \midrule
 \endfirsthead
 
 \toprule
-\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
 \midrule
 \endhead
 
 \bottomrule
 \endfoot
 
-idSucursal 
+
+IdSucursal 
 & int 
-& NOT NULL 
-& PK,FK \\
+& Numeros mayores a 0
+& NOT NULL;
+
+Revisar: (IdSucursal $>$ 0)
+& PK, FK \\
 
 diaSemana 
-& varchar(2)
-& NOT NULL, dominio: \{LU,MA,..,DO\}
+& varchar(2) 
+& Cadenas dentro de la lista (Lu, Ma, Mi, Ju, Vi, Sa, Do)
+& NOT NULL;
+
+Revisar que el valor sea uno en (Lu, Ma, Mi, Ju, Vi, Sa, Do)
 & PK \\
 
 HoraApertura 
 & time 
-& NOT NULL 
+& Cualquier valor de tipo time.
+& NOT NULL
 &  \\
 
 HoraCierre 
 & time 
-& NOT NULL
+& Cualquier valor de tipo time, posterior a HoraApertura.
+& NOT NULL;
+
+Revisar: (HoraCierre $>$ HoraApertura)
 &  \\
+
 \end{longtable}
 
-\textbf{Llave primaria:} idSucursal, diaSemana\\
-\textbf{Llaves foráneas:}idSucursal $\rightarrow$ Sucursal (idSucursal)
+\textbf{Llave primaria:} (IdSucursal, diaSemana)\\
+\textbf{Llaves foráneas:} IdSucursal $\rightarrow$ Sucursal (idSucursal)
 
-\subsection*{CantidadInicial}
-Registro a través del tiempo de lo que pasa con Almacenamiento, y no una entidad totalmente aislada.
-\begin{longtable}{p{3.4cm} p{3.6cm} p{6.1cm} p{1.3cm}}
+ 
+
+\section*{CantidadInicial}
+
+\begin{longtable}{p{3.2cm} p{2.0cm} p{5.4cm} p{4.2cm} p{1.2cm}}
+\label{tab:cantidadinicial}\\
 \toprule
-\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
 \midrule
 \endfirsthead
+
 \toprule
-\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
 \midrule
 \endhead
+
 \bottomrule
 \endfoot
+
+
 idSucursal 
 & int 
-& NOT NULL 
-& PK,FK \\
+& Numeros mayores a 0
+& NOT NULL;
+
+Revisar: (idSucursal $>$ 0)
+& PK, FK \\
 
 idPremio 
 & int 
-& NOT NULL 
-& PK,FK \\
+& Numeros mayores a 0
+& NOT NULL;
+
+Revisar: (idPremio $>$ 0)
+& PK, FK \\
 
 fechaRotacion 
 & date 
-& NOT NULL 
+& Cualquier valor de tipo date, menor o igual a la fecha actual.
+& NOT NULL;
+
+Revisar que la fecha sea menor o igual a la fecha actual.
 & PK \\
 
 CantidadRecibida 
 & int 
-& NOT NULL, mayor que 0 
+& Numeros mayores a 0
+& NOT NULL;
+
+Revisar: (CantidadRecibida $>$ 0)
 &  \\
+
 \end{longtable}
-\vspace{2pt}
-\textbf{Llave primaria:} idSucursal, idPremio, fechaRotacion\\
-\textbf{Llaves foráneas:}(idSucursal, idPremio) $\rightarrow$ Almacenamiento (idSucursal, idPremio)
 
+\textbf{Llave primaria:} (idSucursal, idPremio, fechaRotacion)\\
+\textbf{Llaves foráneas:} (idSucursal, idPremio) $\rightarrow$ Almacenamiento (idSucursal, idPremio)
 
+ 
 
-\subsection*{Cliente}
-\begin{longtable}{p{3.5cm} p{2.6cm} p{7.9cm} p{1.3cm}}
+\section*{TelefonoCliente}
+
+\begin{longtable}{p{2.2cm} p{2.2cm} p{5.8cm} p{4.2cm} p{1.2cm}}
+\label{tab:telefonocliente}\\
 \toprule
-\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
 \midrule
 \endfirsthead
+
 \toprule
-\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
 \midrule
 \endhead
+
 \bottomrule
 \endfoot
+
+
 idCliente 
 & int 
-& NOT NULL
+& Numeros mayores a 0
+& NOT NULL;
+
+Revisar: (idCliente $>$ 0)
+& PK, FK \\
+
+telefono 
+& varchar(10) 
+& Cadenas compuestas únicamente por 10 dígitos.
+& NOT NULL;
+
+Revisar que esté compuesto solo por 10 dígitos.
+& PK \\
+
+\end{longtable}
+
+\textbf{Llave primaria:} (idCliente, telefono)\\
+\textbf{Llaves foráneas:} idCliente $\rightarrow$ Registrar (IdCliente)
+
+ 
+
+\section*{CorreoCliente}
+
+\begin{longtable}{p{3.2cm} p{2.2cm} p{4.8cm} p{4.2cm} p{1.2cm}}
+\label{tab:correocliente}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+
+idCliente 
+& int 
+& Numeros mayores a 0
+& NOT NULL;
+
+Revisar: (idCliente $>$ 0)
+& PK, FK \\
+
+correo 
+& varchar(100) 
+& Cadenas con formato de correo electrónico válido (texto@dominio).
+& NOT NULL;
+
+Revisar que se cumpla el formato de correo electrónico.
+& PK \\
+
+\end{longtable}
+
+\textbf{Llave primaria:} (idCliente, correo)\\
+\textbf{Llaves foráneas:} idCliente $\rightarrow$ Registrar (IdCliente)
+
+ 
+
+\section*{Registrar}
+
+\begin{longtable}{p{3.2cm} p{2.2cm} p{5.3cm} p{4.2cm} p{1.2cm}}
+\label{tab:registrar}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+
+IdCliente 
+& int 
+& Numeros mayores a 0
+& NOT NULL (autoincremental);
+
+UNIQUE
+& PK \\
+
+IdTarjeta 
+& int 
+& Numeros mayores a 0
+& NOT NULL (autoincremental);
+
+UNIQUE
 & PK \\
 
 Nombre 
 & varchar(50) 
-& NOT NULL 
+& Cadenas atómicas compuestas únicamente por letras.
+& NOT NULL;
+
+Revisar que esté compuesto solo por letras.
 &  \\
 
 ApellidoPaterno 
 & varchar(50) 
-& NOT NULL 
+& Cadenas atómicas compuestas únicamente por letras.
+& NOT NULL;
+
+Revisar que esté compuesto solo por letras.
 &  \\
 
 ApellidoMaterno 
 & varchar(50) 
-& NULL permitido 
+& Cadenas atómicas compuestas únicamente por letras.
+& NULL permitido;
+
+Revisar que esté compuesto solo por letras, cuando no sea NULL
 &  \\
 
 FechaNacimiento 
 & date 
-& NOT NULL, igual o menor que fecha actual 
+& Cualquier valor de tipo date, menor o igual a la fecha actual.
+& NOT NULL;
+
+Revisar que la fecha sea menor o igual a la fecha actual.
 &  \\
 
 Sexo 
-& varchar(2) 
-& dominio: \{M, F, NB\} 
-&  \\
-
-\end{longtable}
-\vspace{2pt}
-\textbf{Llave primaria:} idCliente\\
-\textbf{Llaves foráneas:} ninguna.\\
-
-
-
-\subsection*{TelefonoCliente}
-Multivaluado de Cliente.
-\begin{longtable}{p{3.1cm} p{3.6cm} p{6.1cm} p{2.3cm}}
-\toprule
-\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
-\midrule
-\endfirsthead
-\toprule
-\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
-\midrule
-\endhead
-\bottomrule
-\endfoot
-idCliente 
-& int 
-& NOT NULL 
-& PK,FK \\
-
-telefono 
 & varchar(10) 
-& NOT NULL, solo dígitos 
-& PK \\
-\end{longtable}
-\vspace{2pt}
-\textbf{Llave primaria:} (idCliente, telefono)\\
-\textbf{Llaves foráneas:} idCliente $\rightarrow$ Cliente (idCliente)
+& Cadenas dentro de la lista (Masculino, Femenino, No binario)
+& NOT NULL;
 
-\subsection*{CorreoCliente}
-Multivaluado de Cliente.
-\begin{longtable}{p{3.1cm} p{2.6cm} p{7.1cm} p{1.3cm}}
-\toprule
-\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
-\midrule
-\endfirsthead
-\toprule
-\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
-\midrule
-\endhead
-\bottomrule
-\endfoot
-idCliente & int & NOT NULL & PK,FK \\
-correo & varchar(100) & NOT NULL, formato de correo válido & PK \\
-\end{longtable}
-\vspace{2pt}
-\textbf{Llave primaria:} (idCliente, correo)\\
-\textbf{Llaves foráneas:} idCliente $\rightarrow$ Cliente (idCliente)
-\vspace{6pt}
-
-\subsection*{MesVIP}
-Multivaluado de Cliente.Registra los periodos mensuales en los que el cliente obtuvo estatus VIP.
-\begin{longtable}{p{3.1cm} p{2.6cm} p{6.1cm} p{1.3cm}}
-\toprule
-\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
-\midrule
-\endfirsthead
-\toprule
-\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
-\midrule
-\endhead
-\bottomrule
-\endfoot
-idCliente 
-& int 
-& NOT NULL 
-& PK,FK \\
-
-mes 
-& int 
-& NOT NULL, dominio: \{1..12\} 
-& PK \\
-
-año 
-& varchar(4) 
-& NOT NULL, 4 dígitos numéricos 
-& PK \\
-\end{longtable}
-\vspace{2pt}
-\textbf{Llave primaria:} (idCliente, mes, anio)\\
-\textbf{Llaves foráneas:}
-\begin{itemize}[leftmargin=1.2em, itemsep=1pt, topsep=2pt]
-\item idCliente $\rightarrow$ Cliente (idCliente)
-\end{itemize}
-
-\subsection*{Visitar}
-Almacenamiento es una tabla que representa la relación entre Sucursal y Cliente.
-\begin{longtable}{p{3.1cm} p{3.6cm} p{5.5cm} p{2.3cm}}
-\toprule
-\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
-\midrule
-\endfirsthead
-\toprule
-\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
-\midrule
-\endhead
-\bottomrule
-\endfoot
-idCliente 
-& int 
-& NOT NULL 
-& PK,FK \\
-
-idSucursal 
-& int 
-& NOT NULL 
-& PK,FK \\
-
-fecha 
-& date 
-& NOT NULL 
-& PK \\
-\end{longtable}
-\vspace{2pt}
-\textbf{Llave primaria:} (idCliente, idSucursal, fecha)\\
-\textbf{Llaves foráneas:} idCliente $\rightarrow$ Cliente (idCliente) y idSucursal $\rightarrow$ Sucursal (idSucursal)
-
-
-
-\subsection*{Tarjeta}
-\begin{longtable}{p{3.1cm} p{2.9cm} p{7.7cm} p{1.3cm}}
-\toprule
-\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
-\midrule
-\endfirsthead
-\toprule
-\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
-\midrule
-\endhead
-\bottomrule
-\endfoot
-idTarjeta 
-& int 
-& NOT NULL
-& PK \\
+Revisar que el valor sea uno en (Masculino, Femenino, No binario)
+&  \\
 
 Estado 
-& varchar(9) 
-& dominio: \{Activa, Cancelada\} 
-&  \\
-\end{longtable}
-\vspace{2pt}
-\textbf{Llave primaria:} idTarjeta\\
-\textbf{Llaves foráneas:} ninguna\\
+& varchar(30) 
+& Cadenas dentro de la lista (Activa, Bloqueada, Cancelada)
+& NOT NULL;
 
-\subsection*{Recarga}
-\begin{longtable}{p{3.1cm} p{3.6cm} p{7.7cm} p{1.3cm}}
+Revisar que el valor sea uno en (Activa, Bloqueada, Cancelada)
+&  \\
+
+\end{longtable}
+
+\textbf{Llave primaria:} (IdCliente, IdTarjeta)\\
+\textbf{Llaves foráneas:} ninguna
+
+ 
+
+\section*{Incluir}
+
+\begin{longtable}{p{2.2cm} p{2.2cm} p{5.8cm} p{4.2cm} p{1.2cm}}
+\label{tab:incluir}\\
 \toprule
-\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
 \midrule
 \endfirsthead
+
 \toprule
-\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
 \midrule
 \endhead
+
 \bottomrule
 \endfoot
 
+
+IdCanje 
+& int 
+& Numeros mayores a 0
+& NOT NULL;
+
+Revisar: (IdCanje $>$ 0)
+& PK, FK \\
+
+IdPremio 
+& int 
+& Numeros mayores a 0
+& NOT NULL;
+
+Revisar: (IdPremio $>$ 0)
+& PK, FK \\
+
+Cantidad 
+& int 
+& Numeros mayores a 0
+& NOT NULL;
+
+Revisar: (Cantidad $>$ 0)
+&  \\
+
+\end{longtable}
+
+\textbf{Llave primaria:} (IdCanje, IdPremio)\\
+\textbf{Llaves foráneas:} IdCanje $\rightarrow$ Canje (IdCanje); IdPremio $\rightarrow$ Premio (idPremio)
+
+ 
+
+\section*{Canje}
+
+\begin{longtable}{p{2.2cm} p{2.2cm} p{5.8cm} p{4.0cm} p{1.2cm}}
+\label{tab:canje}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+
+IdCanje 
+& int 
+& Numeros mayores a 0
+& NOT NULL (autoincremental)
+& PK \\
+
+IdSucursal 
+& int 
+& Numeros mayores a 0
+& NOT NULL;
+
+Revisar: (IdSucursal $>$ 0)
+& FK \\
+
+IdTarjeta 
+& int 
+& Numeros mayores a 0
+& NOT NULL;
+
+Revisar: (IdTarjeta $>$ 0)
+& FK \\
+
+CURP 
+& varchar(18) 
+& Cadenas con el formato estándar: 4 letras, 6 dígitos, 6 letras, 1 carácter alfanumérico y 1 dígito.
+& NOT NULL;
+
+Revisar que se cumpla el formato estándar.
+& FK \\
+
+Hora 
+& time 
+& Cualquier valor de tipo time.
+& NOT NULL
+&  \\
+
+Fecha 
+& date 
+& Menor o igual a la fecha actual.
+& NOT NULL;
+
+Revisar que la fecha sea menor o igual a la fecha actual.
+&  \\
+
+\end{longtable}
+
+\textbf{Llave primaria:} IdCanje\\
+\textbf{Llaves foráneas:} IdSucursal $\rightarrow$ Sucursal (idSucursal); IdTarjeta $\rightarrow$ Registrar (IdTarjeta); CURP $\rightarrow$ EncargadoPremios (CURP)
+
+ 
+
+\section*{Recarga}
+
+\begin{longtable}{p{2.2cm} p{2.2cm} p{5.8cm} p{4.2cm} p{1.2cm}}
+\label{tab:recarga}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+
 idTarjeta 
 & int 
-& NOT NULL 
-& PK,FK \\
+& Numeros mayores a 0
+& NOT NULL;
+
+Revisar: (idTarjeta $>$ 0)
+& PK, FK \\
 
 numRecarga 
 & int 
-& NOT NULL 
+& Numeros mayores a 0
+& NOT NULL;
+
+Revisar: (numRecarga $>$ 0)
 & PK \\
 
 idSucursal 
 & int 
-& NOT NULL 
-& FK \\
+& Numeros mayores a 0
+& NOT NULL;
+
+Revisar: (idSucursal $>$ 0)
+& PK, FK \\
 
 idEncargado 
 & varchar(18) 
-& NOT NULL 
-& FK \\
+& Cadenas con el formato estándar: 4 letras, 6 dígitos, 6 letras, 1 carácter alfanumérico y 1 dígito.
+& NOT NULL;
+
+Revisar que se cumpla el formato estándar.
+& PK, FK \\
 
 Monto 
-& float 
-& NOT NULL, mayor que 0
+& decimal(10,2) 
+& Numeros decimales mayores a 0
+& NOT NULL;
+
+Revisar: (Monto $>$ 0)
 &  \\
 
 MétodoPago 
-& varchar(8) 
-& NOT NULL dominio: \{Efectivo, Crédito, Débito, Paypal \} 
+& varchar(30) 
+& Cadenas dentro de la lista (Efectivo, Crédito, Débito, Paypal)
+& NOT NULL;
+
+Revisar que el valor sea uno en (Efectivo, Crédito, Débito, Paypal)
 &  \\
 
 Hora 
 & time 
-& NOT NULL 
-&  \\
-
-Fecha 
-& date 
-& NOT NULL 
-&  \\
-\end{longtable}
-
-idEncargado - identifica al Cajero que procesó la recarga \\
-
-\textbf{Llave primaria:} (idTarjeta, numRecarga)\\
-\textbf{Llaves foráneas:} idTarjeta $\rightarrow$ Tarjeta (idTarjeta),  idSucursal $\rightarrow$ Sucursal (idSucursal)y idEncargado $\rightarrow$ Cajero (CURP)
-
-\subsection*{Canje}
-\begin{longtable}{p{3.1cm} p{2.6cm} p{7.1cm} p{1.3cm}}
-\toprule
-\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
-\midrule
-\endfirsthead
-\toprule
-\textbf{Atributo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
-\midrule
-\endhead
-\bottomrule
-\endfoot
-idCanje 
-& int 
-& NOT NULL 
-& PK \\
-
-idSucursal 
-& int 
-& NOT NULL 
-& FK \\
-
-idTarjeta 
-& int 
-& NOT NULL 
-& FK \\
-
-idEncargado 
-& varchar(18) 
+& Cualquier valor de tipo time.
 & NOT NULL
-& FK \\
-
-Hora 
-& time 
-& NOT NULL 
 &  \\
 
 Fecha 
 & date 
-& NOT NULL 
+& Mnor o igual a la fecha actual.
+& NOT NULL;
+
+Revisar que la fecha sea menor o igual a la fecha actual.
 &  \\
 
-PuntosGastados 
-& int 
-& NOT NULL, mayor que 0
-&  \\
-
-CantidadPremios 
-& int 
-& NOT NULL, mayor que 0
-&  \\
 \end{longtable}
 
-\vspace{2pt}
-\textbf{Llave primaria:} idCanje\\
-\textbf{Llaves foráneas:} idSucursal $\rightarrow$ Sucursal (idSucursal), idTarjeta $\rightarrow$ Tarjeta (idTarjeta) y  idEncargado $\rightarrow$ EncargadoPremios (CURP)
+\textbf{Llave primaria:} (idTarjeta, numRecarga, idSucursal, idEncargado)\\
+\textbf{Llaves foráneas:} idTarjeta $\rightarrow$ Registrar (IdTarjeta); idSucursal $\rightarrow$ Sucursal (idSucursal); idEncargado $\rightarrow$ Cajero (CURP)
 
 \section*{Máquina}
 
