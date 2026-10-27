@@ -460,5 +460,186 @@ PRIMARY KEY (CURP);
 ALTER TABLE EncargadoPremios ADD CONSTRAINT EncargadoPremios_fkey
 FOREIGN KEY (CURP) REFERENCES Empleado(CURP);
 
+CREATE TABLE Almacenamiento(
+    idSucursal INT,
+    idPremio INT,
+    FechaRotacion DATE,
+    CantidadRecibida INT
+);
+
+-- Restricciones Almacenamiento
+-- Dominio
+
+-- idSucursal NOT NULL
+ALTER TABLE Almacenamiento ALTER COLUMN idSucursal
+SET NOT NULL;
+
+-- idPremio NOT NULL
+ALTER TABLE Almacenamiento ALTER COLUMN idPremio
+SET NOT NULL;
+
+-- FechaRotacion NOT NULL
+ALTER TABLE Almacenamiento ALTER COLUMN FechaRotacion
+SET NOT NULL;
+
+-- CantidadRecibida NOT NULL y mayor o igual a 0
+ALTER TABLE Almacenamiento ALTER COLUMN CantidadRecibida
+SET NOT NULL;
+ALTER TABLE Almacenamiento ADD CONSTRAINT Almacenamiento_d1
+CHECK(CantidadRecibida >= 0);
+
+-- Referencial
+-- idSucursal hace referencia a Sucursal(idSucursal)
+ALTER TABLE Almacenamiento ADD CONSTRAINT Almacenamiento_fkey1
+FOREIGN KEY (idSucursal) REFERENCES Sucursal(idSucursal);
+
+-- idPremio hace referencia a Premio(idPremio)
+ALTER TABLE Almacenamiento ADD CONSTRAINT Almacenamiento_fkey2
+FOREIGN KEY (idPremio) REFERENCES Premio(idPremio);
 
 
+CREATE TABLE Maquina(
+    idMaquina INT,
+    idSucursal INT,
+    idJuego INT,
+    EstadoMaquina VARCHAR(20)
+);
+
+-- Restricciones Maquina
+-- Dominio
+
+-- idMaquina NOT NULL y mayor a 0
+ALTER TABLE Maquina ALTER COLUMN idMaquina
+SET NOT NULL;
+ALTER TABLE Maquina ADD CONSTRAINT Maquina_d1
+CHECK(idMaquina > 0);
+
+-- idSucursal NOT NULL
+ALTER TABLE Maquina ALTER COLUMN idSucursal
+SET NOT NULL;
+
+-- idJuego NOT NULL
+ALTER TABLE Maquina ALTER COLUMN idJuego
+SET NOT NULL;
+
+-- EstadoMaquina NOT NULL, no vacío y dentro de los valores permitidos
+ALTER TABLE Maquina ALTER COLUMN EstadoMaquina
+SET NOT NULL;
+ALTER TABLE Maquina ADD CONSTRAINT Maquina_d2
+CHECK(EstadoMaquina IN ('activo', 'fuera de servicio', 'mantenimiento'));
+
+-- Entidad
+-- idMaquina como llave primaria
+ALTER TABLE Maquina ADD CONSTRAINT Maquina_pkey
+PRIMARY KEY (idMaquina);
+
+-- Referencial
+-- idSucursal hace referencia a Sucursal(idSucursal)
+ALTER TABLE Maquina ADD CONSTRAINT Maquina_fkey1
+FOREIGN KEY (idSucursal) REFERENCES Sucursal(idSucursal);
+
+-- idJuego hace referencia a Juego(idJuego)
+ALTER TABLE Maquina ADD CONSTRAINT Maquina_fkey2
+FOREIGN KEY (idJuego) REFERENCES Juego(idJuego);
+
+
+CREATE TABLE Administrar(
+    idSucursal INT,
+    CURP VARCHAR(18)
+);
+
+-- Restricciones Administrar
+-- Dominio
+
+-- idSucursal NOT NULL
+ALTER TABLE Administrar ALTER COLUMN idSucursal
+SET NOT NULL;
+
+-- CURP NOT NULL
+ALTER TABLE Administrar ALTER COLUMN CURP
+SET NOT NULL;
+
+-- Referencial
+-- idSucursal hace referencia a Sucursal(idSucursal)
+ALTER TABLE Administrar ADD CONSTRAINT Administrar_fkey1
+FOREIGN KEY (idSucursal) REFERENCES Sucursal(idSucursal);
+
+-- CURP hace referencia a Gerente(CURP)
+ALTER TABLE Administrar ADD CONSTRAINT Administrar_fkey2
+FOREIGN KEY (CURP) REFERENCES Gerente(CURP);
+
+
+CREATE TABLE Reparar(
+    idMaquina INT,
+    CURP VARCHAR(18),
+    Tipo VARCHAR(50),
+    Problema VARCHAR(1000),
+    Fecha DATE
+);
+
+-- Restricciones Reparar
+-- Dominio
+
+-- idMaquina NOT NULL
+ALTER TABLE Reparar ALTER COLUMN idMaquina
+SET NOT NULL;
+
+-- CURP NOT NULL
+ALTER TABLE Reparar ALTER COLUMN CURP
+SET NOT NULL;
+
+-- Tipo NOT NULL y no vacío
+ALTER TABLE Reparar ALTER COLUMN Tipo
+SET NOT NULL;
+ALTER TABLE Reparar ADD CONSTRAINT Reparar_d1
+CHECK(Tipo <> '');
+
+-- Problema NOT NULL y no vacío
+ALTER TABLE Reparar ALTER COLUMN Problema
+SET NOT NULL;
+ALTER TABLE Reparar ADD CONSTRAINT Reparar_d2
+CHECK(Problema <> '');
+
+-- Fecha NOT NULL
+ALTER TABLE Reparar ALTER COLUMN Fecha
+SET NOT NULL;
+
+-- Referencial
+-- idMaquina hace referencia a Maquina(idMaquina)
+ALTER TABLE Reparar ADD CONSTRAINT Reparar_fkey1
+FOREIGN KEY (idMaquina) REFERENCES Maquina(idMaquina);
+
+-- CURP hace referencia a Tecnico(CURP)
+ALTER TABLE Reparar ADD CONSTRAINT Reparar_fkey2
+FOREIGN KEY (CURP) REFERENCES Tecnico(CURP);
+
+
+CREATE TABLE Certificacion(
+    CURP VARCHAR(18),
+    TituloCertificacion VARCHAR(100)
+);
+
+-- Restricciones Certificacion
+-- Dominio
+
+-- CURP NOT NULL y con formato estándar
+ALTER TABLE Certificacion ALTER COLUMN CURP
+SET NOT NULL;
+ALTER TABLE Certificacion ADD CONSTRAINT Certificacion_d1
+CHECK(CURP ~ '^[A-Z]{4}[0-9]{6}[A-Z]{6}[A-Z0-9][0-9]$');
+
+-- TituloCertificacion NOT NULL y no vacío
+ALTER TABLE Certificacion ALTER COLUMN TituloCertificacion
+SET NOT NULL;
+ALTER TABLE Certificacion ADD CONSTRAINT Certificacion_d2
+CHECK(TituloCertificacion <> '');
+
+-- Entidad
+-- CURP y TituloCertificacion como llave primaria compuesta
+ALTER TABLE Certificacion ADD CONSTRAINT Certificacion_pkey
+PRIMARY KEY (CURP, TituloCertificacion);
+
+-- Referencial
+-- CURP hace referencia a Tecnico(CURP)
+ALTER TABLE Certificacion ADD CONSTRAINT Certificacion_fkey1
+FOREIGN KEY (CURP) REFERENCES Tecnico(CURP);

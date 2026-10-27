@@ -641,6 +641,205 @@ el formato estándar.
 \textbf{Llave primaria:} CURP\\
 \textbf{Llave foránea:} CURP $\rightarrow$ Empleado (CURP)\\
 
+\section*{Almacenamiento}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:almacenamiento}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+idSucursal 
+& int 
+& NOT NULL 
+& FK \\
+
+idPremio 
+& int 
+& NOT NULL 
+& FK \\
+
+FechaRotacion 
+& date 
+& NOT NULL 
+& \\
+
+CantidadRecibida 
+& int 
+& NOT NULL \newline CHECK(CantidadRecibida $\geq$ 0)
+& \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave foránea:} idSucursal $\rightarrow$ Sucursal (idSucursal)\\
+\textbf{Llave foránea:} idPremio $\rightarrow$ Premio (idPremio)\\
+
+
+\section*{Maquina}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:maquina}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+idMaquina 
+& int 
+& NOT NULL \newline CHECK(idMaquina $>$ 0)
+& PK \\
+
+idSucursal 
+& int 
+& NOT NULL 
+& FK \\
+
+idJuego 
+& int 
+& NOT NULL 
+& FK \\
+
+EstadoMaquina 
+& varchar(20) 
+& NOT NULL \newline CHECK(EstadoMaquina IN ('activo', 'fuera de servicio', 'mantenimiento'))
+& \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} idMaquina\\
+\textbf{Llave foránea:} idSucursal $\rightarrow$ Sucursal (idSucursal)\\
+\textbf{Llave foránea:} idJuego $\rightarrow$ Juego (idJuego)\\
+
+\section*{Administrar}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:administrar}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+idSucursal 
+& int 
+& NOT NULL 
+& FK \\
+
+CURP 
+& varchar(18) 
+& NOT NULL 
+& FK \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave foránea:} idSucursal $\rightarrow$ Sucursal (idSucursal)\\
+\textbf{Llave foránea:} CURP $\rightarrow$ Gerente (CURP)\\
+
+
+\section*{Reparar}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:reparar}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+idMaquina 
+& int 
+& NOT NULL 
+& FK \\
+
+CURP 
+& varchar(18) 
+& NOT NULL 
+& FK \\
+
+Tipo 
+& varchar(50) 
+& NOT NULL \newline CHECK(Tipo $<>$ '')
+& \\
+
+Problema 
+& varchar(1000) 
+& NOT NULL \newline CHECK(Problema $<>$ '')
+& \\
+
+Fecha 
+& date 
+& NOT NULL 
+& \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave foránea:} idMaquina $\rightarrow$ Maquina (idMaquina)\\
+\textbf{Llave foránea:} CURP $\rightarrow$ Tecnico (CURP)\\
+
+
+\section*{Certificacion}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:certificacion}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+CURP 
+& varchar(18) 
+& NOT NULL \newline CHECK(CURP $\sim$ '\^{}[A-Z]\{4\}[0-9]\{6\}[A-Z]\{6\}[A-Z0-9][0-9]\$')
+& PK, FK \\
+
+TituloCertificacion 
+& varchar(100) 
+& NOT NULL \newline CHECK(TituloCertificacion $<>$ '')
+& PK \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria compuesta:} CURP, TituloCertificacion\\
+\textbf{Llave foránea:} CURP $\rightarrow$ Tecnico (CURP)\\
+
 \section{Restaurar backup de una BD en Docker}
 Para la restauración del backup, se siguieron los pasos proporcionados en la practica.
 
