@@ -840,6 +840,365 @@ TituloCertificacion
 \textbf{Llave primaria compuesta:} CURP, TituloCertificacion\\
 \textbf{Llave foránea:} CURP $\rightarrow$ Tecnico (CURP)\\
 
+
+
+\section*{Cliente}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:cliente}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+idCliente 
+& SERIAL4 
+& NOT NULL \newline CHECK(idCliente $>$ 0)
+& PK \\
+
+Nombre 
+& varchar(50) 
+& NOT NULL \newline CHECK(Nombre $<>$ '')
+&  \\
+
+ApellidoPaterno 
+& varchar(50) 
+& NOT NULL \newline CHECK(ApellidoPaterno $<>$ '')
+&  \\
+
+ApellidoMaterno 
+& varchar(50) 
+& Acepta NULL \newline CHECK(ApellidoMaterno $<>$ '')
+&  \\
+
+FechaNacimiento 
+& date 
+& NOT NULL \newline CHECK(FechaNacimiento $\leq$ CURRENT\_DATE)
+&  \\
+
+Sexo 
+& varchar(10) 
+& NOT NULL \newline CHECK(Sexo IN ('Masculino', 'Femenino', 'No binario'))
+&  \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} idCliente\\
+
+
+\section*{Tarjeta}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:tarjeta}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+idTarjeta 
+& SERIAL4 
+& NOT NULL \newline CHECK(idTarjeta $>$ 0)
+& PK \\
+
+Estado 
+& varchar(30) 
+& NOT NULL \newline CHECK(Estado IN ('Activa', 'Bloqueada', 'Cancelada'))
+&  \\
+
+Saldo 
+& float 
+& NOT NULL \newline CHECK(Saldo $\geq$ 0)
+&  \\
+
+Puntos 
+& int 
+& NOT NULL \newline CHECK(Puntos $\geq$ 0)
+&  \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} idTarjeta\\
+
+
+\section*{Registrar}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:registrar}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+idCliente 
+& int 
+& NOT NULL \newline CHECK(idCliente $>$ 0)
+& PK, FK \\
+
+idTarjeta 
+& int 
+& NOT NULL \newline CHECK(idTarjeta $>$ 0)
+& PK, FK \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria compuesta:} idCliente, idTarjeta\\
+\textbf{Llaves foráneas:}\\
+idCliente $\rightarrow$ Cliente (idCliente)\\
+idTarjeta $\rightarrow$ Tarjeta (idTarjeta)\\
+
+
+\section*{CorreoCliente}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:correocliente}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+idCliente 
+& int 
+& NOT NULL
+& PK, FK \\
+
+Correo 
+& varchar(100) 
+& NOT NULL
+& PK \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria compuesta:} idCliente, Correo\\
+\textbf{Llave foránea:} idCliente $\rightarrow$ Cliente (idCliente)\\
+
+
+\section*{TelefonoCliente}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:telefonocliente}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+idCliente 
+& int 
+& NOT NULL
+& PK, FK \\
+
+Telefono 
+& varchar(10) 
+& NOT NULL \newline CHECK(Telefono $\sim$ \texttt{\^{}[0-9]\{10\}\$})
+& PK \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria compuesta:} idCliente, Telefono\\
+\textbf{Llave foránea:} idCliente $\rightarrow$ Cliente (idCliente)\\
+
+
+\section*{Recarga}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:recarga}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+idTarjeta 
+& int 
+& NOT NULL \newline CHECK(idTarjeta $>$ 0)
+& PK, FK \\
+
+numRecarga 
+& int 
+& NOT NULL \newline CHECK(numRecarga $>$ 0)
+& PK \\
+
+idSucursal 
+& int 
+& NOT NULL \newline CHECK(idSucursal $>$ 0)
+& FK \\
+
+CURP 
+& varchar(18) 
+& NOT NULL \newline CHECK(CURP $\sim$ formato estándar de CURP: 4 letras, 6 dígitos, 6 letras, 1 alfanumérico y 1 dígito)
+& FK \\
+
+Monto 
+& decimal(10,2) 
+& NOT NULL \newline CHECK(Monto $>$ 0)
+&  \\
+
+MetodoPago 
+& varchar(30) 
+& NOT NULL \newline CHECK(MetodoPago IN ('Efectivo', 'Crédito', 'Débito', 'Paypal'))
+&  \\
+
+Hora 
+& time 
+& NOT NULL
+&  \\
+
+Fecha 
+& date 
+& NOT NULL \newline CHECK(Fecha $\leq$ CURRENT\_DATE)
+&  \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria compuesta:} idTarjeta, numRecarga\\
+\textbf{Llaves foráneas:}\\
+idTarjeta $\rightarrow$ Tarjeta (idTarjeta)\\
+idSucursal $\rightarrow$ Sucursal (idSucursal)\\
+CURP $\rightarrow$ Cajero (CURP)\\
+
+
+\section*{Canje}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:canje}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+idCanje 
+& SERIAL4 
+& NOT NULL \newline CHECK(idCanje $>$ 0)
+& PK \\
+
+idSucursal 
+& int 
+& NOT NULL \newline CHECK(idSucursal $>$ 0)
+& FK \\
+
+idTarjeta 
+& int 
+& NOT NULL \newline CHECK(idTarjeta $>$ 0)
+& FK \\
+
+CURP 
+& varchar(18) 
+& NOT NULL \newline CHECK(CURP $\sim$ formato estándar de CURP: 4 letras, 6 dígitos, 6 letras, 1 alfanumérico y 1 dígito)
+& FK \\
+
+Hora 
+& time 
+& NOT NULL
+&  \\
+
+Fecha 
+& date 
+& NOT NULL \newline CHECK(Fecha $\leq$ CURRENT\_DATE)
+&  \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} idCanje\\
+\textbf{Llaves foráneas:}\\
+idSucursal $\rightarrow$ Sucursal (idSucursal)\\
+idTarjeta $\rightarrow$ Tarjeta (idTarjeta)\\
+CURP $\rightarrow$ EncargadoPremios (CURP)\\
+
+
+\section*{Incluir}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:incluir}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+idCanje 
+& int 
+& NOT NULL \newline CHECK(idCanje $>$ 0)
+& PK, FK \\
+
+idPremio 
+& int 
+& NOT NULL \newline CHECK(idPremio $>$ 0)
+& PK, FK \\
+
+Cantidad 
+& int 
+& NOT NULL \newline CHECK(Cantidad $>$ 0)
+&  \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria compuesta:} idCanje, idPremio\\
+\textbf{Llaves foráneas:}\\
+idCanje $\rightarrow$ Canje (idCanje)\\
+idPremio $\rightarrow$ Premio (idPremio)\\
+
+
 \section{Restaurar backup de una BD en Docker}
 Para la restauración del backup, se siguieron los pasos proporcionados en la practica.
 

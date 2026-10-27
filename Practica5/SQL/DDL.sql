@@ -209,6 +209,96 @@ CHECK(CostoPuntos > 0);
 ALTER TABLE Premio ADD CONSTRAINT Premio_pkey
 PRIMARY KEY (idPremio);
 
+CREATE TABLE Cliente(
+    idCliente SERIAL4,
+    Nombre VARCHAR(50),
+    ApellidoPaterno VARCHAR(50),
+    ApellidoMaterno VARCHAR(50),
+    FechaNacimiento DATE,
+    Sexo VARCHAR(10)
+);
+
+--Restricciones Cliente
+--Dominio
+
+-- idCliente NOT NULL y con valor mayor a 0
+ALTER TABLE Cliente ALTER COLUMN idCliente
+SET NOT NULL;
+ALTER TABLE Cliente ADD CONSTRAINT Cliente_d1
+CHECK(idCliente > 0);
+
+-- Nombre NOT NULL y con al menos un elemento
+ALTER TABLE Cliente ALTER COLUMN Nombre
+SET NOT NULL;
+ALTER TABLE Cliente ADD CONSTRAINT Cliente_d2
+CHECK(Nombre <> '');
+
+-- ApellidoPaterno NOT NULL y con al menos un elemento
+ALTER TABLE Cliente ALTER COLUMN ApellidoPaterno
+SET NOT NULL;
+ALTER TABLE Cliente ADD CONSTRAINT Cliente_d3
+CHECK(ApellidoPaterno <> '');
+
+-- ApellidoMaterno acepta NULL; cuando no es NULL debe tener al menos un elemento
+ALTER TABLE Cliente ADD CONSTRAINT Cliente_d4
+CHECK(ApellidoMaterno <> '');
+
+-- FechaNacimiento NOT NULL y menor o igual a la fecha actual
+ALTER TABLE Cliente ALTER COLUMN FechaNacimiento
+SET NOT NULL;
+ALTER TABLE Cliente ADD CONSTRAINT Cliente_d5
+CHECK(FechaNacimiento <= CURRENT_DATE);
+
+-- Sexo NOT NULL y con un valor predefinido
+ALTER TABLE Cliente ALTER COLUMN Sexo
+SET NOT NULL;
+ALTER TABLE Cliente ADD CONSTRAINT Cliente_d6
+CHECK(Sexo IN ('Masculino', 'Femenino', 'No binario'));
+
+--Entidad
+-- idCliente como llave primaria
+ALTER TABLE Cliente ADD CONSTRAINT Cliente_pkey
+PRIMARY KEY (idCliente);
+
+
+CREATE TABLE Tarjeta(
+    idTarjeta SERIAL4,
+    Estado VARCHAR(30),
+    Saldo FLOAT,
+    Puntos INT
+);
+
+--Restricciones Tarjeta
+--Dominio
+
+-- idTarjeta NOT NULL y con valor mayor a 0
+ALTER TABLE Tarjeta ALTER COLUMN idTarjeta
+SET NOT NULL;
+ALTER TABLE Tarjeta ADD CONSTRAINT Tarjeta_d1
+CHECK(idTarjeta > 0);
+
+-- Estado NOT NULL y con un valor predefinido
+ALTER TABLE Tarjeta ALTER COLUMN Estado
+SET NOT NULL;
+ALTER TABLE Tarjeta ADD CONSTRAINT Tarjeta_d2
+CHECK(Estado IN ('Activa', 'Bloqueada', 'Cancelada'));
+
+-- Saldo NOT NULL y mayor o igual a 0
+ALTER TABLE Tarjeta ALTER COLUMN Saldo
+SET NOT NULL;
+ALTER TABLE Tarjeta ADD CONSTRAINT Tarjeta_d3
+CHECK(Saldo >= 0);
+
+-- Puntos NOT NULL y mayor o igual a 0
+ALTER TABLE Tarjeta ALTER COLUMN Puntos
+SET NOT NULL;
+ALTER TABLE Tarjeta ADD CONSTRAINT Tarjeta_d4
+CHECK(Puntos >= 0);
+
+--Entidad
+-- idTarjeta como llave primaria
+ALTER TABLE Tarjeta ADD CONSTRAINT Tarjeta_pkey
+PRIMARY KEY (idTarjeta);
 
 ---------------TABLAS CON LLAVES COMPUESTAS, FORÁNEAS Y HERENCIAS)----------
 CREATE TABLE CorreoEmpleado(
@@ -643,3 +733,257 @@ PRIMARY KEY (CURP, TituloCertificacion);
 -- CURP hace referencia a Tecnico(CURP)
 ALTER TABLE Certificacion ADD CONSTRAINT Certificacion_fkey1
 FOREIGN KEY (CURP) REFERENCES Tecnico(CURP);
+
+CREATE TABLE Registrar(
+    idCliente INT,
+    idTarjeta INT
+);
+
+--Restricciones Registrar
+--Dominio
+
+-- idCliente NOT NULL y con valor mayor a 0
+ALTER TABLE Registrar ALTER COLUMN idCliente
+SET NOT NULL;
+ALTER TABLE Registrar ADD CONSTRAINT Registrar_d1
+CHECK(idCliente > 0);
+
+-- idTarjeta NOT NULL y con valor mayor a 0
+ALTER TABLE Registrar ALTER COLUMN idTarjeta
+SET NOT NULL;
+ALTER TABLE Registrar ADD CONSTRAINT Registrar_d2
+CHECK(idTarjeta > 0);
+
+-- Entidad
+ALTER TABLE Registrar ADD CONSTRAINT Registrar_pkey
+PRIMARY KEY (idCliente, idTarjeta);
+
+-- Referencial
+-- idCliente
+ALTER TABLE Registrar ADD CONSTRAINT Registrar_fkey1
+FOREIGN KEY (idCliente) REFERENCES Cliente(idCliente);
+
+-- idTarjeta
+ALTER TABLE Registrar ADD CONSTRAINT Registrar_fkey2
+FOREIGN KEY (idTarjeta) REFERENCES Tarjeta(idTarjeta);
+
+CREATE TABLE CorreoCliente(
+    idCliente INT,
+    Correo VARCHAR(100)
+);
+
+--Restricciones CorreoCliente
+--Dominio
+
+--Entidad
+ALTER TABLE CorreoCliente ADD CONSTRAINT CorreoCliente_pkey
+PRIMARY KEY (idCliente, Correo);
+
+--Referencial
+ALTER TABLE CorreoCliente ADD CONSTRAINT CorreoCliente_fkey
+FOREIGN KEY (idCliente) REFERENCES Cliente(idCliente);
+
+CREATE TABLE TelefonoCliente(
+    idCliente INT,
+    Telefono VARCHAR(10)
+);
+
+--Restricciones TelefonoCliente
+--Dominio
+
+-- Telefono de 10 digitos
+ALTER TABLE TelefonoCliente ADD CONSTRAINT TelefonoCliente_d1
+CHECK(Telefono ~ '^[0-9]{10}$');
+
+--Entidad
+ALTER TABLE TelefonoCliente ADD CONSTRAINT TelefonoCliente_pkey
+PRIMARY KEY (idCliente, Telefono);
+
+--Referencial
+ALTER TABLE TelefonoCliente ADD CONSTRAINT TelefonoCliente_fkey
+FOREIGN KEY (idCliente) REFERENCES Cliente(idCliente);
+
+CREATE TABLE Recarga(
+    idTarjeta INT,
+    numRecarga INT,
+    idSucursal INT,
+    CURP VARCHAR(18),
+    Monto DECIMAL(10,2),
+    MetodoPago VARCHAR(30),
+    Hora TIME,
+    Fecha DATE
+);
+
+--Restricciones Recarga
+--Dominio
+
+-- idTarjeta NOT NULL y con valor mayor a 0
+ALTER TABLE Recarga ALTER COLUMN idTarjeta
+SET NOT NULL;
+ALTER TABLE Recarga ADD CONSTRAINT Recarga_d1
+CHECK(idTarjeta > 0);
+
+-- numRecarga NOT NULL y con valor mayor a 0
+ALTER TABLE Recarga ALTER COLUMN numRecarga
+SET NOT NULL;
+ALTER TABLE Recarga ADD CONSTRAINT Recarga_d2
+CHECK(numRecarga > 0);
+
+-- idSucursal NOT NULL y con valor mayor a 0
+ALTER TABLE Recarga ALTER COLUMN idSucursal
+SET NOT NULL;
+ALTER TABLE Recarga ADD CONSTRAINT Recarga_d3
+CHECK(idSucursal > 0);
+
+-- CURP NOT NULL y con el formato estandar
+ALTER TABLE Recarga ALTER COLUMN CURP
+SET NOT NULL;
+ALTER TABLE Recarga ADD CONSTRAINT Recarga_d4
+CHECK(CURP ~ '^[A-Z]{4}[0-9]{6}[A-Z]{6}[A-Z0-9][0-9]$');
+
+-- Monto NOT NULL y decimal mayor a 0
+ALTER TABLE Recarga ALTER COLUMN Monto
+SET NOT NULL;
+ALTER TABLE Recarga ADD CONSTRAINT Recarga_d5
+CHECK(Monto > 0);
+
+-- MetodoPago NOT NULL y con un valor predefinido
+ALTER TABLE Recarga ALTER COLUMN MetodoPago
+SET NOT NULL;
+ALTER TABLE Recarga ADD CONSTRAINT Recarga_d6
+CHECK(MetodoPago IN ('Efectivo', 'Crédito', 'Débito', 'Paypal'));
+
+-- Hora NOT NULL
+ALTER TABLE Recarga ALTER COLUMN Hora
+SET NOT NULL;
+
+-- Fecha NOT NULL y menor o igual a la fecha actual
+ALTER TABLE Recarga ALTER COLUMN Fecha
+SET NOT NULL;
+ALTER TABLE Recarga ADD CONSTRAINT Recarga_d7
+CHECK(Fecha <= CURRENT_DATE);
+
+--Entidad
+-- (idTarjeta, numRecarga) como llave primaria
+ALTER TABLE Recarga ADD CONSTRAINT Recarga_pkey
+PRIMARY KEY (idTarjeta, numRecarga);
+
+--Referencial
+-- idTarjeta
+ALTER TABLE Recarga ADD CONSTRAINT Recarga_fkey1
+FOREIGN KEY (idTarjeta) REFERENCES Tarjeta(idTarjeta);
+
+-- idSucursal 
+ALTER TABLE Recarga ADD CONSTRAINT Recarga_fkey2
+FOREIGN KEY (idSucursal) REFERENCES Sucursal(idSucursal);
+
+-- CURP 
+ALTER TABLE Recarga ADD CONSTRAINT Recarga_fkey3
+FOREIGN KEY (CURP) REFERENCES Cajero(CURP);
+
+
+CREATE TABLE Canje(
+    idCanje SERIAL4,
+    idSucursal INT,
+    idTarjeta INT,
+    CURP VARCHAR(18),
+    Hora TIME,
+    Fecha DATE
+);
+
+--Restricciones Canje
+--Dominio
+
+-- idCanje NOT NULL y con valor mayor a 0
+ALTER TABLE Canje ALTER COLUMN idCanje
+SET NOT NULL;
+ALTER TABLE Canje ADD CONSTRAINT Canje_d1
+CHECK(idCanje > 0);
+
+-- idSucursal NOT NULL y con valor mayor a 0
+ALTER TABLE Canje ALTER COLUMN idSucursal
+SET NOT NULL;
+ALTER TABLE Canje ADD CONSTRAINT Canje_d2
+CHECK(idSucursal > 0);
+
+-- idTarjeta NOT NULL y con valor mayor a 0
+ALTER TABLE Canje ALTER COLUMN idTarjeta
+SET NOT NULL;
+ALTER TABLE Canje ADD CONSTRAINT Canje_d3
+CHECK(idTarjeta > 0);
+
+-- CURP NOT NULL y con el formato estandar
+ALTER TABLE Canje ALTER COLUMN CURP
+SET NOT NULL;
+ALTER TABLE Canje ADD CONSTRAINT Canje_d4
+CHECK(CURP ~ '^[A-Z]{4}[0-9]{6}[A-Z]{6}[A-Z0-9][0-9]$');
+
+-- Hora NOT NULL
+ALTER TABLE Canje ALTER COLUMN Hora
+SET NOT NULL;
+
+-- Fecha NOT NULL y menor o igual a la fecha actual
+ALTER TABLE Canje ALTER COLUMN Fecha
+SET NOT NULL;
+ALTER TABLE Canje ADD CONSTRAINT Canje_d5
+CHECK(Fecha <= CURRENT_DATE);
+
+--Entidad
+-- idCanje como llave primaria
+ALTER TABLE Canje ADD CONSTRAINT Canje_pkey
+PRIMARY KEY (idCanje);
+
+--Referencial
+
+-- idSucursal 
+ALTER TABLE Canje ADD CONSTRAINT Canje_fkey1
+FOREIGN KEY (idSucursal) REFERENCES Sucursal(idSucursal);
+
+-- idTarjeta 
+ALTER TABLE Canje ADD CONSTRAINT Canje_fkey2
+FOREIGN KEY (idTarjeta) REFERENCES Tarjeta(idTarjeta);
+
+-- CURP 
+ALTER TABLE Canje ADD CONSTRAINT Canje_fkey3
+FOREIGN KEY (CURP) REFERENCES EncargadoPremios(CURP);
+
+
+CREATE TABLE Incluir(
+    idCanje INT,
+    idPremio INT,
+    Cantidad INT
+);
+
+--Restricciones Incluir
+--Dominio
+
+-- idCanje NOT NULL y con valor mayor a 0
+ALTER TABLE Incluir ALTER COLUMN idCanje
+SET NOT NULL;
+ALTER TABLE Incluir ADD CONSTRAINT Incluir_d1
+CHECK(idCanje > 0);
+
+-- idPremio NOT NULL y con valor mayor a 0
+ALTER TABLE Incluir ALTER COLUMN idPremio
+SET NOT NULL;
+ALTER TABLE Incluir ADD CONSTRAINT Incluir_d2
+CHECK(idPremio > 0);
+
+-- Cantidad NOT NULL y con valor mayor a 0
+ALTER TABLE Incluir ALTER COLUMN Cantidad
+SET NOT NULL;
+ALTER TABLE Incluir ADD CONSTRAINT Incluir_d3
+CHECK(Cantidad > 0);
+
+--Entidad
+ALTER TABLE Incluir ADD CONSTRAINT Incluir_pkey
+PRIMARY KEY (idCanje, idPremio);
+
+--Referencial
+-- idPremio 
+ALTER TABLE Incluir ADD CONSTRAINT Incluir_fkey2
+FOREIGN KEY (idPremio) REFERENCES Premio(idPremio);
+
+-- idCanje 
+ALTER TABLE Incluir ADD CONSTRAINT Incluir_fkey1
+FOREIGN KEY (idCanje) REFERENCES Canje(idCanje);
