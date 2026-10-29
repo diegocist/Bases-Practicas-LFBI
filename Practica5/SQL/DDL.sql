@@ -1,4 +1,3 @@
-DROP SCHEMA IF EXISTS  public CASCADE;
 CREATE SCHEMA public;
 
 -------------TABLAS CON LLAVES PRIMARIAS-----------------
@@ -26,7 +25,7 @@ CREATE TABLE Empleado(
  -- FechaNacimiento: NOT NULL y al menos 18 años menor a la fecha actual
  ALTER TABLE Empleado ALTER COLUMN FechaNacimiento 
  SET NOT NULL;
- ALTER TABLE Empleado ADD CONSTRAINT Empleado_d2 
+ ALTER TABLE Empleado ADD CONSTRAINT Empleado_d2
  CHECK(FechaNacimiento <= CURRENT_DATE - INTERVAL '18 years');
  
  -- Nombre: NOT NULL y con al menos un elemento
@@ -299,6 +298,7 @@ CHECK(Puntos >= 0);
 -- idTarjeta como llave primaria
 ALTER TABLE Tarjeta ADD CONSTRAINT Tarjeta_pkey
 PRIMARY KEY (idTarjeta);
+
 
 ---------------TABLAS CON LLAVES COMPUESTAS, FORÁNEAS Y HERENCIAS)----------
 CREATE TABLE CorreoEmpleado(
@@ -589,7 +589,7 @@ FOREIGN KEY (idPremio) REFERENCES Premio(idPremio);
 
 
 CREATE TABLE Maquina(
-    idMaquina INT,
+    idMaquina SERIAL4,
     idSucursal INT,
     idJuego INT,
     EstadoMaquina VARCHAR(20)
@@ -987,3 +987,157 @@ FOREIGN KEY (idPremio) REFERENCES Premio(idPremio);
 -- idCanje 
 ALTER TABLE Incluir ADD CONSTRAINT Incluir_fkey1
 FOREIGN KEY (idCanje) REFERENCES Canje(idCanje);
+
+
+CREATE TABLE Partida(
+    numPartida SERIAL4,
+    idMaquina INT,
+    idTarjeta INT,
+    FechaPartida DATE,
+    HoraFin TIME,
+    PuntosObtenidos FLOAT,
+    Puntaje FLOAT
+);
+
+-- Restricciones Partida
+-- Dominio
+
+-- numPartida NOT NULL y mayor a 0
+ALTER TABLE Partida ALTER COLUMN numPartida
+SET NOT NULL;
+ALTER TABLE Partida ADD CONSTRAINT Partida_d1 
+CHECK(numPartida > 0);
+
+-- idMaquina NOT NULL y mayor a 0
+ALTER TABLE Partida ALTER COLUMN idMaquina
+SET NOT NULL;
+ALTER TABLE Partida ADD CONSTRAINT Partida_d2 
+CHECK(idMaquina > 0);
+
+-- idTarjeta NOT NULL y mayor a 0
+ALTER TABLE Partida ALTER COLUMN idTarjeta
+SET NOT NULL;
+ALTER TABLE Partida ADD CONSTRAINT Partida_d3 
+CHECK(idTarjeta > 0);
+
+-- FechaPartida NOT NULL y menor o igual a la fecha actual
+ALTER TABLE Partida ALTER COLUMN FechaPartida
+SET NOT NULL;
+ALTER TABLE Partida ADD CONSTRAINT Partida_d4 
+CHECK(FechaPartida <= CURRENT_DATE);
+
+-- HoraFin NOT NULL
+ALTER TABLE Partida ALTER COLUMN HoraFin 
+SET NOT NULL;
+
+-- PuntosObtenidos NOT NULL y mayor o igual a 0
+ALTER TABLE Partida ALTER COLUMN PuntosObtenidos
+SET NOT NULL;
+ALTER TABLE Partida ADD CONSTRAINT Partida_d5
+CHECK(PuntosObtenidos >= 0);
+
+-- Puntaje NOT NULL y mayor o igual a 0
+ALTER TABLE Partida ALTER COLUMN Puntaje SET NOT NULL;
+ALTER TABLE Partida ADD CONSTRAINT Partida_d6
+CHECK(Puntaje >= 0);
+
+-- Entidad
+-- Llave primaria compuesta (numPartida, idMaquina)
+ALTER TABLE Partida ADD CONSTRAINT Partida_pkey 
+PRIMARY KEY (numPartida, idMaquina);
+
+-- Referencial
+-- idMaquina hace referencia a Maquina(idMaquina)
+ALTER TABLE Partida ADD CONSTRAINT Partida_fkey1 
+FOREIGN KEY (idMaquina) REFERENCES Maquina(idMaquina);
+
+-- idTarjeta hace referencia a Tarjeta(idTarjeta)
+ALTER TABLE Partida ADD CONSTRAINT Partida_fkey2 
+FOREIGN KEY (idTarjeta) REFERENCES Tarjeta(idTarjeta);
+
+
+CREATE TABLE DiaApertura(
+    idSucursal INT,
+    Dia VARCHAR(2),
+    HoraApertura TIME,
+    HoraCierre TIME
+);
+
+-- Restricciones DiaApertura
+-- Dominio
+
+-- idSucursal NOT NULL
+ALTER TABLE DiaApertura ALTER COLUMN idSucursal
+SET NOT NULL;
+
+-- Dia NOT NULL
+ALTER TABLE DiaApertura ALTER COLUMN Dia
+SET NOT NULL;
+
+-- HoraApertura NOT NULL
+ALTER TABLE DiaApertura ALTER COLUMN HoraApertura
+SET NOT NULL;
+
+-- HoraCierre NOT NULL
+ALTER TABLE DiaApertura ALTER COLUMN HoraCierre
+SET NOT NULL;
+
+-- Restricción especial de horario
+ALTER TABLE DiaApertura ADD CONSTRAINT DiaApertura_d1 
+CHECK(HoraCierre > HoraApertura);
+
+-- Entidad
+-- Llave primaria compuesta (idSucursal, Dia)
+ALTER TABLE DiaApertura ADD CONSTRAINT DiaApertura_pkey 
+PRIMARY KEY (idSucursal, Dia);
+
+-- Referencial
+-- idSucursal hace referencia a Sucursal(idSucursal)
+ALTER TABLE DiaApertura ADD CONSTRAINT DiaApertura_fkey1 
+FOREIGN KEY (idSucursal) REFERENCES Sucursal(idSucursal);
+
+
+CREATE TABLE Trabajar(
+    idSucursal INT,
+    CURP VARCHAR(18),
+    FechaContratacion DATE,
+    Salario FLOAT,
+    HoraInicio TIME,
+    HoraFin TIME
+);
+
+-- Restricciones Trabajar
+-- Dominio
+ALTER TABLE Trabajar ALTER COLUMN idSucursal
+SET NOT NULL;
+ALTER TABLE Trabajar ALTER COLUMN CURP
+SET NOT NULL;
+ALTER TABLE Trabajar ALTER COLUMN FechaContratacion
+SET NOT NULL;
+
+-- Salario NOT NULL y mayor a 0
+ALTER TABLE Trabajar ALTER COLUMN Salario
+SET NOT NULL;
+ALTER TABLE Trabajar ADD CONSTRAINT Trabajar_d1
+CHECK(Salario > 0);
+
+ALTER TABLE Trabajar ALTER COLUMN HoraInicio
+SET NOT NULL;
+ALTER TABLE Trabajar ALTER COLUMN HoraFin
+SET NOT NULL;
+
+-- Restricción lógica: La hora de fin debe ser después de la hora de inicio
+ALTER TABLE Trabajar ADD CONSTRAINT Trabajar_d2
+CHECK(HoraFin > HoraInicio);
+
+-- Entidad
+-- Llave primaria compuesta
+ALTER TABLE Trabajar ADD CONSTRAINT Trabajar_pkey 
+PRIMARY KEY (idSucursal, CURP);
+
+-- Referencial
+ALTER TABLE Trabajar ADD CONSTRAINT Trabajar_fkey1 
+FOREIGN KEY (idSucursal) REFERENCES Sucursal(idSucursal);
+
+ALTER TABLE Trabajar ADD CONSTRAINT Trabajar_fkey2 
+FOREIGN KEY (CURP) REFERENCES Empleado(CURP);
