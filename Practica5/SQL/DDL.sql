@@ -50,14 +50,12 @@ CREATE TABLE Empleado(
  ALTER TABLE Empleado ALTER COLUMN RFC 
  SET NOT NULL;
  ALTER TABLE Empleado ADD CONSTRAINT Empleado_d6 
- CHECK(RFC <> '');
- ALTER TABLE Empleado ADD CONSTRAINT Empleado_d7 
- CHECK(CHAR_LENGTH(RFC)=13);
+ CHECK(RFC ~ '^[A-Z]{4}[0-9]{6}[A-Z0-9]{3}$');
  
  -- tipoEmpleado: NOT NULL y dentro del intervalo [0, 3]
  ALTER TABLE Empleado ALTER COLUMN tipoEmpleado 
  SET NOT NULL;
- ALTER TABLE Empleado ADD CONSTRAINT Empleado_d8 
+ ALTER TABLE Empleado ADD CONSTRAINT Empleado_d7 
  CHECK(tipoEmpleado >= 0 AND tipoEmpleado <= 3);
 
 --Entidad
@@ -793,7 +791,7 @@ CREATE TABLE TelefonoCliente(
 
 -- Telefono de 10 digitos
 ALTER TABLE TelefonoCliente ADD CONSTRAINT TelefonoCliente_d1
-CHECK(Telefono ~ '^[0-9]{10}$');
+CHECK(Telefono ~ '^[0-9]{10}$');		
 
 --Entidad
 ALTER TABLE TelefonoCliente ADD CONSTRAINT TelefonoCliente_pkey
