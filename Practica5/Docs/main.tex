@@ -85,7 +85,7 @@
 
 CURP 
 & varchar(18) 
-& NOT NULL \newline CHECK(CHAR\_LENGTH(CURP) = 18)
+& NOT NULL \newline CHECK(CURP $\sim$ '\^{}[A-Z]\{4\}[0-9]\{6\}[A-Z]\{6\}[A-Z0-9][0-9]\$')
 & PK \\
 
 FechaNacimiento 
@@ -110,7 +110,7 @@ ApellidoMaterno
 
 RFC 
 & varchar(13) 
-& NOT NULL \newline CHECK(RFC $<>$ '') \newline CHECK(CHAR\_LENGTH(RFC) = 13)
+& NOT NULL \newline CHECK(RFC $\sim$ '\^{}[A-Z]\{4\}[0-9]\{6\}[A-Z0-9]\{3\}\$')
 & \\
 
 tipoEmpleado
@@ -185,7 +185,7 @@ Categoria
 
 CURP 
 & varchar(18) 
-& NOT NULL
+& NOT NULL \newline CHECK(CURP $\sim$ '\^{}[A-Z]\{4\}[0-9]\{6\}[A-Z]\{6\}[A-Z0-9][0-9]\$')
 & PK, FK \\
 
 Correo 
@@ -219,7 +219,7 @@ Correo
 
 CURP 
 & varchar(18) 
-& NOT NULL
+& NOT NULL \newline CHECK(CURP $\sim$ '\^{}[A-Z]\{4\}[0-9]\{6\}[A-Z]\{6\}[A-Z0-9][0-9]\$')
 & PK, FK \\
 
 Telefono 
@@ -251,7 +251,7 @@ Telefono
 \endfoot
 
 idJuego 
-& int 
+& SERIAL4 
 & NOT NULL \newline CHECK(idJuego $>$ 0)
 & PK \\
 
@@ -284,7 +284,7 @@ PuntosPorAcierto
 \endfoot
 
 idJuego 
-& int 
+& SERIAL4 
 & NOT NULL \newline CHECK(idJuego $>$ 0)
 & PK \\
 
@@ -316,7 +316,7 @@ PuntosPorAcierto
 \endfoot
 
 idJuego 
-& int
+& SERIAL4
 & NOT NULL \newline CHECK(idJuego $>$ 0)
 & PK \\
 
@@ -348,7 +348,7 @@ PuntosTop5
 \endfoot
 
 idJuego 
-& int
+& SERIAL4
 & NOT NULL \newline CHECK(idJuego $>$ 0)
 & PK \\
 
@@ -364,150 +364,124 @@ PuntosTop5
 
 \section*{Sucursal}
 
-\begin{longtable}{p{2.2cm} p{2.2cm} p{5.8cm} p{4.2cm} p{1.2cm}}
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
 \label{tab:sucursal}\\
 \toprule
-\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
 \midrule
 \endfirsthead
 
 \toprule
-\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
 \midrule
 \endhead
 
 \bottomrule
 \endfoot
 
-
 idSucursal 
-& int 
-& Numeros mayores a 0
-& NOT NULL (autoincremental)
+& SERIAL4 
+& NOT NULL \newline CHECK(idSucursal $>$ 0)
 & PK \\
-
 
 Telefono 
 & varchar(10) 
-& Cadenas compuestas únicamente por 10 dígitos.
-& NOT NULL;
-
-Revisar que esté compuesto solo por 10 dígitos.
+& NOT NULL \newline CHECK(Telefono $\sim$ '\^{}[0-9]\{10\}\$')
 &  \\
 
 Nombre 
 & varchar(50) 
-& Cadenas de hasta 50 caracteres.
 & NOT NULL
 &  \\
 
 Colonia 
 & varchar(50) 
-& Cadenas de hasta 50 caracteres.
 & NOT NULL
 &  \\
 
 Estado 
 & varchar(50) 
-& Cadenas de hasta 50 caracteres.
 & NOT NULL
 &  \\
 
 Calle 
 & varchar(50) 
-& Cadenas de hasta 50 caracteres.
 & NOT NULL
 &  \\
 
 NúmExterior 
 & int 
-& Numeros mayores a 0
-& NOT NULL;
-
-Revisar: (NúmExterior $>$ 0)
+& NOT NULL \newline CHECK(NúmExterior $>$ 0)
 &  \\
 
 NúmInterior 
 & int 
-& Numeros mayores a 0
-& NULL permitido;
-
-Revisar: (NúmInterior $>$ 0) cuando no sea NULL
+& Acepta NULL \newline CHECK(NúmInterior $>$ 0)
 &  \\
 
 \end{longtable}
 
+\vspace{2pt}
 \textbf{Llave primaria:} idSucursal\\
 
 \section*{Premio}
 
-\begin{longtable}{p{3.2cm} p{2.2cm} p{5.8cm} p{4.2cm} p{1.2cm}}
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
 \label{tab:premio}\\
 \toprule
-\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
 \midrule
 \endfirsthead
 
 \toprule
-\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
 \midrule
 \endhead
 
 \bottomrule
 \endfoot
 
-
 idPremio 
-& int 
-& Numeros mayores a 0
-& NOT NULL (autoincremental)
+& SERIAL4 
+& NOT NULL \newline CHECK(idPremio $>$ 0)
 & PK \\
 
 Nombre 
 & varchar(100) 
-& Cadenas de hasta 100 caracteres.
 & NOT NULL
 &  \\
 
 CategoriaEdad 
 & varchar(50) 
-& Cadenas dentro de la lista (Infantil, Juvenil, Adulto, Todas)
-& NOT NULL;
-
-Revisar que el valor sea uno en (Infantil, Juvenil, Adulto, Todas)
+& NOT NULL \newline CHECK(CategoriaEdad IN ('Infantil', 'Juvenil', 'Adulto', 'Todas'))
 &  \\
 
 ValorAproximado 
 & decimal(10,2) 
-& Numeros decimales mayores a 0
-& NOT NULL;
-
-Revisar: (ValorAproximado $>$ 0)
+& NOT NULL \newline CHECK(ValorAproximado $>$ 0)
 &  \\
 
 CostoPuntos 
 & int 
-& Numeros mayores a 0
-& NOT NULL;
-
-Revisar: (CostoPuntos $>$ 0)
+& NOT NULL \newline CHECK(CostoPuntos $>$ 0)
 &  \\
 
 \end{longtable}
 
+\vspace{2pt}
 \textbf{Llave primaria:} idPremio\\
 
 \section*{Gerente}
 
-\begin{longtable}{p{3.2cm} p{2.2cm} p{4.8cm} p{4.2cm} p{1.2cm}}
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
 \label{tab:gerente}\\
 \toprule
-\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
 \midrule
 \endfirsthead
 
 \toprule
-\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
 \midrule
 \endhead
 
@@ -516,19 +490,12 @@ Revisar: (CostoPuntos $>$ 0)
 
 CURP 
 & varchar(18) 
-& Cadenas con el formato estándar: 4 letras, 6 dígitos, 6 letras, 1 carácter alfanumérico y 1 dígito.
-& NOT NULL;
-
-Revisar que se cumpla
-el formato estándar.
+& NOT NULL \newline CHECK(CURP $\sim$ '\^{}[A-Z]\{4\}[0-9]\{6\}[A-Z]\{6\}[A-Z0-9][0-9]\$')
 & PK, FK \\
 
 cedula 
 & varchar(20)
-& Cualquier cadena con 7 u 8 números.
-& NOT NULL;
-
-Revisar que esté compuesta únicamente con números.
+& NOT NULL \newline CHECK(cedula $\sim$ '\^{}[0-9]\{7,8\}\$')
 & \\
 
 \end{longtable}
@@ -540,15 +507,15 @@ Revisar que esté compuesta únicamente con números.
 
 \section*{Tecnico}
 
-\begin{longtable}{p{3.2cm} p{2.2cm} p{4.8cm} p{4.2cm} p{1.2cm}}
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
 \label{tab:tecnico}\\
 \toprule
-\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
 \midrule
 \endfirsthead
 
 \toprule
-\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
 \midrule
 \endhead
 
@@ -557,16 +524,11 @@ Revisar que esté compuesta únicamente con números.
 
 CURP 
 & varchar(18) 
-& Cadenas con el formato estándar: 4 letras, 6 dígitos, 6 letras, 1 carácter alfanumérico y 1 dígito.
-& NOT NULL;
-
-Revisar que se cumpla
-el formato estándar.
+& NOT NULL \newline CHECK(CURP $\sim$ '\^{}[A-Z]\{4\}[0-9]\{6\}[A-Z]\{6\}[A-Z0-9][0-9]\$')
 & PK, FK \\
 
 especialidad 
 & varchar(100)
-& Cadenas que indiquen una especialidad como: Simuladores, Juegos electromecánicos, entre otras.
 & NOT NULL
 & \\
 
@@ -578,15 +540,15 @@ especialidad
 
 \section*{Cajero}
 
-\begin{longtable}{p{3.2cm} p{2.2cm} p{4.8cm} p{4.2cm} p{1.2cm}}
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
 \label{tab:cajero}\\
 \toprule
-\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
 \midrule
 \endfirsthead
 
 \toprule
-\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
 \midrule
 \endhead
 
@@ -595,11 +557,7 @@ especialidad
 
 CURP 
 & varchar(18) 
-& Cadenas con el formato estándar: 4 letras, 6 dígitos, 6 letras, 1 carácter alfanumérico y 1 dígito.
-& NOT NULL; 
-
-Revisar que se cumpla
-el formato estándar.
+& NOT NULL \newline CHECK(CURP $\sim$ '\^{}[A-Z]\{4\}[0-9]\{6\}[A-Z]\{6\}[A-Z0-9][0-9]\$')
 & PK, FK \\
 
 \end{longtable}
@@ -611,15 +569,15 @@ el formato estándar.
 
 \section*{EncargadoPremios}
 
-\begin{longtable}{p{3.2cm} p{2.2cm} p{4.8cm} p{4.2cm} p{1.2cm}}
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
 \label{tab:encargadopremios}\\
 \toprule
-\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
 \midrule
 \endfirsthead
 
 \toprule
-\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
 \midrule
 \endhead
 
@@ -628,11 +586,7 @@ el formato estándar.
 
 CURP 
 & varchar(18) 
-& Cadenas con el formato estándar: 4 letras, 6 dígitos, 6 letras, 1 carácter alfanumérico y 1 dígito.
-& NOT NULL;
-
-Revisar que se cumpla
-el formato estándar.
+& NOT NULL \newline CHECK(CURP $\sim$ '\^{}[A-Z]\{4\}[0-9]\{6\}[A-Z]\{6\}[A-Z0-9][0-9]\$')
 & PK, FK \\
 
 \end{longtable}
@@ -701,7 +655,7 @@ CantidadRecibida
 \endfoot
 
 idMaquina 
-& int 
+& SERIAL4 
 & NOT NULL \newline CHECK(idMaquina $>$ 0)
 & PK \\
 
