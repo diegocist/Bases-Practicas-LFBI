@@ -1,0 +1,1227 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{parskip}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{makecell}
+\usepackage{geometry}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{float} 
+
+% --------------------- Comandos para URL y pie de página ---------------------
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+
+\renewcommand{\footnoterule}{%
+  \kern -3pt                         % Espacio vertical sobre la línea
+  \hrule width \textwidth height 0.4pt % Ancho total de la página y grosor
+  \kern 2.6pt                        % Espacio vertical debajo de la línea
+}
+% -----------------------------------------------------------------------
+
+\geometry{letterpaper, margin=2.5cm}
+\setlength{\parskip}{1em}
+\begin{document}
+\begin{titlepage}
+\begin{center}
+    % Logos
+    \begin{minipage}{0.3\textwidth}
+        \includegraphics[width=0.8\linewidth]{imagenes/UNAM_Logo.png}
+    \end{minipage}\hfill
+    \begin{minipage}{0.4\textwidth}
+        \begin{center}
+            \textbf{\Large Universidad Nacional Autónoma de México}\\[0.2cm]
+            \textbf{Facultad de Ciencias}\\[0.2cm]
+        \textbf{Bases de Datos}
+        \end{center}
+    \end{minipage}\hfill
+    \begin{minipage}{0.3\textwidth}
+        \includegraphics[width=0.8\linewidth]{imagenes/Logo_FC.png}
+    \end{minipage}
+    \vspace{3cm}
+    \textbf{\large Practica 5}\\
+
+    Licenciatura en Ciencias de la Computación\\
+    Profesor: Gerardo Avilés Rosas \\
+    \vspace{2cm}
+    \textbf{Integrantes: }\\
+    Cisneros Tenorio Diego Alexander\\
+    Nuñez Ruiz José Manuel \\
+    Olmos Ortiz Andrea Lucia\\
+    Reynoso Ascencio Alexa \\
+    Vega Navas Saúl \\
+    \vspace{2cm}
+    \textbf{Fecha de entrega: } 05 de octubre del 2026
+    \vfill
+\end{center}
+\end{titlepage}
+\tableofcontents
+\newpage
+\section{Restricciones de dominio de las tablas.}
+
+\section*{Empleado}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:empleado}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+CURP 
+& varchar(18) 
+& NOT NULL \newline CHECK(CHAR\_LENGTH(CURP) = 18)
+& PK \\
+
+FechaNacimiento 
+& date 
+& NOT NULL \newline CHECK(FechaNacimiento $\leq$ CURRENT\_DATE - INTERVAL '18 years')
+& \\
+
+Nombre 
+& varchar(50)
+& NOT NULL \newline CHECK(Nombre $<>$ '')
+& \\
+
+ApellidoPaterno 
+& varchar(50) 
+& NOT NULL \newline CHECK(ApellidoPaterno $<>$ '')
+& \\
+
+ApellidoMaterno 
+& varchar(50) 
+& NOT NULL \newline CHECK(ApellidoMaterno $<>$ '')
+& \\
+
+RFC 
+& varchar(13) 
+& NOT NULL \newline CHECK(RFC $<>$ '') \newline CHECK(CHAR\_LENGTH(RFC) = 13)
+& \\
+
+tipoEmpleado
+& int
+& NOT NULL \newline CHECK(tipoEmpleado $\geq$ 0 AND tipoEmpleado $\leq$ 3)
+& \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} CURP\\
+
+
+\section*{Juego}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:juego}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+idJuego 
+& SERIAL4
+& NOT NULL \newline CHECK(idJuego $>$ 0)
+& PK \\
+
+Nombre 
+& varchar(50)
+& NOT NULL \newline CHECK(Nombre $<>$ '')
+& \\
+
+Costo 
+& int
+& NOT NULL \newline CHECK(Costo $>$ 0 AND Costo \% 10 = 0)
+& \\
+
+Categoria 
+& int
+& NOT NULL \newline CHECK(Categoria $\geq$ 0 AND Categoria $\leq$ 3)
+& \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} idJuego\\
+
+\section*{CorreoEmpleado}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:correoempleado}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+CURP 
+& varchar(18) 
+& NOT NULL
+& PK, FK \\
+
+Correo 
+& varchar(100) 
+& NOT NULL
+& PK \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria compuesta:} CURP, Correo\\
+\textbf{Llave foránea:} CURP $\rightarrow$ Empleado (CURP)\\
+
+
+\section*{TelefonoEmpleado}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:telefonoempleado}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+CURP 
+& varchar(18) 
+& NOT NULL
+& PK, FK \\
+
+Telefono 
+& varchar(10) 
+& NOT NULL
+& PK \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria compuesta:} CURP, Telefono\\
+\textbf{Llave foránea:} CURP $\rightarrow$ Empleado (CURP)\\
+
+\section*{Disparos}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:disparos}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+idJuego 
+& int 
+& NOT NULL \newline CHECK(idJuego $>$ 0)
+& PK \\
+
+PuntosPorAcierto 
+& int
+& NOT NULL \newline CHECK(PuntosPorAcierto = 1)
+& \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} idJuego\\
+
+
+\section*{Destreza}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:destreza}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+idJuego 
+& int 
+& NOT NULL \newline CHECK(idJuego $>$ 0)
+& PK \\
+
+PuntosPorAcierto 
+& int
+& NOT NULL \newline CHECK(PuntosPorAcierto = 1)
+& \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} idJuego\\
+
+\section*{Ritmo}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:ritmo}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+idJuego 
+& int
+& NOT NULL \newline CHECK(idJuego $>$ 0)
+& PK \\
+
+PuntosTop5 
+& int
+& NOT NULL \newline CHECK(PuntosTop5 = 20)
+& \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} idJuego\\
+
+\section*{Velocidad}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:velocidad}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+idJuego 
+& int
+& NOT NULL \newline CHECK(idJuego $>$ 0)
+& PK \\
+
+PuntosTop5 
+& int
+& NOT NULL \newline CHECK(PuntosTop5 = 20)
+& \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} idJuego\\
+
+\section*{Sucursal}
+
+\begin{longtable}{p{2.2cm} p{2.2cm} p{5.8cm} p{4.2cm} p{1.2cm}}
+\label{tab:sucursal}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+
+idSucursal 
+& int 
+& Numeros mayores a 0
+& NOT NULL (autoincremental)
+& PK \\
+
+
+Telefono 
+& varchar(10) 
+& Cadenas compuestas únicamente por 10 dígitos.
+& NOT NULL;
+
+Revisar que esté compuesto solo por 10 dígitos.
+&  \\
+
+Nombre 
+& varchar(50) 
+& Cadenas de hasta 50 caracteres.
+& NOT NULL
+&  \\
+
+Colonia 
+& varchar(50) 
+& Cadenas de hasta 50 caracteres.
+& NOT NULL
+&  \\
+
+Estado 
+& varchar(50) 
+& Cadenas de hasta 50 caracteres.
+& NOT NULL
+&  \\
+
+Calle 
+& varchar(50) 
+& Cadenas de hasta 50 caracteres.
+& NOT NULL
+&  \\
+
+NúmExterior 
+& int 
+& Numeros mayores a 0
+& NOT NULL;
+
+Revisar: (NúmExterior $>$ 0)
+&  \\
+
+NúmInterior 
+& int 
+& Numeros mayores a 0
+& NULL permitido;
+
+Revisar: (NúmInterior $>$ 0) cuando no sea NULL
+&  \\
+
+\end{longtable}
+
+\textbf{Llave primaria:} idSucursal\\
+
+\section*{Premio}
+
+\begin{longtable}{p{3.2cm} p{2.2cm} p{5.8cm} p{4.2cm} p{1.2cm}}
+\label{tab:premio}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+
+idPremio 
+& int 
+& Numeros mayores a 0
+& NOT NULL (autoincremental)
+& PK \\
+
+Nombre 
+& varchar(100) 
+& Cadenas de hasta 100 caracteres.
+& NOT NULL
+&  \\
+
+CategoriaEdad 
+& varchar(50) 
+& Cadenas dentro de la lista (Infantil, Juvenil, Adulto, Todas)
+& NOT NULL;
+
+Revisar que el valor sea uno en (Infantil, Juvenil, Adulto, Todas)
+&  \\
+
+ValorAproximado 
+& decimal(10,2) 
+& Numeros decimales mayores a 0
+& NOT NULL;
+
+Revisar: (ValorAproximado $>$ 0)
+&  \\
+
+CostoPuntos 
+& int 
+& Numeros mayores a 0
+& NOT NULL;
+
+Revisar: (CostoPuntos $>$ 0)
+&  \\
+
+\end{longtable}
+
+\textbf{Llave primaria:} idPremio\\
+
+\section*{Gerente}
+
+\begin{longtable}{p{3.2cm} p{2.2cm} p{4.8cm} p{4.2cm} p{1.2cm}}
+\label{tab:gerente}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+CURP 
+& varchar(18) 
+& Cadenas con el formato estándar: 4 letras, 6 dígitos, 6 letras, 1 carácter alfanumérico y 1 dígito.
+& NOT NULL;
+
+Revisar que se cumpla
+el formato estándar.
+& PK, FK \\
+
+cedula 
+& varchar(20)
+& Cualquier cadena con 7 u 8 números.
+& NOT NULL;
+
+Revisar que esté compuesta únicamente con números.
+& \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} CURP\\
+\textbf{Llave foránea:} CURP $\rightarrow$ Empleado (CURP)\\
+
+
+\section*{Tecnico}
+
+\begin{longtable}{p{3.2cm} p{2.2cm} p{4.8cm} p{4.2cm} p{1.2cm}}
+\label{tab:tecnico}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+CURP 
+& varchar(18) 
+& Cadenas con el formato estándar: 4 letras, 6 dígitos, 6 letras, 1 carácter alfanumérico y 1 dígito.
+& NOT NULL;
+
+Revisar que se cumpla
+el formato estándar.
+& PK, FK \\
+
+especialidad 
+& varchar(100)
+& Cadenas que indiquen una especialidad como: Simuladores, Juegos electromecánicos, entre otras.
+& NOT NULL
+& \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} CURP\\
+\textbf{Llave foránea:} CURP $\rightarrow$ Empleado (CURP)\\
+
+\section*{Cajero}
+
+\begin{longtable}{p{3.2cm} p{2.2cm} p{4.8cm} p{4.2cm} p{1.2cm}}
+\label{tab:cajero}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+CURP 
+& varchar(18) 
+& Cadenas con el formato estándar: 4 letras, 6 dígitos, 6 letras, 1 carácter alfanumérico y 1 dígito.
+& NOT NULL; 
+
+Revisar que se cumpla
+el formato estándar.
+& PK, FK \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} CURP\\
+\textbf{Llave foránea:} CURP $\rightarrow$ Empleado (CURP)\\
+
+
+\section*{EncargadoPremios}
+
+\begin{longtable}{p{3.2cm} p{2.2cm} p{4.8cm} p{4.2cm} p{1.2cm}}
+\label{tab:encargadopremios}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Dominio} & \textbf{Restricciones} & \textbf{Llave} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+CURP 
+& varchar(18) 
+& Cadenas con el formato estándar: 4 letras, 6 dígitos, 6 letras, 1 carácter alfanumérico y 1 dígito.
+& NOT NULL;
+
+Revisar que se cumpla
+el formato estándar.
+& PK, FK \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} CURP\\
+\textbf{Llave foránea:} CURP $\rightarrow$ Empleado (CURP)\\
+
+\section*{Almacenamiento}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:almacenamiento}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+idSucursal 
+& int 
+& NOT NULL 
+& FK \\
+
+idPremio 
+& int 
+& NOT NULL 
+& FK \\
+
+FechaRotacion 
+& date 
+& NOT NULL 
+& \\
+
+CantidadRecibida 
+& int 
+& NOT NULL \newline CHECK(CantidadRecibida $\geq$ 0)
+& \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave foránea:} idSucursal $\rightarrow$ Sucursal (idSucursal)\\
+\textbf{Llave foránea:} idPremio $\rightarrow$ Premio (idPremio)\\
+
+
+\section*{Maquina}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:maquina}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+idMaquina 
+& int 
+& NOT NULL \newline CHECK(idMaquina $>$ 0)
+& PK \\
+
+idSucursal 
+& int 
+& NOT NULL 
+& FK \\
+
+idJuego 
+& int 
+& NOT NULL 
+& FK \\
+
+EstadoMaquina 
+& varchar(20) 
+& NOT NULL \newline CHECK(EstadoMaquina IN ('activo', 'fuera de servicio', 'mantenimiento'))
+& \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} idMaquina\\
+\textbf{Llave foránea:} idSucursal $\rightarrow$ Sucursal (idSucursal)\\
+\textbf{Llave foránea:} idJuego $\rightarrow$ Juego (idJuego)\\
+
+\section*{Administrar}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:administrar}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+idSucursal 
+& int 
+& NOT NULL 
+& FK \\
+
+CURP 
+& varchar(18) 
+& NOT NULL 
+& FK \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave foránea:} idSucursal $\rightarrow$ Sucursal (idSucursal)\\
+\textbf{Llave foránea:} CURP $\rightarrow$ Gerente (CURP)\\
+
+
+\section*{Reparar}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:reparar}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+idMaquina 
+& int 
+& NOT NULL 
+& FK \\
+
+CURP 
+& varchar(18) 
+& NOT NULL 
+& FK \\
+
+Tipo 
+& varchar(50) 
+& NOT NULL \newline CHECK(Tipo $<>$ '')
+& \\
+
+Problema 
+& varchar(1000) 
+& NOT NULL \newline CHECK(Problema $<>$ '')
+& \\
+
+Fecha 
+& date 
+& NOT NULL 
+& \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave foránea:} idMaquina $\rightarrow$ Maquina (idMaquina)\\
+\textbf{Llave foránea:} CURP $\rightarrow$ Tecnico (CURP)\\
+
+
+\section*{Certificacion}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:certificacion}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+CURP 
+& varchar(18) 
+& NOT NULL \newline CHECK(CURP $\sim$ '\^{}[A-Z]\{4\}[0-9]\{6\}[A-Z]\{6\}[A-Z0-9][0-9]\$')
+& PK, FK \\
+
+TituloCertificacion 
+& varchar(100) 
+& NOT NULL \newline CHECK(TituloCertificacion $<>$ '')
+& PK \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria compuesta:} CURP, TituloCertificacion\\
+\textbf{Llave foránea:} CURP $\rightarrow$ Tecnico (CURP)\\
+
+
+
+\section*{Cliente}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:cliente}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+idCliente 
+& SERIAL4 
+& NOT NULL \newline CHECK(idCliente $>$ 0)
+& PK \\
+
+Nombre 
+& varchar(50) 
+& NOT NULL \newline CHECK(Nombre $<>$ '')
+&  \\
+
+ApellidoPaterno 
+& varchar(50) 
+& NOT NULL \newline CHECK(ApellidoPaterno $<>$ '')
+&  \\
+
+ApellidoMaterno 
+& varchar(50) 
+& Acepta NULL \newline CHECK(ApellidoMaterno $<>$ '')
+&  \\
+
+FechaNacimiento 
+& date 
+& NOT NULL \newline CHECK(FechaNacimiento $\leq$ CURRENT\_DATE)
+&  \\
+
+Sexo 
+& varchar(10) 
+& NOT NULL \newline CHECK(Sexo IN ('Masculino', 'Femenino', 'No binario'))
+&  \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} idCliente\\
+
+
+\section*{Tarjeta}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:tarjeta}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+idTarjeta 
+& SERIAL4 
+& NOT NULL \newline CHECK(idTarjeta $>$ 0)
+& PK \\
+
+Estado 
+& varchar(30) 
+& NOT NULL \newline CHECK(Estado IN ('Activa', 'Bloqueada', 'Cancelada'))
+&  \\
+
+Saldo 
+& float 
+& NOT NULL \newline CHECK(Saldo $\geq$ 0)
+&  \\
+
+Puntos 
+& int 
+& NOT NULL \newline CHECK(Puntos $\geq$ 0)
+&  \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} idTarjeta\\
+
+
+\section*{Registrar}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:registrar}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+idCliente 
+& int 
+& NOT NULL \newline CHECK(idCliente $>$ 0)
+& PK, FK \\
+
+idTarjeta 
+& int 
+& NOT NULL \newline CHECK(idTarjeta $>$ 0)
+& PK, FK \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria compuesta:} idCliente, idTarjeta\\
+\textbf{Llaves foráneas:}\\
+idCliente $\rightarrow$ Cliente (idCliente)\\
+idTarjeta $\rightarrow$ Tarjeta (idTarjeta)\\
+
+
+\section*{CorreoCliente}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:correocliente}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+idCliente 
+& int 
+& NOT NULL
+& PK, FK \\
+
+Correo 
+& varchar(100) 
+& NOT NULL
+& PK \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria compuesta:} idCliente, Correo\\
+\textbf{Llave foránea:} idCliente $\rightarrow$ Cliente (idCliente)\\
+
+
+\section*{TelefonoCliente}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:telefonocliente}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+idCliente 
+& int 
+& NOT NULL
+& PK, FK \\
+
+Telefono 
+& varchar(10) 
+& NOT NULL \newline CHECK(Telefono $\sim$ \texttt{\^{}[0-9]\{10\}\$})
+& PK \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria compuesta:} idCliente, Telefono\\
+\textbf{Llave foránea:} idCliente $\rightarrow$ Cliente (idCliente)\\
+
+
+\section*{Recarga}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:recarga}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+idTarjeta 
+& int 
+& NOT NULL \newline CHECK(idTarjeta $>$ 0)
+& PK, FK \\
+
+numRecarga 
+& int 
+& NOT NULL \newline CHECK(numRecarga $>$ 0)
+& PK \\
+
+idSucursal 
+& int 
+& NOT NULL \newline CHECK(idSucursal $>$ 0)
+& FK \\
+
+CURP 
+& varchar(18) 
+& NOT NULL \newline CHECK(CURP $\sim$ formato estándar de CURP: 4 letras, 6 dígitos, 6 letras, 1 alfanumérico y 1 dígito)
+& FK \\
+
+Monto 
+& decimal(10,2) 
+& NOT NULL \newline CHECK(Monto $>$ 0)
+&  \\
+
+MetodoPago 
+& varchar(30) 
+& NOT NULL \newline CHECK(MetodoPago IN ('Efectivo', 'Crédito', 'Débito', 'Paypal'))
+&  \\
+
+Hora 
+& time 
+& NOT NULL
+&  \\
+
+Fecha 
+& date 
+& NOT NULL \newline CHECK(Fecha $\leq$ CURRENT\_DATE)
+&  \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria compuesta:} idTarjeta, numRecarga\\
+\textbf{Llaves foráneas:}\\
+idTarjeta $\rightarrow$ Tarjeta (idTarjeta)\\
+idSucursal $\rightarrow$ Sucursal (idSucursal)\\
+CURP $\rightarrow$ Cajero (CURP)\\
+
+
+\section*{Canje}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:canje}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+idCanje 
+& SERIAL4 
+& NOT NULL \newline CHECK(idCanje $>$ 0)
+& PK \\
+
+idSucursal 
+& int 
+& NOT NULL \newline CHECK(idSucursal $>$ 0)
+& FK \\
+
+idTarjeta 
+& int 
+& NOT NULL \newline CHECK(idTarjeta $>$ 0)
+& FK \\
+
+CURP 
+& varchar(18) 
+& NOT NULL \newline CHECK(CURP $\sim$ formato estándar de CURP: 4 letras, 6 dígitos, 6 letras, 1 alfanumérico y 1 dígito)
+& FK \\
+
+Hora 
+& time 
+& NOT NULL
+&  \\
+
+Fecha 
+& date 
+& NOT NULL \newline CHECK(Fecha $\leq$ CURRENT\_DATE)
+&  \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} idCanje\\
+\textbf{Llaves foráneas:}\\
+idSucursal $\rightarrow$ Sucursal (idSucursal)\\
+idTarjeta $\rightarrow$ Tarjeta (idTarjeta)\\
+CURP $\rightarrow$ EncargadoPremios (CURP)\\
+
+
+\section*{Incluir}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:incluir}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+idCanje 
+& int 
+& NOT NULL \newline CHECK(idCanje $>$ 0)
+& PK, FK \\
+
+idPremio 
+& int 
+& NOT NULL \newline CHECK(idPremio $>$ 0)
+& PK, FK \\
+
+Cantidad 
+& int 
+& NOT NULL \newline CHECK(Cantidad $>$ 0)
+&  \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria compuesta:} idCanje, idPremio\\
+\textbf{Llaves foráneas:}\\
+idCanje $\rightarrow$ Canje (idCanje)\\
+idPremio $\rightarrow$ Premio (idPremio)\\
+
+
+\section{Restaurar backup de una BD en Docker}
+Para la restauración del backup, se siguieron los pasos proporcionados en la practica.
+
+\begin{enumerate}
+    \item Revisión de los contenedores actuales.
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{imagenes/Diego-Revision.png}
+    \end{figure}
+
+    \item Se crea la base de datos ejemplo, se revisa que este vacía y se restaura el backup. En principio ocurre un error, pero fue solucionado al usar la instrucción pg\_restore.
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{imagenes/Diego-Restauracion.png}
+    \end{figure}
+
+    \item Revisión de las tablas en la base de datos.
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{imagenes/Diego-Tablas1.png}
+    \includegraphics[width=0.5\textwidth]{imagenes/Diego-Tablas2.png}
+    \end{figure}
+\end{enumerate}
+
+
+\end{document}
