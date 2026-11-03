@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1793668302.46029 "/home/navega/cienciasComp/5toSem/fbd/practicas/Practica6/Docs/main.tex" "main.pdf" "main" 1793668303.55543 0
-  "/home/navega/cienciasComp/5toSem/fbd/practicas/Practica6/Docs/main.tex" 1793668300.66674 2040 1592799ea00df5234ded965669af2d54 ""
+["pdflatex"] 1793670948.70925 "/home/navega/cienciasComp/5toSem/fbd/practicas/Practica6/Docs/main.tex" "main.pdf" "main" 1793670950.53118 0
+  "/home/navega/cienciasComp/5toSem/fbd/practicas/Practica6/Docs/main.tex" 1793670948.45191 4588 77bb9e5b302da668a7640d0f6731f126 ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1775415801 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1775415801 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1775415801 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -20,8 +20,13 @@
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm" 1775415801 1124 6c73e740cf17375f03eec0ee63599741 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1775415801 1116 933a60c408fc0a863a92debe84b2d294 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1775415801 1120 8b7d695260f3cff42e636090a8002094 ""
+  "/usr/share/texmf-dist/fonts/tfm/public/cm/cmti12.tfm" 1775415801 1484 ed72f8f5cf654cda15ecc8e32bfcbee5 ""
+  "/usr/share/texmf-dist/fonts/tfm/public/cm/cmtt12.tfm" 1775415801 772 9a936b7f5e2ff0557fce0f62822f0bbf ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1775415801 32080 340ef9bf63678554ee606688e7b5339d ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1775415801 32722 d7379af29a190c3f453aba36302ff5a9 ""
+  "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1775415801 32569 5e5ddc8df908dea60932f3c484a54c0d ""
+  "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb" 1775415801 36118 fad905eba93cff5bce1e185fe980a177 ""
+  "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb" 1775415801 24252 1e4e051947e12dfb50fee0b7f4e26e3a ""
   "/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1775415801 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/share/texmf-dist/tex/generic/babel-spanish/spanish.ldf" 1775415801 26965 3b6d1655ad716f98e788b1fb9f2e87b8 ""
   "/usr/share/texmf-dist/tex/generic/babel/babel.sty" 1775415801 147019 f2ca437186bfeb562e1066ad59426a04 ""
@@ -88,10 +93,10 @@
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1788129004 2448296 a4123f179b7fdde8e04dd2e12b02ac5b ""
   "imagenes/Logo_FC.png" 1793668031.58009 186755 acf237b0d3a7c39d4cca9eba74477de8 ""
   "imagenes/UNAM_Logo.png" 1793668031.58209 66626 c48a8e7751aa6818dc8522df18e0ffc4 ""
-  "main.aux" 1793668303.52086 487 46d2cf4f0f59990d80781de713b15896 "pdflatex"
-  "main.out" 1793668303.52186 187 f6f777bb0db5abaa62715bcdc818f4b1 "pdflatex"
-  "main.tex" 1793668300.66674 2040 1592799ea00df5234ded965669af2d54 ""
-  "main.toc" 1793668303.52186 114 dbd3d46598ae56b25a8a585dea171342 "pdflatex"
+  "main.aux" 1793670950.49333 487 46d2cf4f0f59990d80781de713b15896 "pdflatex"
+  "main.out" 1793670950.49533 187 f6f777bb0db5abaa62715bcdc818f4b1 "pdflatex"
+  "main.tex" 1793670948.45191 4588 77bb9e5b302da668a7640d0f6731f126 ""
+  "main.toc" 1793670950.49636 114 dbd3d46598ae56b25a8a585dea171342 "pdflatex"
   (generated)
   "main.aux"
   "main.log"
