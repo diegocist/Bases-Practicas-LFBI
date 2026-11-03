@@ -66,5 +66,21 @@
 \tableofcontents
 \newpage
 \section{Preguntas de investigación.}
+\subsection*{¿Qué es una política de mantenimiento de llaves foráneas?}
+Una política de mantenimiento de llaves foráneas, denominada en SQL como \textit{acción referencial} o \textit{regla de integridad referencial}, es el conjunto de instrucciones atribuidas a un Sistema Manejador de Bases de Datos (SMBD) para definir el comportamiento del motor en caso de que un registro padre sea modificado (por el comando \texttt{UPDATE}) o eliminado (por \texttt{DELETE}).
 
+En una base de datos tabular, un registro padre en una tabla es aquel que  posee la llave primaria (PK) a la que hacen referencia otras tablas del sistema a través de llaves foráneas; si no se integran políticas de mantenimiento de llaves foráneas al SMBD $-$y si se excluyen las capturas de excepciones integradas en los motores de bases$-$, los registros que hacen uso de dichas llaves quedan huérfanos y generando inconsistencias al tener información incompleta que apunta a registros inexistentes, o incluso quedar corruptos.
+
+Algunas medidas que se pueden agregar para prevenir la generación de estos errores son:
+\begin{itemize}
+    \item \textbf{CASCADE.} Si el registro de la tabla padre se modifica, la actualización se propaga automáticamente a todos los registros dependientes en la tabla hija, incluso las eliminaciones.
+    \item \textbf{SET NULL.} Al actualizar o eliminar el registro padre, la columna de la llave foránea en los registros hijos se cambia a valor \texttt{NULL}; no obstante, esto requiere que las tablas hijas permitan valores nulos.
+    \item \textbf{SET DEFAULT.} Las llaves foráneas de los registros hijos toman un valor por defecto previamente configurado.
+    \item \textbf{RESTRICT.} Si existen registros asociados en la tabla hija, entonces todas las modificaciones a la tabla padre son bloqueadas.
+\end{itemize}
+\section*{Referencias bibliográficas.}
+\begin{itemize}
+    \item [1] IBM, ``Foreign key (referential) constraints'', \textit{IBM Documentation}, Db2 v11.1.0. [En línea]. Disponible en \href{https://www.ibm.com/docs/es/db2/11.1.0?topic=constraints-foreign-key-referential}{\underline{Documentación de IBM}}. [Accedido: 02-11-2026].
+    \item [2] Neon, ``PostgreSQL Foreign Key'', \textit{Neon Documentation}. [En línea]. Disponible en \href{https://neon.com/postgresql/tutorial/foreign-key}{\underline{neon.com}}. [Accedido: 02-nov-2026].
+\end{itemize}
 \end{document}
