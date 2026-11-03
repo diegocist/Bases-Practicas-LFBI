@@ -59,29 +59,17 @@
     Reynoso Ascencio Alexa \\
     Vega Navas Saúl \\
     \vspace{2cm}
-<<<<<<< HEAD
-
-    \textbf{Fecha de entrega: } 2 de Noviembre del 2026
-
-=======
     \textbf{Fecha de entrega: } 3 de Noviembre de 2026
->>>>>>> 17d1545774ab3bbcef44e1ae9d6bd591d27199c2
     \vfill
 \end{center}
 \end{titlepage}
 \tableofcontents
 \newpage
-<<<<<<< HEAD
-\section{Preguntas de investigación.}
-
-\subsection*{¿Qué es una política de mantenimiento de llaves foráneas?}
-=======
 \section*{Preguntas de investigación}
 \addcontentsline{toc}{section}{Preguntas de investigación}
 \subsection*{1. ¿Qué es una política de mantenimiento de llaves foráneas?}
 \addcontentsline{toc}{subsection}{1. ¿Qué es una política de mantenimiento de llaves foráneas?}
 
->>>>>>> 17d1545774ab3bbcef44e1ae9d6bd591d27199c2
 Una política de mantenimiento de llaves foráneas, denominada en SQL como \textit{acción referencial} o \textit{regla de integridad referencial}, es el conjunto de instrucciones atribuidas a un Sistema Manejador de Bases de Datos (SMBD) para definir el comportamiento del motor en caso de que un registro padre sea modificado (por el comando \texttt{UPDATE}) o eliminado (por \texttt{DELETE}).
 
 En una base de datos tabular, un registro padre en una tabla es aquel que  posee la llave primaria (PK) a la que hacen referencia otras tablas del sistema a través de llaves foráneas; si no se integran políticas de mantenimiento de llaves foráneas al SMBD $-$y si se excluyen las capturas de excepciones integradas en los motores de bases$-$, los registros que hacen uso de dichas llaves quedan huérfanos y pueden generar inconsistencias en consultas al contener información que apunta a registros inexistentes, o incluso quedar corruptos.
@@ -93,7 +81,6 @@ Las medidas que pueden prevenir la generación de estos errores se pueden agrega
     \item \textbf{SET DEFAULT.} Las llaves foráneas de los registros hijos toman un valor por defecto previamente configurado.
     \item \textbf{RESTRICT.} Si existen registros asociados en la tabla hija, entonces todas las modificaciones a la tabla padre son bloqueadas.
 \end{itemize}
-<<<<<<< HEAD
 
 \subsection*{5. Con base a lo anterior, ¿cuál política utilizarán para su esquema, y por qué motivo?}
 
@@ -102,10 +89,6 @@ Para nuestro esquema, en general usaremos la política cascade (ON DELETE CASCAD
 Por otro lado usaremos también la política RESTRICT (ON DELETE RESTRICT ON UPDATE CASCADE), pues por seguridad consideramos que existen tablas con bastante peso y cuyos ejemplares no se deberían de eliminar si tienen registros de llave foránea, pues existe el riesgo de eliminar múltiples datos de forma masiva. Por ejemplo para las llaves primarias de sucursal, empleado, cliente, etc. Eliminarlas usando CASCADE nos llevaría a eliminar registros asociados mediante llave foránea de forma masiva y en un negocio de este tipo, creemos que no es deseable eliminar el historial de recargas o de reparaciones.
 
 \section*{Referencias bibliográficas.}
-=======
-\section*{Referencias bibliográficas}
-\addcontentsline{toc}{section}{Referencias bibliográficas}
->>>>>>> 17d1545774ab3bbcef44e1ae9d6bd591d27199c2
 \begin{itemize}
     \item [1] IBM, ``Foreign key (referential) constraints'', \textit{IBM Documentation}, Db2 v11.1.0. [En línea]. Disponible en \href{https://www.ibm.com/docs/es/db2/11.1.0?topic=constraints-foreign-key-referential}{\underline{Documentación de IBM}}. [Accedido: 02-11-2026].
     \item [2] Neon, ``PostgreSQL Foreign Key'', \textit{Neon Documentation}. [En línea]. Disponible en \href{https://neon.com/postgresql/tutorial/foreign-key}{\underline{neon.com}}. [Accedido: 02-nov-2026].
