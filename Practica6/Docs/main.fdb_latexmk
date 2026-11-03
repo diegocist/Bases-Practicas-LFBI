@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1793670948.70925 "/home/navega/cienciasComp/5toSem/fbd/practicas/Practica6/Docs/main.tex" "main.pdf" "main" 1793670950.53118 0
-  "/home/navega/cienciasComp/5toSem/fbd/practicas/Practica6/Docs/main.tex" 1793670948.45191 4588 77bb9e5b302da668a7640d0f6731f126 ""
+["pdflatex"] 1793671642.31152 "/home/navega/cienciasComp/5toSem/fbd/practicas/Practica6/Docs/main.tex" "main.pdf" "main" 1793671644.23305 0
+  "/home/navega/cienciasComp/5toSem/fbd/practicas/Practica6/Docs/main.tex" 1793671642.05759 4806 320bfab5bf0c2872bdef997d36b44c57 ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1775415801 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1775415801 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1775415801 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -93,10 +93,10 @@
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1788129004 2448296 a4123f179b7fdde8e04dd2e12b02ac5b ""
   "imagenes/Logo_FC.png" 1793668031.58009 186755 acf237b0d3a7c39d4cca9eba74477de8 ""
   "imagenes/UNAM_Logo.png" 1793668031.58209 66626 c48a8e7751aa6818dc8522df18e0ffc4 ""
-  "main.aux" 1793670950.49333 487 46d2cf4f0f59990d80781de713b15896 "pdflatex"
-  "main.out" 1793670950.49533 187 f6f777bb0db5abaa62715bcdc818f4b1 "pdflatex"
-  "main.tex" 1793670948.45191 4588 77bb9e5b302da668a7640d0f6731f126 ""
-  "main.toc" 1793670950.49636 114 dbd3d46598ae56b25a8a585dea171342 "pdflatex"
+  "main.aux" 1793671644.19611 731 b3697d8a18866782b7aee0cfddc47836 "pdflatex"
+  "main.out" 1793671644.19811 754 d9adbc425d1c26f1f6b0154f75cf62ee "pdflatex"
+  "main.tex" 1793671642.05759 4806 320bfab5bf0c2872bdef997d36b44c57 ""
+  "main.toc" 1793671644.19811 276 cf6335a172fb51973da6ee1ee67b9e68 "pdflatex"
   (generated)
   "main.aux"
   "main.log"

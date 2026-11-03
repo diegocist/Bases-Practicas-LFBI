@@ -1,2 +1,4 @@
 \babel@toc {spanish}{}\relax 
-\contentsline {section}{\numberline {1}Preguntas de investigación.}{2}{section.1}%
+\contentsline {section}{Preguntas de investigación}{2}{Doc-Start}%
+\contentsline {subsection}{1. ¿Qué es una política de mantenimiento de llaves foráneas?}{2}{section*.1}%
+\contentsline {section}{Referencias bibliográficas}{2}{section*.1}%
