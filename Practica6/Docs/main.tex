@@ -82,7 +82,7 @@ Las medidas que pueden prevenir la generación de estos errores se pueden agrega
     \item \textbf{RESTRICT.} Si existen registros asociados en la tabla hija, entonces todas las modificaciones a la tabla padre son bloqueadas.
 \end{itemize}
 
-\section*{2. Para cada política que investigaron, ¿cómo se indica en SQL?}
+\subsection*{2. Para cada política que investigaron, ¿cómo se indica en SQL?}
 \addcontentsline{toc}{subsection}{2. Para cada política que investigaron, ¿cómo se indica en SQL?}
 
 
@@ -100,6 +100,17 @@ Así que las 5 políticas de mantenimiento de llaves foráneas se indican en SQL
     \item Asignar nulo: \texttt{SET NULL}
     \item Asignar por defecto: \texttt{SET DEFAULT}
 \end{enumerate}
+
+\subsection*{3. Para cada política que investigaron, ¿cuál es su objeto y su funcionamiento?}
+\addcontentsline{toc}{subsection}{3. Para cada política que investigaron, ¿cuál es su objeto y su funcionamiento?}
+ 
+\begin{itemize}
+    \item \textbf{NO ACTION.} Es la acción por defecto. Permite intentar la modificación en la tabla padre, pero la restricción debe cumplirse al verificarla; si quedan registros hijos asociados, la operación genera un error y se revierte. Su particularidad es que la verificación puede posponerse hasta el final de la transacción, de modo que otros comandos pueden corregir la situación antes de que se revise.
+    \item \textbf{RESTRICT.} Impide de inmediato eliminar o actualizar un registro padre que todavía es referenciado, y no permite posponer la verificación. En \texttt{ON UPDATE}, bloquea la actualización aunque el estado posterior cumpliera la restricción.
+    \item \textbf{CASCADE.} Propaga el cambio del padre a los hijos: al eliminar el padre se eliminan los hijos que lo referencian, y al actualizarlo el nuevo valor se copia a los hijos. El efecto se extiende por toda la cadena de dependencias, y si una cascada provoca una violación que no puede resolverse, se aborta la transacción completa.
+    \item \textbf{SET NULL.} Al eliminar o actualizar el padre, la llave foránea de los hijos se establece en \texttt{NULL}, por lo que conservan su registro pero sin padre asociado. Requiere que la columna admita nulos, así que no puede aplicarse a columnas que formen parte de la llave primaria.
+    \item \textbf{SET DEFAULT.} Al eliminar o actualizar el padre, la llave foránea de los hijos toma su valor por defecto. La operación falla si ese valor no existe en la tabla padre.
+\end{itemize}
 
 \subsection*{4. Para cada politica que investigaron, ¿cuáles son sus ventajas y desventajas?}
 \addcontentsline{toc}{subsection}{4. Para cada politica que investigaron, ¿cuáles son sus ventajas y desventajas?}
@@ -142,6 +153,8 @@ Por otro lado usaremos también la política RESTRICT (ON DELETE RESTRICT ON UPD
     \item [2] Neon, ``PostgreSQL Foreign Key'', \textit{Neon Documentation}. [En línea]. Disponible en \href{https://neon.com/postgresql/tutorial/foreign-key}{\underline{neon.com}}. [Accedido: 02-nov-2026].
     \item [3] PostgreSQL Global Development Group, ``5.5. Constraints'', \textit{PostgreSQL Documentation}, v18. [En línea]. Disponible en \href{https://www.postgresql.org/docs/18/ddl-constraints.html}{\underline{postgresql.org}}. [Accedido: 02-nov-2026].
     \item [4] S. Wilson, ``Restrict vs Cascade vs Set Null in SQL: Choosing the Right Foreign Key Rule'', \textit{Medium}, [fecha de publicación]. [En línea]. Disponible en \href{https://medium.com/@sunnywilson.veshapogu/restrict-vs-cascade-vs-set-null-in-sql-choosing-the-right-foreign-key-rule-6d7c98484710}{\underline{medium.com}}. [Accedido: 02-nov-2026].
+    \item [5] A. Silberschatz, H. F. Korth y S. Sudarshan, \textit{Database System Concepts}, 6.\textsuperscript{a} ed. McGraw-Hill, 2011.
+    \item [6] R. Elmasri y S. B. Navathe, \textit{Fundamentals of Database Systems}, 7.\textsuperscript{a} ed. Pearson, 2016.
 \end{itemize}
 
 \end{document}

@@ -161,6 +161,24 @@ CHECK(NumInterior > 0);
 ALTER TABLE Sucursal ADD CONSTRAINT Sucursal_pkey
 PRIMARY KEY (idSucursal);
 
+-- Comentarios Sucursal
+COMMENT ON TABLE Sucursal IS 'Tabla que contiene las sucursales del negocio';
+
+COMMENT ON COLUMN Sucursal.idSucursal IS 'Identificador de la sucursal';
+COMMENT ON COLUMN Sucursal.Telefono IS 'Telefono de la sucursal, compuesto por 10 digitos';
+COMMENT ON COLUMN Sucursal.Nombre IS 'Nombre de la sucursal';
+COMMENT ON COLUMN Sucursal.Colonia IS 'Colonia donde se ubica la sucursal';
+COMMENT ON COLUMN Sucursal.Estado IS 'Estado donde se ubica la sucursal';
+COMMENT ON COLUMN Sucursal.Calle IS 'Calle donde se ubica la sucursal';
+COMMENT ON COLUMN Sucursal.NumExterior IS 'Numero exterior de la sucursal';
+COMMENT ON COLUMN Sucursal.NumInterior IS 'Numero interior de la sucursal, acepta NULL';
+
+COMMENT ON CONSTRAINT Sucursal_pkey ON Sucursal IS 'La llave primaria de la tabla Sucursal';
+COMMENT ON CONSTRAINT Sucursal_d1 ON Sucursal IS 'Restriccion check que asegura que idSucursal sea mayor a 0';
+COMMENT ON CONSTRAINT Sucursal_d2 ON Sucursal IS 'Restriccion check que asegura que Telefono tenga exactamente 10 digitos';
+COMMENT ON CONSTRAINT Sucursal_d3 ON Sucursal IS 'Restriccion check que asegura que NumExterior sea mayor a 0';
+COMMENT ON CONSTRAINT Sucursal_d4 ON Sucursal IS 'Restriccion check que asegura que NumInterior, cuando no es NULL, sea mayor a 0';
+
 
 CREATE TABLE Premio(
 	idPremio SERIAL4,
@@ -205,6 +223,21 @@ CHECK(CostoPuntos > 0);
 -- idPremio como llave primaria
 ALTER TABLE Premio ADD CONSTRAINT Premio_pkey
 PRIMARY KEY (idPremio);
+
+-- Comentarios Premio
+COMMENT ON TABLE Premio IS 'Tabla que contiene los premios que se pueden canjear con puntos';
+
+COMMENT ON COLUMN Premio.idPremio IS 'Identificador del premio';
+COMMENT ON COLUMN Premio.Nombre IS 'Nombre del premio';
+COMMENT ON COLUMN Premio.CategoriaEdad IS 'Categoria de edad a la que va dirigido el premio: Infantil, Juvenil, Adulto o Todas';
+COMMENT ON COLUMN Premio.ValorAproximado IS 'Valor aproximado del premio';
+COMMENT ON COLUMN Premio.CostoPuntos IS 'Cantidad de puntos necesarios para canjear el premio';
+
+COMMENT ON CONSTRAINT Premio_pkey ON Premio IS 'La llave primaria de la tabla Premio';
+COMMENT ON CONSTRAINT Premio_d1 ON Premio IS 'Restriccion check que asegura que idPremio sea mayor a 0';
+COMMENT ON CONSTRAINT Premio_d2 ON Premio IS 'Restriccion check que asegura que CategoriaEdad sea Infantil, Juvenil, Adulto o Todas';
+COMMENT ON CONSTRAINT Premio_d3 ON Premio IS 'Restriccion check que asegura que ValorAproximado sea mayor a 0';
+COMMENT ON CONSTRAINT Premio_d4 ON Premio IS 'Restriccion check que asegura que CostoPuntos sea mayor a 0';
 
 CREATE TABLE Cliente(
     idCliente SERIAL4,
@@ -471,11 +504,27 @@ CHECK(Cedula ~ '^[0-9]{7,8}$');
 -- CURP como llave primaria
 ALTER TABLE Gerente ADD CONSTRAINT Gerente_pkey
 PRIMARY KEY (CURP);
+
+ALTER TABLE Gerente ADD CONSTRAINT Gerente_unique_cedula
+UNIQUE (Cedula);
  
 --Referencial
 -- CURP hace referencia a Empleado(CURP)
 ALTER TABLE Gerente ADD CONSTRAINT Gerente_fkey
-FOREIGN KEY (CURP) REFERENCES Empleado(CURP);
+FOREIGN KEY (CURP) REFERENCES Empleado(CURP)
+ON UPDATE CASCADE ON DELETE CASCADE;
+
+-- Comentarios Gerente
+COMMENT ON TABLE Gerente IS 'Tabla que contiene a los empleados que son gerentes';
+
+COMMENT ON COLUMN Gerente.CURP IS 'CURP del gerente, identifica al empleado';
+COMMENT ON COLUMN Gerente.Cedula IS 'Cedula profesional del gerente, compuesta por 7 u 8 digitos';
+
+COMMENT ON CONSTRAINT Gerente_pkey ON Gerente IS 'La llave primaria de la tabla Gerente';
+COMMENT ON CONSTRAINT Gerente_fkey ON Gerente IS 'Llave foranea de CURP hacia Empleado';
+COMMENT ON CONSTRAINT Gerente_unique_cedula ON Gerente IS 'Restriccion unique que asegura que no se repita la cedula entre gerentes';
+COMMENT ON CONSTRAINT Gerente_d1 ON Gerente IS 'Restriccion check que asegura que CURP tenga el formato estandar';
+COMMENT ON CONSTRAINT Gerente_d2 ON Gerente IS 'Restriccion check que asegura que Cedula tenga 7 u 8 digitos';
 
 
 CREATE TABLE Tecnico(
@@ -504,7 +553,18 @@ PRIMARY KEY (CURP);
 --Referencial
 -- CURP hace referencia a Empleado(CURP)
 ALTER TABLE Tecnico ADD CONSTRAINT Tecnico_fkey
-FOREIGN KEY (CURP) REFERENCES Empleado(CURP);
+FOREIGN KEY (CURP) REFERENCES Empleado(CURP)
+ON UPDATE CASCADE ON DELETE CASCADE;
+
+-- Comentarios Tecnico
+COMMENT ON TABLE Tecnico IS 'Tabla que contiene a los empleados que son tecnicos';
+
+COMMENT ON COLUMN Tecnico.CURP IS 'CURP del tecnico, identifica al empleado';
+COMMENT ON COLUMN Tecnico.Especialidad IS 'Especialidad del tecnico';
+
+COMMENT ON CONSTRAINT Tecnico_pkey ON Tecnico IS 'La llave primaria de la tabla Tecnico';
+COMMENT ON CONSTRAINT Tecnico_fkey ON Tecnico IS 'Llave foranea de CURP hacia Empleado';
+COMMENT ON CONSTRAINT Tecnico_d1 ON Tecnico IS 'Restriccion check que asegura que CURP tenga el formato estandar';
  
 
 CREATE TABLE Cajero(
@@ -528,7 +588,17 @@ PRIMARY KEY (CURP);
 --Referencial
 -- CURP hace referencia a Empleado(CURP)
 ALTER TABLE Cajero ADD CONSTRAINT Cajero_fkey
-FOREIGN KEY (CURP) REFERENCES Empleado(CURP);
+FOREIGN KEY (CURP) REFERENCES Empleado(CURP)
+ON UPDATE CASCADE ON DELETE CASCADE;
+
+-- Comentarios Cajero
+COMMENT ON TABLE Cajero IS 'Tabla que contiene a los empleados que son cajeros';
+
+COMMENT ON COLUMN Cajero.CURP IS 'CURP del cajero, identifica al empleado';
+
+COMMENT ON CONSTRAINT Cajero_pkey ON Cajero IS 'La llave primaria de la tabla Cajero';
+COMMENT ON CONSTRAINT Cajero_fkey ON Cajero IS 'Llave foranea de CURP hacia Empleado';
+COMMENT ON CONSTRAINT Cajero_d1 ON Cajero IS 'Restriccion check que asegura que CURP tenga el formato estandar';
 
 
 CREATE TABLE EncargadoPremios(
@@ -552,7 +622,17 @@ PRIMARY KEY (CURP);
 --Referencial
 -- CURP hace referencia a Empleado(CURP)
 ALTER TABLE EncargadoPremios ADD CONSTRAINT EncargadoPremios_fkey
-FOREIGN KEY (CURP) REFERENCES Empleado(CURP);
+FOREIGN KEY (CURP) REFERENCES Empleado(CURP)
+ON UPDATE CASCADE ON DELETE CASCADE;
+
+-- Comentarios EncargadoPremios
+COMMENT ON TABLE EncargadoPremios IS 'Tabla que contiene a los empleados que son encargados de premios';
+
+COMMENT ON COLUMN EncargadoPremios.CURP IS 'CURP del encargado de premios, identifica al empleado';
+
+COMMENT ON CONSTRAINT EncargadoPremios_pkey ON EncargadoPremios IS 'La llave primaria de la tabla EncargadoPremios';
+COMMENT ON CONSTRAINT EncargadoPremios_fkey ON EncargadoPremios IS 'Llave foranea de CURP hacia Empleado';
+COMMENT ON CONSTRAINT EncargadoPremios_d1 ON EncargadoPremios IS 'Restriccion check que asegura que CURP tenga el formato estandar';
 
 CREATE TABLE Almacenamiento(
     idSucursal INT,
