@@ -83,6 +83,8 @@ Las medidas que pueden prevenir la generación de estos errores se pueden agrega
 \end{itemize}
 
 \section*{2. Para cada política que investigaron, ¿cómo se indica en SQL?}
+\addcontentsline{toc}{subsection}{2. Para cada política que investigaron, ¿cómo se indica en SQL?}
+
 
 Primero notemos que estas políticas se utilizan cuando un registro referenciado en una tabla se elimina o se actualiza. Esto se indica mediante las siguientes cláusulas:
 \begin{enumerate}
@@ -99,7 +101,36 @@ Así que las 5 políticas de mantenimiento de llaves foráneas se indican en SQL
     \item Asignar por defecto: \texttt{SET DEFAULT}
 \end{enumerate}
 
+\subsection*{4. Para cada politica que investigaron, ¿cuáles son sus ventajas y desventajas?}
+\addcontentsline{toc}{subsection}{4. Para cada politica que investigaron, ¿cuáles son sus ventajas y desventajas?}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lp{6cm}p{6cm}}
+        \toprule
+        \textbf{Política de mantenimiento} & \textbf{Ventajas} & \textbf{Desventajas} \\
+        \midrule
+        CASCADE 
+        & Mantiene la integridad automáticamente, ya que evita que queden registros huérfanos y extiende los cambios realizados en la llave del registro padre a todas las tablas hijas.
+        & Un borrado puede eliminar múltiples registros sin que el usuario lo desee, lo que puede ocasionar la pérdida de información que posiblemente no pueda recuperarse.\\
+        \addlinespace
+        SET NULL 
+        & Conserva los registros hijos aunque el registro padre desaparezca, evitando así la pérdida de información histórica.
+        & Solo funciona si la columna de la llave foránea acepta NULL y no puede aplicarse si forma parte de una llave primaria. Además, deja registros hijos sin referencia al padre.\\
+        \addlinespace
+         SET DEFAULT 
+        & Conserva los registros hijos y permite que la columna siga siendo NOT NULL. Los registros hijos mantienen una referencia. 
+        & Asignar automáticamente un valor por defecto puede generar asociaciones incorrectas entre los registros hijos y los padres. \\
+        \addlinespace
+        RESTRICT
+        & Impide borrar o modificar un registro padre mientras tenga registros hijos asociados, evitando pérdidas accidentales de información.
+        & Obliga a modificar o eliminar manualmente los registros hijos antes de realizar cambios en el registro padre, lo que puede retrasar operaciones legítimas.\\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
 \subsection*{5. Con base a lo anterior, ¿cuál política utilizarán para su esquema, y por qué motivo?}
+\addcontentsline{toc}{subsection}{5. Con base a lo anterior, ¿cuál política utilizarán para su esquema, y por qué motivo?}
 
 Para nuestro esquema, en general usaremos la política cascade (ON DELETE CASCADE ON UPDATE CASCADE), ya que la mayoría de nuestras tablas con llave foránea están estrechamente relacionadas a la tabla con llave primaria, de modo que carece de sentido guardar su información si se elimina el registro principal, además cualquier actualización sobre la llave primaria es imprescindible que se actualice también en los ejemplares de llave foránea. Por ejemplo, para los casos de tablas producidas por atributos multivaluados y en las subentidades derivadas de herencias como: CorreoEmpleado, TelefonoCliente, Certificacion, Cajero, Destreza, etc. No tiene sentido guardarlas si se elimina el cliente, el empleado o el juego al que corresponden.
 
@@ -107,8 +138,10 @@ Por otro lado usaremos también la política RESTRICT (ON DELETE RESTRICT ON UPD
 
 \section*{Referencias bibliográficas.}
 \begin{itemize}
-    \item [1] IBM, ``Foreign key (referential) constraints'', \textit{IBM Documentation}, Db2 v11.1.0. [En línea]. Disponible en \href{https://www.ibm.com/docs/es/db2/11.1.0?topic=constraints-foreign-key-referential}{\underline{Documentación de IBM}}. [Accedido: 02-11-2026].
+    \item [1] IBM, ``Foreign key (referential) constraints'', \textit{IBM Documentation}, Db2 v11.1.0. [En línea]. Disponible en \href{https://www.ibm.com/docs/es/db2/11.1.0?topic=constraints-foreign-key-referential}{\underline{Documentación de IBM}}. [Accedido: 02-nov-2026].
     \item [2] Neon, ``PostgreSQL Foreign Key'', \textit{Neon Documentation}. [En línea]. Disponible en \href{https://neon.com/postgresql/tutorial/foreign-key}{\underline{neon.com}}. [Accedido: 02-nov-2026].
+    \item [3] PostgreSQL Global Development Group, ``5.5. Constraints'', \textit{PostgreSQL Documentation}, v18. [En línea]. Disponible en \href{https://www.postgresql.org/docs/18/ddl-constraints.html}{\underline{postgresql.org}}. [Accedido: 02-nov-2026].
+    \item [4] S. Wilson, ``Restrict vs Cascade vs Set Null in SQL: Choosing the Right Foreign Key Rule'', \textit{Medium}, [fecha de publicación]. [En línea]. Disponible en \href{https://medium.com/@sunnywilson.veshapogu/restrict-vs-cascade-vs-set-null-in-sql-choosing-the-right-foreign-key-rule-6d7c98484710}{\underline{medium.com}}. [Accedido: 02-nov-2026].
 \end{itemize}
 
 \end{document}
