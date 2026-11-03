@@ -585,11 +585,13 @@ CHECK(CantidadRecibida >= 0);
 -- Referencial
 -- idSucursal hace referencia a Sucursal(idSucursal)
 ALTER TABLE Almacenamiento ADD CONSTRAINT Almacenamiento_fkey1
-FOREIGN KEY (idSucursal) REFERENCES Sucursal(idSucursal);
+FOREIGN KEY (idSucursal) REFERENCES Sucursal(idSucursal)
+ON UPDATE CASCADE ON DELETE CASCADE;
 
 -- idPremio hace referencia a Premio(idPremio)
 ALTER TABLE Almacenamiento ADD CONSTRAINT Almacenamiento_fkey2
-FOREIGN KEY (idPremio) REFERENCES Premio(idPremio);
+FOREIGN KEY (idPremio) REFERENCES Premio(idPremio)
+ON UPDATE CASCADE ON DELETE RESTRICT;
 
 
 CREATE TABLE Maquina(
@@ -630,11 +632,13 @@ PRIMARY KEY (idMaquina);
 -- Referencial
 -- idSucursal hace referencia a Sucursal(idSucursal)
 ALTER TABLE Maquina ADD CONSTRAINT Maquina_fkey1
-FOREIGN KEY (idSucursal) REFERENCES Sucursal(idSucursal);
+FOREIGN KEY (idSucursal) REFERENCES Sucursal(idSucursal)
+ON UPDATE CASCADE ON DELETE RESTRICT;
 
 -- idJuego hace referencia a Juego(idJuego)
 ALTER TABLE Maquina ADD CONSTRAINT Maquina_fkey2
-FOREIGN KEY (idJuego) REFERENCES Juego(idJuego);
+FOREIGN KEY (idJuego) REFERENCES Juego(idJuego)
+ON UPDATE CASCADE ON DELETE RESTRICT;
 
 
 CREATE TABLE Administrar(
@@ -656,11 +660,13 @@ SET NOT NULL;
 -- Referencial
 -- idSucursal hace referencia a Sucursal(idSucursal)
 ALTER TABLE Administrar ADD CONSTRAINT Administrar_fkey1
-FOREIGN KEY (idSucursal) REFERENCES Sucursal(idSucursal);
+FOREIGN KEY (idSucursal) REFERENCES Sucursal(idSucursal)
+ON UPDATE CASCADE ON DELETE CASCADE;
 
 -- CURP hace referencia a Gerente(CURP)
 ALTER TABLE Administrar ADD CONSTRAINT Administrar_fkey2
-FOREIGN KEY (CURP) REFERENCES Gerente(CURP);
+FOREIGN KEY (CURP) REFERENCES Gerente(CURP)
+ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 CREATE TABLE Reparar(
@@ -701,11 +707,13 @@ SET NOT NULL;
 -- Referencial
 -- idMaquina hace referencia a Maquina(idMaquina)
 ALTER TABLE Reparar ADD CONSTRAINT Reparar_fkey1
-FOREIGN KEY (idMaquina) REFERENCES Maquina(idMaquina);
+FOREIGN KEY (idMaquina) REFERENCES Maquina(idMaquina)
+ON UPDATE CASCADE ON DELETE RESTRICT;
 
 -- CURP hace referencia a Tecnico(CURP)
 ALTER TABLE Reparar ADD CONSTRAINT Reparar_fkey2
-FOREIGN KEY (CURP) REFERENCES Tecnico(CURP);
+FOREIGN KEY (CURP) REFERENCES Tecnico(CURP)
+ON UPDATE CASCADE ON DELETE RESTRICT;
 
 
 CREATE TABLE Certificacion(
@@ -736,7 +744,8 @@ PRIMARY KEY (CURP, TituloCertificacion);
 -- Referencial
 -- CURP hace referencia a Tecnico(CURP)
 ALTER TABLE Certificacion ADD CONSTRAINT Certificacion_fkey1
-FOREIGN KEY (CURP) REFERENCES Tecnico(CURP);
+FOREIGN KEY (CURP) REFERENCES Tecnico(CURP)
+ON UPDATE CASCADE ON DELETE CASCADE;
 
 CREATE TABLE Registrar(
     idCliente INT,
