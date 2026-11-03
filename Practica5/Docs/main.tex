@@ -59,12 +59,36 @@
     Reynoso Ascencio Alexa \\
     Vega Navas Saúl \\
     \vspace{2cm}
-    \textbf{Fecha de entrega: } 05 de octubre del 2026
+    \textbf{Fecha de entrega: } 27 de octubre del 2026
     \vfill
 \end{center}
 \end{titlepage}
 \tableofcontents
 \newpage
+\section{Consideraciones de Diseño.}
+\begin{itemize}
+    \item Para modelar la herencia total sobre empleado y juego, se opto por modificar el tipo de herencia, de total a parcial y agregar un atributo identificador obligatorio para forzar a cada instancia de juego y empleado a especializarse en alguna subclase. 
+    \begin{itemize}
+        Para juego se uso el atributo categoria que esta en el intervalo [0,3]. El significado de cada posible valor es:
+        \begin{itemize}
+            \item Disparos: Valor 0
+            \item Destreza: Valor 1
+            \item Ritmo: Valor 2
+            \item Velocidad: Valor 3
+        \end{itemize}
+        
+
+        Para Empleado se uso el atributo tipoEmplado que esta en el intervalo [0,3]. El significado de cada posible valor es:
+        \begin{itemize}
+        \item Gerente: Valor 0
+        \item Tecnico: Valor 1
+        \item EncargadoPremios: Valor 2
+        \item Cajero: Valor 3
+        \end{itemize}
+    \end{itemize}    
+\end{itemize}
+\newpage
+
 \section{Restricciones de dominio de las tablas.}
 
 \section*{Empleado}
@@ -251,9 +275,9 @@ Telefono
 \endfoot
 
 idJuego 
-& SERIAL4 
+& int 
 & NOT NULL \newline CHECK(idJuego $>$ 0)
-& PK \\
+& PK,FK \\
 
 PuntosPorAcierto 
 & int
@@ -264,6 +288,7 @@ PuntosPorAcierto
 
 \vspace{2pt}
 \textbf{Llave primaria:} idJuego\\
+\textbf{Llave foránea:} idJuego $\rightarrow$ Juego (idJuego)\\
 
 
 \section*{Destreza}
@@ -284,9 +309,9 @@ PuntosPorAcierto
 \endfoot
 
 idJuego 
-& SERIAL4 
+& int 
 & NOT NULL \newline CHECK(idJuego $>$ 0)
-& PK \\
+& PK,FK \\
 
 PuntosPorAcierto 
 & int
@@ -297,6 +322,7 @@ PuntosPorAcierto
 
 \vspace{2pt}
 \textbf{Llave primaria:} idJuego\\
+\textbf{Llave foránea:} idJuego $\rightarrow$ Juego (idJuego)\\
 
 \section*{Ritmo}
 
@@ -316,9 +342,9 @@ PuntosPorAcierto
 \endfoot
 
 idJuego 
-& SERIAL4
+& int
 & NOT NULL \newline CHECK(idJuego $>$ 0)
-& PK \\
+& PK,FK \\
 
 PuntosTop5 
 & int
@@ -329,6 +355,7 @@ PuntosTop5
 
 \vspace{2pt}
 \textbf{Llave primaria:} idJuego\\
+\textbf{Llave foránea:} idJuego $\rightarrow$ Juego (idJuego)\\
 
 \section*{Velocidad}
 
@@ -348,9 +375,9 @@ PuntosTop5
 \endfoot
 
 idJuego 
-& SERIAL4
+& int
 & NOT NULL \newline CHECK(idJuego $>$ 0)
-& PK \\
+& PK, FK \\
 
 PuntosTop5 
 & int
@@ -358,9 +385,8 @@ PuntosTop5
 & \\
 
 \end{longtable}
-
-\vspace{2pt}
 \textbf{Llave primaria:} idJuego\\
+\textbf{Llave foránea:} idJuego $\rightarrow$ Juego (idJuego)\\
 
 \section*{Sucursal}
 
@@ -909,12 +935,12 @@ Puntos
 idCliente 
 & int 
 & NOT NULL \newline CHECK(idCliente $>$ 0)
-& PK, FK \\
+& FK \\
 
 idTarjeta 
 & int 
 & NOT NULL \newline CHECK(idTarjeta $>$ 0)
-& PK, FK \\
+& FK \\
 
 \end{longtable}
 
@@ -1152,6 +1178,162 @@ Cantidad
 idCanje $\rightarrow$ Canje (idCanje)\\
 idPremio $\rightarrow$ Premio (idPremio)\\
 
+\section*{Partida}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:partida}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+numPartida 
+& serial4 
+& NOT NULL \newline CHECK(numPartida $>$ 0)
+& PK \\
+
+idMaquina 
+& int 
+& NOT NULL \newline CHECK(idMaquina $>$ 0)
+& PK \\
+
+idTarjeta 
+& int 
+& NOT NULL \newline CHECK(idTarjeta $>$ 0)
+& FK \\
+
+FechaPartida 
+& date 
+& NOT NULL \newline CHECK(FechaPartida $\leq$ CURRENT\_DATE)
+& \\
+
+HoraFin 
+& time 
+& NOT NULL
+& \\
+
+PuntosObtenidos 
+& float 
+& NOT NULL \newline CHECK(PuntosObtenidos $\geq$ 0)
+& \\
+
+Puntaje 
+& float 
+& NOT NULL \newline CHECK(Puntaje $\geq$ 0)
+& \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} numPartida, idMaquina\\
+\textbf{Llaves foráneas:} \\
+idMaquina $\rightarrow$ Maquina(idMaquina) \\
+idTarjeta $\rightarrow$ Tarjeta(idTarjeta) \\
+
+
+\section*{DiaApertura}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:diaapertura}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+idSucursal 
+& int 
+& NOT NULL
+& PK, FK \\
+
+Dia 
+& varchar(2) 
+& NOT NULL
+& PK \\
+
+HoraApertura 
+& time 
+& NOT NULL
+& PK\\
+
+HoraCierre 
+& time 
+& NOT NULL \newline CHECK(HoraCierre $>$ HoraApertura)
+& PK\\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llave primaria:} idSucursal, Dia, HoraApertura, HoraCierre\\
+\textbf{Llave foránea:} \\
+idSucursal $\rightarrow$ Sucursal(idSucursal) \\
+
+
+\section*{Trabajar}
+
+\begin{longtable}{p{3.5cm} p{2.5cm} p{7.5cm} p{1.5cm}}
+\label{tab:trabajar}\\
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Atributo} & \textbf{Tipo} & \textbf{Restricciones de dominio} & \textbf{Llave} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+idSucursal 
+& int 
+& NOT NULL
+& FK \\
+
+CURP 
+& varchar(18) 
+& NOT NULL
+& FK \\
+
+FechaContratacion 
+& date 
+& NOT NULL
+& \\
+
+Salario 
+& float 
+& NOT NULL \newline CHECK(Salario $>$ 0)
+& \\
+
+HoraInicio 
+& time 
+& NOT NULL
+& \\
+
+HoraFin 
+& time 
+& NOT NULL \newline CHECK(HoraFin $>$ HoraInicio)
+& \\
+
+\end{longtable}
+
+\vspace{2pt}
+\textbf{Llaves foráneas:} \\
+idSucursal $\rightarrow$ Sucursal(idSucursal) \\
+CURP $\rightarrow$ Empleado(CURP) \\
 
 \section{Restaurar backup de una BD en Docker}
 Para la restauración del backup, se siguieron los pasos proporcionados en la practica.

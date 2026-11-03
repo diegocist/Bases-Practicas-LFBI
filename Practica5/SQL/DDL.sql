@@ -305,6 +305,8 @@ CREATE TABLE CorreoEmpleado(
 );
 
 -- Restricciones CorreoEmpleado
+
+
 -- Entidad
 ALTER TABLE CorreoEmpleado ADD CONSTRAINT CorreoEmpleado_pkey
 PRIMARY KEY(CURP, Correo);
@@ -320,6 +322,10 @@ CREATE TABLE TelefonoEmpleado(
 );
 
 --Restricciones TelefonoEmpleado
+--Dominio
+ALTER TABLE TelefonoEmpleado ADD CONSTRAINT TelefonoEmpleado_d1
+CHECK(Telefono ~ '^[0-9]{10}$');
+
 --Entidad
 ALTER TABLE TelefonoEmpleado ADD CONSTRAINT TelefonoEmpleado_pkey
 PRIMARY KEY(CURP, Telefono);
@@ -751,10 +757,6 @@ ALTER TABLE Registrar ALTER COLUMN idTarjeta
 SET NOT NULL;
 ALTER TABLE Registrar ADD CONSTRAINT Registrar_d2
 CHECK(idTarjeta > 0);
-
--- Entidad
-ALTER TABLE Registrar ADD CONSTRAINT Registrar_pkey
-PRIMARY KEY (idCliente, idTarjeta);
 
 -- Referencial
 -- idCliente

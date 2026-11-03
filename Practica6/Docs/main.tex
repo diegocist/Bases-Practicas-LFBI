@@ -1,0 +1,75 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{parskip}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{makecell}
+\usepackage{geometry}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{float} 
+
+% --------------------- Comandos para URL y pie de página ---------------------
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+
+\renewcommand{\footnoterule}{%
+  \kern -3pt                         % Espacio vertical sobre la línea
+  \hrule width \textwidth height 0.4pt % Ancho total de la página y grosor
+  \kern 2.6pt                        % Espacio vertical debajo de la línea
+}
+% -----------------------------------------------------------------------
+
+\geometry{letterpaper, margin=2.5cm}
+\setlength{\parskip}{1em}
+\begin{document}
+\begin{titlepage}
+\begin{center}
+    % Logos
+    \begin{minipage}{0.3\textwidth}
+        \includegraphics[width=0.8\linewidth]{imagenes/UNAM_Logo.png}
+    \end{minipage}\hfill
+    \begin{minipage}{0.4\textwidth}
+        \begin{center}
+            \textbf{\Large Universidad Nacional Autónoma de México}\\[0.2cm]
+            \textbf{Facultad de Ciencias}\\[0.2cm]
+        \textbf{Bases de Datos}
+        \end{center}
+    \end{minipage}\hfill
+    \begin{minipage}{0.3\textwidth}
+        \includegraphics[width=0.8\linewidth]{imagenes/Logo_FC.png}
+    \end{minipage}
+    \vspace{3cm}
+    \textbf{\large Practica 5}\\
+
+    Licenciatura en Ciencias de la Computación\\
+    Profesor: Gerardo Avilés Rosas \\
+    \vspace{2cm}
+    \textbf{Integrantes: }\\
+    Cisneros Tenorio Diego Alexander\\
+    Nuñez Ruiz José Manuel \\
+    Olmos Ortiz Andrea Lucia\\
+    Reynoso Ascencio Alexa \\
+    Vega Navas Saúl \\
+    \vspace{2cm}
+    \textbf{Fecha de entrega: } 2 de Noviembre del 2026
+    \vfill
+\end{center}
+\end{titlepage}
+\tableofcontents
+\newpage
+\section{Preguntas.}
+\subsection*{5. Con base a lo anterior, ¿cuál política utilizarán para su esquema, y por qué motivo?}
+
+Para nuestro esquema, en general usaremos la política cascade (ON DELETE CASCADE ON UPDATE CASCADE), ya que la mayoría de nuestras tablas con llave foránea están estrechamente relacionadas a la tabla con llave primaria, de modo que carece de sentido guardar su información si se elimina el registro principal, además cualquier actualización sobre la llave primaria es imprescindible que se actualice también en los ejemplares de llave foránea. Por ejemplo, para los casos de tablas producidas por atributos multivaluados y en las subentidades derivadas de herencias como: CorreoEmpleado, TelefonoCliente, Certificacion, Cajero, Destreza, etc. No tiene sentido guardarlas si se elimina el cliente, el empleado o el juego al que corresponden.
+
+Por otro lado usaremos también la política RESTRICT (ON DELETE RESTRICT ON UPDATE CASCADE), pues por seguridad consideramos que existen tablas con bastante peso y cuyos ejemplares no se deberían de eliminar si tienen registros de llave foránea, pues existe el riesgo de eliminar múltiples datos de forma masiva. Por ejemplo para las llaves primarias de sucursal, empleado, cliente, etc. Eliminarlas usando CASCADE nos llevaría a eliminar registros asociados mediante llave foránea de forma masiva y en un negocio de este tipo, creemos que no es deseable eliminar el historial de recargas o de reparaciones.
+
+\end{document}
