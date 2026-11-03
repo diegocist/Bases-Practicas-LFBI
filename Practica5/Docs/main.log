@@ -1,0 +1,1408 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.10.20)  28 OCT 2026 22:24
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**main.tex
+(./main.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-03-20>
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count275
+\c@section=\count276
+\c@subsection=\count277
+\c@subsubsection=\count278
+\c@paragraph=\count279
+\c@subparagraph=\count280
+\c@figure=\count281
+\c@table=\count282
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen150
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2024/02/08 v1.3d Input encoding file
+\inpenc@prehook=\toks17
+\inpenc@posthook=\toks18
+)
+(/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty
+Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
+
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks19
+)
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count283
+))
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2026/04/15 v26.6 The multilingual framework for LuaLaTeX, pdfLaT
+eX and XeLaTeX
+\babel@savecnt=\count284
+LaTeX Encoding Info:    Redeclaring text command \ij (encoding OT1) on input li
+ne 2078.
+LaTeX Encoding Info:    Redeclaring text command \IJ (encoding OT1) on input li
+ne 2080.
+LaTeX Encoding Info:    Redeclaring text command \ij (encoding T1) on input lin
+e 2082.
+LaTeX Encoding Info:    Redeclaring text command \IJ (encoding T1) on input lin
+e 2083.
+LaTeX Encoding Info:    Ignoring declaration for text command \ij (encoding ?) 
+on input line 2084.
+LaTeX Encoding Info:    Ignoring declaration for text command \IJ (encoding ?) 
+on input line 2086.
+LaTeX Encoding Info:    Ignoring declaration for text command \SS (encoding ?) 
+on input line 2111.
+\U@D=\dimen151
+\l@unhyphenated=\language90
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@readstream=\read2
+\bbl@dirlevel=\count285
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/locale/es/babel-spanish.tex)
+Package babel Info: Importing font and identification data for spanish
+(babel)             from babel-es.ini. Reported on input line 4330.
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel-spanish/spanish.ldf
+Language: spanish.ldf 2021/05/27 v5.0q Spanish support from the babel system
+\es@quottoks=\toks20
+\es@quotdepth=\count286
+Package babel Info: Making " an active character on input line 570.
+Package babel Info: Making . an active character on input line 675.
+Package babel Info: Making < an active character on input line 722.
+Package babel Info: Making > an active character on input line 722.
+))
+LaTeX Encoding Info:    Redeclaring text command \guillemotleft (encoding OT1) 
+on input line 5.
+LaTeX Encoding Info:    Redeclaring text command \guillemotright (encoding OT1)
+ on input line 5.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2025/07/09 v2.17z AMS math features
+\@mathmargin=\skip51
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2024/11/17 v2.01 AMS text
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks21
+\ex@=\dimen152
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen153
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count287
+LaTeX Info: Redefining \frac on input line 233.
+\uproot@=\count288
+\leftroot@=\count289
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count290
+\DOTSCASE@=\count291
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box53
+\strutbox@=\box54
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen154
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count292
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count293
+\dotsspace@=\muskip17
+\c@parentequation=\count294
+\dspbrk@lvl=\count295
+\tag@help=\toks22
+\row@=\count296
+\column@=\count297
+\maxfields@=\count298
+\andhelp@=\toks23
+\eqnshift@=\dimen155
+\alignsep@=\dimen156
+\tagshift@=\dimen157
+\tagwidth@=\dimen158
+\totwidth@=\dimen159
+\lineht@=\dimen160
+\@envbody=\toks24
+\multlinegap=\skip52
+\multlinetaggap=\skip53
+\mathdisplay@stack=\toks25
+LaTeX Info: Redefining \[ on input line 2950.
+LaTeX Info: Redefining \] on input line 2951.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen161
+\Gin@req@width=\dimen162
+)
+(/usr/share/texlive/texmf-dist/tex/latex/makecell/makecell.sty
+Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+
+LaTeX Warning: You have requested release `2026/06/01' of LaTeX,
+               but only release `2025-11-01' is available.
+
+Package: array 2026/01/25 v2.7a Tabular extension package (FMi)
+\col@sep=\dimen163
+\ar@mcellbox=\box55
+\extrarowheight=\dimen164
+\NC@list=\toks26
+\extratabsurround=\skip54
+\backup@length=\skip55
+\ar@cellbox=\box56
+)
+\rotheadsize=\dimen165
+\c@nlinenum=\count299
+\TeXr@lab=\toks27
+) (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2026/03/07 v6.0 Page Geometry
+
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
+))
+\Gm@cnth=\count300
+\Gm@cntv=\count301
+\c@Gm@tempcnt=\count302
+\Gm@bindingoffset=\dimen166
+\Gm@wd@mp=\dimen167
+\Gm@odd@mp=\dimen168
+\Gm@even@mp=\dimen169
+\Gm@layoutwidth=\dimen170
+\Gm@layoutheight=\dimen171
+\Gm@layouthoffset=\dimen172
+\Gm@layoutvoffset=\dimen173
+\Gm@dimlist=\toks28
+)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip18
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2026-04-24 v7.01q Hypertext links for LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2026-01-29 v2.58 Cross-referencing by name of section
+
+(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count303
+)
+(/usr/share/texlive/texmf-dist/tex/generic/stringenc/stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
+)
+)
+\@linkdim=\dimen174
+\Hy@linkcounter=\count304
+\Hy@pagecounter=\count305
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2026-04-24 v7.01q Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count306
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2026-04-24 v7.01q Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Hyper figures OFF on input line 4199.
+Package hyperref Info: Link nesting OFF on input line 4204.
+Package hyperref Info: Hyper index ON on input line 4207.
+Package hyperref Info: Plain pages OFF on input line 4214.
+Package hyperref Info: Backreferencing OFF on input line 4219.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4466.
+\c@Hy@tempcnt=\count307
+LaTeX Info: Redefining \url on input line 4805.
+\XeTeXLinkMargin=\dimen175
+
+(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count308
+\Field@Width=\dimen176
+\Fld@charsize=\dimen177
+Package hyperref Info: Hyper figures OFF on input line 6091.
+Package hyperref Info: Link nesting OFF on input line 6096.
+Package hyperref Info: Hyper index ON on input line 6099.
+Package hyperref Info: backreferencing OFF on input line 6106.
+Package hyperref Info: Link coloring OFF on input line 6111.
+Package hyperref Info: Link coloring with OCG OFF on input line 6116.
+Package hyperref Info: PDF/A mode OFF on input line 6121.
+\Hy@abspage=\count309
+\c@Item=\count310
+\c@Hfootnote=\count311
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2026-04-24 v7.01q Hyperref driver for pdfTeX
+\Fld@listcount=\count312
+\c@bookmark@seq@number=\count313
+
+(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+84.
+)
+\Hy@SectionHShift=\skip56
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2026-01-28 v4.27 Multi-page Table package (DPC)
+\LTleft=\skip57
+\LTright=\skip58
+\LTpre=\skip59
+\LTpost=\skip60
+\LTchunksize=\count314
+\LTcapwidth=\dimen178
+\LT@head=\box57
+\LT@firsthead=\box58
+\LT@foot=\box59
+\LT@lastfoot=\box60
+\LT@gbox=\box61
+\LT@cols=\count315
+\LT@rows=\count316
+\c@LT@tables=\count317
+\c@LT@chunks=\count318
+\LT@p@ftn=\toks29
+)
+(/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen179
+\lightrulewidth=\dimen180
+\cmidrulewidth=\dimen181
+\belowrulesep=\dimen182
+\belowbottomsep=\dimen183
+\aboverulesep=\dimen184
+\abovetopsep=\dimen185
+\cmidrulesep=\dimen186
+\cmidrulekern=\dimen187
+\defaultaddspace=\dimen188
+\@cmidla=\count319
+\@cmidlb=\count320
+\@aboverulesep=\dimen189
+\@belowrulesep=\dimen190
+\@thisruleclass=\count321
+\@lastruleclass=\count322
+\@thisrulewidth=\dimen191
+)
+(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2025/02/06 v3.11 Customized lists
+\labelindent=\skip61
+\enit@outerparindent=\dimen192
+\enit@toks=\toks30
+\enit@inbox=\box62
+\enit@count@id=\count323
+\enitdp@description=\count324
+)
+(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2025/01/04 v2.17 Sectioning titles
+\ttl@box=\box63
+\beforetitleunit=\skip62
+\aftertitleunit=\skip63
+\ttl@plus=\dimen193
+\ttl@minus=\dimen194
+\ttl@toksa=\toks31
+\titlewidth=\dimen195
+\titlewidthlast=\dimen196
+\titlewidthfirst=\dimen197
+)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count325
+\float@exts=\toks32
+\float@box=\box64
+\@float@everytoks=\toks33
+\@floatcapt=\box65
+)
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2026-02-18 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count326
+)
+(./main.aux
+LaTeX Info: Redefining \. on input line 11.
+LaTeX Info: Redefining \% on input line 11.
+Package babel Info: 'spanish' activates 'spanish' shorthands.
+(babel)             Reported on input line 11.
+)
+\openout1 = `main.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Info: Redefining \. on input line 32.
+LaTeX Info: Redefining \% on input line 32.
+ (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count327
+\scratchdimen=\dimen198
+\scratchbox=\box66
+\nofMPsegments=\count328
+\nofMParguments=\count329
+\everyMPshowfont=\toks34
+\MPscratchCnt=\count330
+\MPscratchDim=\dimen199
+\MPnumerator=\count331
+\makeMPintoPDFobject=\count332
+\everyMPtoPDFconversion=\toks35
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: letterpaper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(71.13188pt, 472.03123pt, 71.13188pt)
+* v-part:(T,H,B)=(71.13188pt, 652.70622pt, 71.13188pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=472.03123pt
+* \textheight=652.70622pt
+* \oddsidemargin=-1.1381pt
+* \evensidemargin=-1.1381pt
+* \topmargin=-38.1381pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=44.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package hyperref Info: Link coloring OFF on input line 32.
+(./main.out) (./main.out)
+\@outlinefile=\write3
+\openout3 = `main.out'.
+
+<imagenes/UNAM_Logo.png, id=16, 1045.9075pt x 1045.9075pt>
+File: imagenes/UNAM_Logo.png Graphic file (type png)
+<use imagenes/UNAM_Logo.png>
+Package pdftex.def Info: imagenes/UNAM_Logo.png  used on input line 37.
+(pdftex.def)             Requested size: 113.28908pt x 113.2787pt.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 38.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 38.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+<imagenes/Logo_FC.png, id=17, 1204.5pt x 1377.145pt>
+File: imagenes/Logo_FC.png Graphic file (type png)
+<use imagenes/Logo_FC.png>
+Package pdftex.def Info: imagenes/Logo_FC.png  used on input line 47.
+(pdftex.def)             Requested size: 113.28908pt x 129.5273pt.
+ [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./imagenes/UNAM_Logo.png> 
+<./imagenes/Logo_FC.png>] (./main.toc
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+)
+\tf@toc=\write4
+\openout4 = `main.toc'.
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.67 \newpage
+              [1] [2]
+Overfull \hbox (2.76007pt too wide) in alignment at lines 96--101
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 101--106
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 106--108
+ [] [] [] [] 
+ []
+
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 1
+12.
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2024/11/19 v2.5n Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 112.
+
+Underfull \hbox (badness 10000) in paragraph at lines 117--118
+\OT1/cmr/m/n/12 CHECK(FechaNacimiento $\OMS/cmsy/m/n/12 ^^T$ \OT1/cmr/m/n/12 CU
+-
+ []
+
+
+Underfull \hbox (badness 3271) in paragraph at lines 142--143
+\OT1/cmr/m/n/12 CHECK(tipoEmpleado $\OMS/cmsy/m/n/12 ^^U$ \OT1/cmr/m/n/12 0 AND
+ ti-
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 108--145
+ [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 148--149
+
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 153--158
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 158--163
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 163--166
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 166--188
+ [] [] [] [] 
+ []
+
+[3{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+Underfull \hbox (badness 10000) in paragraph at lines 191--192
+
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 195--200
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 200--205
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 205--208
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 208--220
+ [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 223--225
+
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 229--234
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 234--239
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 239--242
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 242--254
+ [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 257--259
+
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 262--267
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 267--272
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 272--275
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 275--287
+ [] [] [] [] 
+ []
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 290--292
+
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 296--301
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 301--306
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 306--309
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 309--321
+ [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 324--326
+
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 329--334
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 334--339
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 339--342
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 342--354
+ [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 357--359
+
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 362--367
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 367--372
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 372--375
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 375--387
+ [] [] [] [] 
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 388--390
+
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 393--398
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 398--403
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 403--406
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 406--448
+ [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 451--452
+
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 455--460
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 460--465
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 465--468
+ [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 7631) in paragraph at lines 482--483
+\OT1/cmr/m/n/12 CHECK(CategoriaEdad IN ('In-fan-til',
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 468--495
+ [] [] [] [] 
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 498--499
+
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 502--507
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 507--512
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 512--515
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 515--527
+ [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 530--532
+
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 536--541
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 541--546
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 546--549
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 549--561
+ [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 564--566
+
+ []
+
+[7]
+Overfull \hbox (2.76007pt too wide) in alignment at lines 569--574
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 574--579
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 579--582
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 582--589
+ [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 592--594
+
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 598--603
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 603--608
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 608--611
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 611--618
+ [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 621--623
+
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 626--631
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 631--636
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 636--638
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 638--660
+ [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 663--665
+
+ []
+
+[8]
+Overfull \hbox (2.76007pt too wide) in alignment at lines 669--674
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 674--679
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 679--681
+ [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 700--701
+\OT1/cmr/m/n/12 CHECK(EstadoMaquina IN ('ac-ti-vo',
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 681--703
+ [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 706--709
+
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 712--717
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 717--722
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 722--724
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 724--736
+ [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 739--741
+
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 745--750
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 750--755
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 755--757
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 757--784
+ [] [] [] [] 
+ []
+
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 787--789
+
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 793--798
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 798--803
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 803--805
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 805--817
+ [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 820--822
+
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 827--832
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 832--837
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 837--839
+ [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 863--864
+\OT1/cmr/m/n/12 CHECK(FechaNacimiento $\OMS/cmsy/m/n/12 ^^T$ \OT1/cmr/m/n/12 CU
+-
+ []
+
+
+Underfull \hbox (badness 2359) in paragraph at lines 868--869
+\OT1/cmr/m/n/12 CHECK(Sexo IN ('Mas-cu-lino', 'Fe-me-
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 839--871
+ [] [] [] [] 
+ []
+
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 874--875
+
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 879--884
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 884--889
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 889--891
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 891--913
+ [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 916--917
+
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 921--926
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 926--931
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 931--933
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 933--945
+ [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 948--952
+
+ []
+
+[11]
+Overfull \hbox (2.76007pt too wide) in alignment at lines 956--961
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 961--966
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 966--968
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 968--980
+ [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 983--985
+
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 989--994
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 994--999
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 999--1001
+ [] [] [] [] 
+ []
+
+LaTeX Font Info:    Trying to load font information for OMS+cmtt on input line 
+1010.
+(/usr/share/texlive/texmf-dist/tex/latex/R/omscmtt.fd
+File: omscmtt.fd 
+)
+LaTeX Font Info:    Font shape `OMS/cmtt/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1010.
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 1001--1013
+ [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1016--1018
+
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 1022--1027
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 1027--1032
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 1032--1034
+ [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1063--1064
+\OT1/cmr/m/n/12 CHECK(MetodoPago IN ('Efec-ti-vo',
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 1034--1076
+ [] [] [] [] 
+ []
+
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 1079--1084
+
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 1088--1093
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 1093--1098
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 1098--1100
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 1100--1132
+ [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1135--1140
+
+ []
+
+[13]
+Overfull \hbox (2.76007pt too wide) in alignment at lines 1144--1149
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 1149--1154
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 1154--1156
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 1156--1173
+ [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1176--1180
+
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 1183--1188
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 1188--1193
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 1193--1195
+ [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1214--1215
+\OT1/cmr/m/n/12 CHECK(FechaPartida $\OMS/cmsy/m/n/12 ^^T$ \OT1/cmr/m/n/12 CU-
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 1195--1232
+ [] [] [] [] 
+ []
+
+[14]
+Underfull \hbox (badness 10000) in paragraph at lines 1235--1239
+
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 1243--1248
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 1248--1253
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 1253--1255
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 1255--1277
+ [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1280--1283
+
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 1287--1292
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 1292--1297
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 1297--1299
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.76007pt too wide) in alignment at lines 1299--1331
+ [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1334--1337
+
+ []
+
+[15]
+<imagenes/Diego-Revision.png, id=127, 1244.65pt x 386.44376pt>
+File: imagenes/Diego-Revision.png Graphic file (type png)
+<use imagenes/Diego-Revision.png>
+Package pdftex.def Info: imagenes/Diego-Revision.png  used on input line 1345.
+(pdftex.def)             Requested size: 236.01561pt x 73.27765pt.
+<imagenes/Diego-Restauracion.png, id=128, 1383.1675pt x 780.9175pt>
+File: imagenes/Diego-Restauracion.png Graphic file (type png)
+<use imagenes/Diego-Restauracion.png>
+Package pdftex.def Info: imagenes/Diego-Restauracion.png  used on input line 13
+51.
+(pdftex.def)             Requested size: 236.01561pt x 133.24277pt.
+<imagenes/Diego-Tablas1.png, id=129, 861.2175pt x 182.6825pt>
+File: imagenes/Diego-Tablas1.png Graphic file (type png)
+<use imagenes/Diego-Tablas1.png>
+Package pdftex.def Info: imagenes/Diego-Tablas1.png  used on input line 1357.
+(pdftex.def)             Requested size: 236.01561pt x 50.06361pt.
+<imagenes/Diego-Tablas2.png, id=130, 543.02875pt x 828.09375pt>
+File: imagenes/Diego-Tablas2.png Graphic file (type png)
+<use imagenes/Diego-Tablas2.png>
+Package pdftex.def Info: imagenes/Diego-Tablas2.png  used on input line 1358.
+(pdftex.def)             Requested size: 236.01561pt x 359.91463pt.
+ [16 <./imagenes/Diego-Revision.png> <./imagenes/Diego-Restauracion.png>]
+[17 <./imagenes/Diego-Tablas1.png> <./imagenes/Diego-Tablas2.png>] (./main.aux
+LaTeX Info: Redefining \. on input line 11.
+LaTeX Info: Redefining \% on input line 11.
+)
+ ***********
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-03-20>
+ ***********
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: C06172258683CB9D6592FA7036FA47A9;676.
+ ) 
+Here is how much of TeX's memory you used:
+ 12980 strings out of 467356
+ 199772 string characters out of 5418690
+ 652424 words of memory out of 6000000
+ 41846 multiletter control sequences out of 15000+600000
+ 634389 words of font info for 65 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 69i,7n,79p,1193b,629s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/cm-super/sftt1200.pfb>
+Output written on main.pdf (18 pages, 534177 bytes).
+PDF statistics:
+ 193 PDF objects out of 1000 (max. 8388607)
+ 145 compressed objects within 2 object streams
+ 54 named destinations out of 1000 (max. 500000)
+ 55 words of extra memory for PDF output out of 10000 (max. 10000000)
+

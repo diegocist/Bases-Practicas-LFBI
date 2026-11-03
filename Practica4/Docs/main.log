@@ -1,0 +1,1619 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.10.3)  8 OCT 2026 20:44
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**main.tex
+(./main.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-03-20>
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count275
+\c@section=\count276
+\c@subsection=\count277
+\c@subsubsection=\count278
+\c@paragraph=\count279
+\c@subparagraph=\count280
+\c@figure=\count281
+\c@table=\count282
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen150
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2024/02/08 v1.3d Input encoding file
+\inpenc@prehook=\toks17
+\inpenc@posthook=\toks18
+)
+(/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty
+Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
+
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks19
+)
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count283
+))
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2026/04/15 v26.6 The multilingual framework for LuaLaTeX, pdfLaT
+eX and XeLaTeX
+\babel@savecnt=\count284
+LaTeX Encoding Info:    Redeclaring text command \ij (encoding OT1) on input li
+ne 2078.
+LaTeX Encoding Info:    Redeclaring text command \IJ (encoding OT1) on input li
+ne 2080.
+LaTeX Encoding Info:    Redeclaring text command \ij (encoding T1) on input lin
+e 2082.
+LaTeX Encoding Info:    Redeclaring text command \IJ (encoding T1) on input lin
+e 2083.
+LaTeX Encoding Info:    Ignoring declaration for text command \ij (encoding ?) 
+on input line 2084.
+LaTeX Encoding Info:    Ignoring declaration for text command \IJ (encoding ?) 
+on input line 2086.
+LaTeX Encoding Info:    Ignoring declaration for text command \SS (encoding ?) 
+on input line 2111.
+\U@D=\dimen151
+\l@unhyphenated=\language90
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@readstream=\read2
+\bbl@dirlevel=\count285
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/locale/es/babel-spanish.tex)
+Package babel Info: Importing font and identification data for spanish
+(babel)             from babel-es.ini. Reported on input line 4330.
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel-spanish/spanish.ldf
+Language: spanish.ldf 2021/05/27 v5.0q Spanish support from the babel system
+\es@quottoks=\toks20
+\es@quotdepth=\count286
+Package babel Info: Making " an active character on input line 570.
+Package babel Info: Making . an active character on input line 675.
+Package babel Info: Making < an active character on input line 722.
+Package babel Info: Making > an active character on input line 722.
+))
+LaTeX Encoding Info:    Redeclaring text command \guillemotleft (encoding OT1) 
+on input line 5.
+LaTeX Encoding Info:    Redeclaring text command \guillemotright (encoding OT1)
+ on input line 5.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2025/07/09 v2.17z AMS math features
+\@mathmargin=\skip51
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2024/11/17 v2.01 AMS text
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks21
+\ex@=\dimen152
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen153
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count287
+LaTeX Info: Redefining \frac on input line 233.
+\uproot@=\count288
+\leftroot@=\count289
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count290
+\DOTSCASE@=\count291
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box53
+\strutbox@=\box54
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen154
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count292
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count293
+\dotsspace@=\muskip17
+\c@parentequation=\count294
+\dspbrk@lvl=\count295
+\tag@help=\toks22
+\row@=\count296
+\column@=\count297
+\maxfields@=\count298
+\andhelp@=\toks23
+\eqnshift@=\dimen155
+\alignsep@=\dimen156
+\tagshift@=\dimen157
+\tagwidth@=\dimen158
+\totwidth@=\dimen159
+\lineht@=\dimen160
+\@envbody=\toks24
+\multlinegap=\skip52
+\multlinetaggap=\skip53
+\mathdisplay@stack=\toks25
+LaTeX Info: Redefining \[ on input line 2950.
+LaTeX Info: Redefining \] on input line 2951.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen161
+\Gin@req@width=\dimen162
+)
+(/usr/share/texlive/texmf-dist/tex/latex/makecell/makecell.sty
+Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+
+LaTeX Warning: You have requested release `2026/06/01' of LaTeX,
+               but only release `2025-11-01' is available.
+
+Package: array 2026/01/25 v2.7a Tabular extension package (FMi)
+\col@sep=\dimen163
+\ar@mcellbox=\box55
+\extrarowheight=\dimen164
+\NC@list=\toks26
+\extratabsurround=\skip54
+\backup@length=\skip55
+\ar@cellbox=\box56
+)
+\rotheadsize=\dimen165
+\c@nlinenum=\count299
+\TeXr@lab=\toks27
+) (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2026/03/07 v6.0 Page Geometry
+
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
+))
+\Gm@cnth=\count300
+\Gm@cntv=\count301
+\c@Gm@tempcnt=\count302
+\Gm@bindingoffset=\dimen166
+\Gm@wd@mp=\dimen167
+\Gm@odd@mp=\dimen168
+\Gm@even@mp=\dimen169
+\Gm@layoutwidth=\dimen170
+\Gm@layoutheight=\dimen171
+\Gm@layouthoffset=\dimen172
+\Gm@layoutvoffset=\dimen173
+\Gm@dimlist=\toks28
+)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip18
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2026-04-24 v7.01q Hypertext links for LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2026-01-29 v2.58 Cross-referencing by name of section
+
+(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count303
+)
+(/usr/share/texlive/texmf-dist/tex/generic/stringenc/stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
+)
+)
+\@linkdim=\dimen174
+\Hy@linkcounter=\count304
+\Hy@pagecounter=\count305
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2026-04-24 v7.01q Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count306
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2026-04-24 v7.01q Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Hyper figures OFF on input line 4199.
+Package hyperref Info: Link nesting OFF on input line 4204.
+Package hyperref Info: Hyper index ON on input line 4207.
+Package hyperref Info: Plain pages OFF on input line 4214.
+Package hyperref Info: Backreferencing OFF on input line 4219.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4466.
+\c@Hy@tempcnt=\count307
+LaTeX Info: Redefining \url on input line 4805.
+\XeTeXLinkMargin=\dimen175
+
+(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count308
+\Field@Width=\dimen176
+\Fld@charsize=\dimen177
+Package hyperref Info: Hyper figures OFF on input line 6091.
+Package hyperref Info: Link nesting OFF on input line 6096.
+Package hyperref Info: Hyper index ON on input line 6099.
+Package hyperref Info: backreferencing OFF on input line 6106.
+Package hyperref Info: Link coloring OFF on input line 6111.
+Package hyperref Info: Link coloring with OCG OFF on input line 6116.
+Package hyperref Info: PDF/A mode OFF on input line 6121.
+\Hy@abspage=\count309
+\c@Item=\count310
+\c@Hfootnote=\count311
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2026-04-24 v7.01q Hyperref driver for pdfTeX
+\Fld@listcount=\count312
+\c@bookmark@seq@number=\count313
+
+(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+84.
+)
+\Hy@SectionHShift=\skip56
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2026-01-28 v4.27 Multi-page Table package (DPC)
+\LTleft=\skip57
+\LTright=\skip58
+\LTpre=\skip59
+\LTpost=\skip60
+\LTchunksize=\count314
+\LTcapwidth=\dimen178
+\LT@head=\box57
+\LT@firsthead=\box58
+\LT@foot=\box59
+\LT@lastfoot=\box60
+\LT@gbox=\box61
+\LT@cols=\count315
+\LT@rows=\count316
+\c@LT@tables=\count317
+\c@LT@chunks=\count318
+\LT@p@ftn=\toks29
+)
+(/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen179
+\lightrulewidth=\dimen180
+\cmidrulewidth=\dimen181
+\belowrulesep=\dimen182
+\belowbottomsep=\dimen183
+\aboverulesep=\dimen184
+\abovetopsep=\dimen185
+\cmidrulesep=\dimen186
+\cmidrulekern=\dimen187
+\defaultaddspace=\dimen188
+\@cmidla=\count319
+\@cmidlb=\count320
+\@aboverulesep=\dimen189
+\@belowrulesep=\dimen190
+\@thisruleclass=\count321
+\@lastruleclass=\count322
+\@thisrulewidth=\dimen191
+)
+(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2025/02/06 v3.11 Customized lists
+\labelindent=\skip61
+\enit@outerparindent=\dimen192
+\enit@toks=\toks30
+\enit@inbox=\box62
+\enit@count@id=\count323
+\enitdp@description=\count324
+)
+(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2025/01/04 v2.17 Sectioning titles
+\ttl@box=\box63
+\beforetitleunit=\skip62
+\aftertitleunit=\skip63
+\ttl@plus=\dimen193
+\ttl@minus=\dimen194
+\ttl@toksa=\toks31
+\titlewidth=\dimen195
+\titlewidthlast=\dimen196
+\titlewidthfirst=\dimen197
+)
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2026-02-18 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count325
+)
+(./main.aux
+LaTeX Info: Redefining \. on input line 11.
+LaTeX Info: Redefining \% on input line 11.
+Package babel Info: 'spanish' activates 'spanish' shorthands.
+(babel)             Reported on input line 11.
+)
+\openout1 = `main.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Info: Redefining \. on input line 31.
+LaTeX Info: Redefining \% on input line 31.
+ (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count326
+\scratchdimen=\dimen198
+\scratchbox=\box64
+\nofMPsegments=\count327
+\nofMParguments=\count328
+\everyMPshowfont=\toks32
+\MPscratchCnt=\count329
+\MPscratchDim=\dimen199
+\MPnumerator=\count330
+\makeMPintoPDFobject=\count331
+\everyMPtoPDFconversion=\toks33
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: letterpaper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(71.13188pt, 472.03123pt, 71.13188pt)
+* v-part:(T,H,B)=(71.13188pt, 652.70622pt, 71.13188pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=472.03123pt
+* \textheight=652.70622pt
+* \oddsidemargin=-1.1381pt
+* \evensidemargin=-1.1381pt
+* \topmargin=-38.1381pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=44.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package hyperref Info: Link coloring OFF on input line 31.
+(./main.out) (./main.out)
+\@outlinefile=\write3
+\openout3 = `main.out'.
+
+<imagenes/UNAM_Logo.png, id=4, 1045.9075pt x 1045.9075pt>
+File: imagenes/UNAM_Logo.png Graphic file (type png)
+<use imagenes/UNAM_Logo.png>
+Package pdftex.def Info: imagenes/UNAM_Logo.png  used on input line 36.
+(pdftex.def)             Requested size: 113.28908pt x 113.2787pt.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 37.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 37.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+<imagenes/Logo_FC.png, id=5, 1204.5pt x 1377.145pt>
+File: imagenes/Logo_FC.png Graphic file (type png)
+<use imagenes/Logo_FC.png>
+Package pdftex.def Info: imagenes/Logo_FC.png  used on input line 46.
+(pdftex.def)             Requested size: 113.28908pt x 129.5273pt.
+ [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./imagenes/UNAM_Logo.png> 
+<./imagenes/Logo_FC.png>]
+Overfull \hbox (31.83145pt too wide) in alignment at lines 72--77
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 77--82
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 82--85
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 2744) in paragraph at lines 91--92
+[]|\OT1/cmr/m/n/12 NOT NULL (au-to-in-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--97
+[]|\OT1/cmr/m/n/12 Cadenas con el for-ma-to
+ []
+
+
+Underfull \hbox (badness 2165) in paragraph at lines 96--97
+\OT1/cmr/m/n/12 est^^Sandar: 4 le-tras, 6 d^^S^^Pgi-tos,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 134--135
+[]|\OT1/cmr/m/n/12 N^^SumEx-te-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 142--143
+[]|\OT1/cmr/m/n/12 N^^SumIn-te-
+ []
+
+
+Underfull \hbox (badness 2443) in paragraph at lines 147--148
+[]\OT1/cmr/m/n/12 Revisar: (N^^SumIn-te-rior
+ []
+
+
+Underfull \hbox (badness 1552) in paragraph at lines 147--148
+\OML/cmm/m/it/12 >$ \OT1/cmr/m/n/12 0) cuan-do no sea
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 85--150
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (60.28421pt too wide) in alignment at lines 158--163
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (60.28421pt too wide) in alignment at lines 163--168
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (60.28421pt too wide) in alignment at lines 168--171
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 2744) in paragraph at lines 177--178
+[]|\OT1/cmr/m/n/12 NOT NULL (au-to-in-
+ []
+
+
+Overfull \hbox (2.02837pt too wide) in paragraph at lines 181--182
+[]|\OT1/cmr/m/n/12 varchar(100)| 
+ []
+
+
+Overfull \hbox (6.59776pt too wide) in paragraph at lines 195--196
+[]|\OT1/cmr/m/n/12 decimal(10,2)| 
+ []
+
+
+Overfull \hbox (60.28421pt too wide) in alignment at lines 171--218
+ [] [] [] [] [] 
+ []
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.218 \end{longtable}
+                      [1]
+Underfull \hbox (badness 10000) in paragraph at lines 220--221
+
+ []
+
+
+Overfull \hbox (40.36737pt too wide) in alignment at lines 225--230
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (40.36737pt too wide) in alignment at lines 230--235
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (40.36737pt too wide) in alignment at lines 235--238
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 247--248
+[]|\OT1/cmr/m/n/12 PK,
+ []
+
+
+Underfull \hbox (badness 1546) in paragraph at lines 254--255
+[]\OT1/cmr/m/n/12 Revisar: (id-Pre-mio $\OML/cmm/m/it/12 >$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 255--256
+[]|\OT1/cmr/m/n/12 PK,
+ []
+
+
+Overfull \hbox (2.14764pt too wide) in paragraph at lines 257--258
+[]|\OT1/cmr/m/n/12 CantidadDisponible| 
+ []
+
+
+Overfull \hbox (40.36737pt too wide) in alignment at lines 238--265
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (17.60507pt too wide) in alignment at lines 274--279
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (17.60507pt too wide) in alignment at lines 279--284
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (17.60507pt too wide) in alignment at lines 284--287
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 296--297
+[]|\OT1/cmr/m/n/12 PK,
+ []
+
+
+Overfull \hbox (17.60507pt too wide) in alignment at lines 287--320
+ [] [] [] [] [] 
+ []
+
+[2]
+Overfull \hbox (43.21239pt too wide) in alignment at lines 329--334
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (43.21239pt too wide) in alignment at lines 334--339
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (43.21239pt too wide) in alignment at lines 339--342
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 351--352
+[]|\OT1/cmr/m/n/12 PK,
+ []
+
+
+Underfull \hbox (badness 1546) in paragraph at lines 358--359
+[]\OT1/cmr/m/n/12 Revisar: (id-Pre-mio $\OML/cmm/m/it/12 >$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 359--360
+[]|\OT1/cmr/m/n/12 PK,
+ []
+
+
+Overfull \hbox (0.82672pt too wide) in paragraph at lines 369--370
+[]|\OT1/cmr/m/n/12 CantidadRecibida| 
+ []
+
+
+Overfull \hbox (43.21239pt too wide) in alignment at lines 342--377
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 386--391
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 391--396
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 396--399
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 1789) in paragraph at lines 407--408
+[]\OT1/cmr/m/n/12 Revisar: (id-Clien-te $\OML/cmm/m/it/12 >$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 408--409
+[]|\OT1/cmr/m/n/12 PK,
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 399--418
+ [] [] [] [] [] 
+ []
+
+[3]
+Overfull \hbox (31.83145pt too wide) in alignment at lines 427--432
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 432--437
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 437--440
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 1789) in paragraph at lines 448--449
+[]\OT1/cmr/m/n/12 Revisar: (id-Clien-te $\OML/cmm/m/it/12 >$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 449--450
+[]|\OT1/cmr/m/n/12 PK,
+ []
+
+
+Overfull \hbox (2.02837pt too wide) in paragraph at lines 452--453
+[]|\OT1/cmr/m/n/12 varchar(100)| 
+ []
+
+
+Underfull \hbox (badness 2573) in paragraph at lines 453--454
+\OT1/cmr/m/n/12 co-rreo electr^^Soni-co v^^Sali-do
+ []
+
+
+Underfull \hbox (badness 2027) in paragraph at lines 456--457
+\OT1/cmr/m/n/12 el for-ma-to de co-rreo
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 440--459
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (46.05783pt too wide) in alignment at lines 468--473
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (46.05783pt too wide) in alignment at lines 473--478
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (46.05783pt too wide) in alignment at lines 478--481
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 2744) in paragraph at lines 487--488
+[]|\OT1/cmr/m/n/12 NOT NULL (au-to-in-
+ []
+
+
+Underfull \hbox (badness 2744) in paragraph at lines 495--496
+[]|\OT1/cmr/m/n/12 NOT NULL (au-to-in-
+ []
+
+
+Underfull \hbox (badness 1521) in paragraph at lines 545--546
+\OT1/cmr/m/n/12 uno en (Ac-ti-va, Blo-
+ []
+
+
+Overfull \hbox (46.05783pt too wide) in alignment at lines 481--548
+ [] [] [] [] [] 
+ []
+
+[4]
+Overfull \hbox (31.83145pt too wide) in alignment at lines 557--562
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 562--567
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 567--570
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 579--580
+[]|\OT1/cmr/m/n/12 PK,
+ []
+
+
+Underfull \hbox (badness 1127) in paragraph at lines 586--587
+[]\OT1/cmr/m/n/12 Revisar: (Id-Pre-mio $\OML/cmm/m/it/12 >$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 587--588
+[]|\OT1/cmr/m/n/12 PK,
+ []
+
+
+Underfull \hbox (badness 1189) in paragraph at lines 594--595
+[]\OT1/cmr/m/n/12 Revisar: (Can-ti-dad $\OML/cmm/m/it/12 >$
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 570--597
+ [] [] [] [] [] 
+ []
+
+[5]
+Overfull \hbox (26.14099pt too wide) in alignment at lines 606--611
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (26.14099pt too wide) in alignment at lines 611--616
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (26.14099pt too wide) in alignment at lines 616--619
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 633--634
+[]\OT1/cmr/m/n/12 Revisar: (Id-Su-cur-sal
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 646--647
+[]|\OT1/cmr/m/n/12 Cadenas con el for-ma-to
+ []
+
+
+Underfull \hbox (badness 2165) in paragraph at lines 646--647
+\OT1/cmr/m/n/12 est^^Sandar: 4 le-tras, 6 d^^S^^Pgi-tos,
+ []
+
+
+Overfull \hbox (26.14099pt too wide) in alignment at lines 619--666
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 675--680
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 680--685
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 685--688
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 1320) in paragraph at lines 696--697
+[]\OT1/cmr/m/n/12 Revisar: (id-Tar-je-ta $\OML/cmm/m/it/12 >$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 697--698
+[]|\OT1/cmr/m/n/12 PK,
+ []
+
+
+Overfull \hbox (1.21033pt too wide) in paragraph at lines 699--700
+[]|\OT1/cmr/m/n/12 numRecarga| 
+ []
+
+
+Underfull \hbox (badness 2229) in paragraph at lines 704--705
+[]\OT1/cmr/m/n/12 Revisar: (num-Re-car-ga
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 713--714
+[]|\OT1/cmr/m/n/12 PK,
+ []
+
+
+Overfull \hbox (1.53671pt too wide) in paragraph at lines 715--716
+[]|\OT1/cmr/m/n/12 idEncargado| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 717--718
+[]|\OT1/cmr/m/n/12 Cadenas con el for-ma-to
+ []
+
+
+Underfull \hbox (badness 2165) in paragraph at lines 717--718
+\OT1/cmr/m/n/12 est^^Sandar: 4 le-tras, 6 d^^S^^Pgi-tos,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 721--722
+[]|\OT1/cmr/m/n/12 PK,
+ []
+
+
+Overfull \hbox (6.59776pt too wide) in paragraph at lines 724--725
+[]|\OT1/cmr/m/n/12 decimal(10,2)| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 731--732
+[]|\OT1/cmr/m/n/12 M^^Seto-do-Pa-
+ []
+
+
+Underfull \hbox (badness 2762) in paragraph at lines 736--737
+[]\OT1/cmr/m/n/12 Revisar que el va-lor
+ []
+
+
+Underfull \hbox (badness 1152) in paragraph at lines 736--737
+\OT1/cmr/m/n/12 Cr^^Sedi-to, D^^Sebi-to, Pay-
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 688--753
+ [] [] [] [] [] 
+ []
+
+[6]
+Overfull \hbox (31.83145pt too wide) in alignment at lines 760--765
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 765--770
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 770--773
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 2744) in paragraph at lines 778--779
+[]|\OT1/cmr/m/n/12 NOT NULL (au-to-in-
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 773--805
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 808--810
+
+ []
+
+[7]
+Overfull \hbox (31.83145pt too wide) in alignment at lines 814--819
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 819--824
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 824--827
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 1803) in paragraph at lines 831--832
+[]|\OT1/cmr/m/n/12 Cadenas con el for-ma-to
+ []
+
+
+Underfull \hbox (badness 6412) in paragraph at lines 847--848
+[]|\OT1/cmr/m/n/12 Cadenas at^^Somi-cas com-
+ []
+
+
+Underfull \hbox (badness 6412) in paragraph at lines 855--856
+[]|\OT1/cmr/m/n/12 Cadenas at^^Somi-cas com-
+ []
+
+
+Underfull \hbox (badness 1803) in paragraph at lines 863--864
+[]|\OT1/cmr/m/n/12 Cadenas con el for-ma-to
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 827--877
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 880--881
+
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 885--890
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 890--895
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 895--898
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 1803) in paragraph at lines 902--903
+[]|\OT1/cmr/m/n/12 Cadenas con el for-ma-to
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 907--908
+[]|\OT1/cmr/m/n/12 PK,
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 898--917
+ [] [] [] [] [] 
+ []
+
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 920--922
+
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 926--931
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 931--936
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 936--939
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 1803) in paragraph at lines 943--944
+[]|\OT1/cmr/m/n/12 Cadenas con el for-ma-to
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 948--949
+[]|\OT1/cmr/m/n/12 PK,
+ []
+
+
+Overfull \hbox (2.02837pt too wide) in paragraph at lines 951--952
+[]|\OT1/cmr/m/n/12 varchar(100)| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 952--953
+[]|\OT1/cmr/m/n/12 Cadenas que in-di-quen
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 952--953
+\OT1/cmr/m/n/12 una es-pe-cia-li-dad co-mo:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 952--953
+\OT1/cmr/m/n/12 Si-mu-la-do-res, Jue-gos
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 952--953
+\OT1/cmr/m/n/12 elec-tro-mec^^Sani-cos, en-tre
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 939--956
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 959--961
+
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 964--969
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 969--974
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 974--977
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 1803) in paragraph at lines 981--982
+[]|\OT1/cmr/m/n/12 Cadenas con el for-ma-to
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 986--987
+[]|\OT1/cmr/m/n/12 PK,
+ []
+
+
+Overfull \hbox (5.56139pt too wide) in paragraph at lines 988--989
+[]|\OT1/cmr/m/n/12 TituloCertificacion| 
+ []
+
+
+Overfull \hbox (2.02837pt too wide) in paragraph at lines 989--990
+[]|\OT1/cmr/m/n/12 varchar(100)| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 990--991
+[]|\OT1/cmr/m/n/12 Cadenas que in-di-quen
+ []
+
+
+Underfull \hbox (badness 5771) in paragraph at lines 990--991
+\OT1/cmr/m/n/12 una cer-ti-fi-ca-ci^^Son, co-mo:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 990--991
+\OT1/cmr/m/n/12 mec^^Sani-ca, electr^^Soni-ca,
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 977--994
+ [] [] [] [] [] 
+ []
+
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 997--999
+
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1003--1008
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1008--1013
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1013--1016
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 1803) in paragraph at lines 1020--1021
+[]|\OT1/cmr/m/n/12 Cadenas con el for-ma-to
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1025--1026
+[]|\OT1/cmr/m/n/12 PK,
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1016--1027
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1030--1032
+
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1036--1041
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1041--1046
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1046--1049
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 1803) in paragraph at lines 1053--1054
+[]|\OT1/cmr/m/n/12 Cadenas con el for-ma-to
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1058--1059
+[]|\OT1/cmr/m/n/12 PK,
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1049--1060
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1063--1065
+
+ []
+
+[10]
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1070--1075
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1075--1080
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1080--1083
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1093--1094
+[]|\OT1/cmr/m/n/12 PK,
+ []
+
+
+Underfull \hbox (badness 1803) in paragraph at lines 1097--1098
+[]|\OT1/cmr/m/n/12 Cadenas con el for-ma-to
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1102--1103
+[]|\OT1/cmr/m/n/12 PK,
+ []
+
+
+Overfull \hbox (2.02837pt too wide) in paragraph at lines 1111--1112
+[]|\OT1/cmr/m/n/12 varchar(300)| 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1083--1124
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1127--1129
+
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1133--1138
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1138--1143
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1143--1146
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 1163) in paragraph at lines 1151--1152
+[]|\OT1/cmr/m/n/12 NOT NULL (Au-to-in-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1160--1161
+[]|\OT1/cmr/m/n/12 PK,
+ []
+
+
+Underfull \hbox (badness 5446) in paragraph at lines 1189--1190
+[]\OT1/cmr/m/n/12 Revisar (Pun-to-sOb-te-
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1146--1200
+ [] [] [] [] [] 
+ []
+
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 1203--1205
+
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1209--1214
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1214--1219
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1219--1222
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1230--1231
+[]|\OT1/cmr/m/n/12 PK,
+ []
+
+
+Underfull \hbox (badness 1803) in paragraph at lines 1234--1235
+[]|\OT1/cmr/m/n/12 Cadenas con el for-ma-to
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1238--1239
+[]|\OT1/cmr/m/n/12 PK,
+ []
+
+
+Overfull \hbox (5.06973pt too wide) in paragraph at lines 1240--1241
+[]|\OT1/cmr/m/n/12 FechaContrataci^^Son| 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1222--1268
+ [] [] [] [] [] 
+ []
+
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 1271--1273
+
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1276--1281
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1281--1286
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1286--1289
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 1163) in paragraph at lines 1294--1295
+[]|\OT1/cmr/m/n/12 NOT NULL (Au-to-in-
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1289--1319
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1322--1323
+
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1328--1333
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1333--1338
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1338--1341
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1349--1350
+[]|\OT1/cmr/m/n/12 PK,
+ []
+
+
+Underfull \hbox (badness 2818) in paragraph at lines 1356--1357
+[]\OT1/cmr/m/n/12 Revisar (Pun-tos-Po-rA-
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1341--1359
+ [] [] [] [] [] 
+ []
+
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 1362--1364
+
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1368--1373
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1373--1378
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1378--1381
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1389--1390
+[]|\OT1/cmr/m/n/12 PK,
+ []
+
+
+Underfull \hbox (badness 2818) in paragraph at lines 1396--1397
+[]\OT1/cmr/m/n/12 Revisar (Pun-tos-Po-rA-
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1381--1399
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1402--1404
+
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1408--1413
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1413--1418
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1418--1421
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1429--1430
+[]|\OT1/cmr/m/n/12 PK,
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1421--1439
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1442--1444
+
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1449--1454
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1454--1459
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1459--1462
+ [] [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1470--1471
+[]|\OT1/cmr/m/n/12 PK,
+ []
+
+
+Overfull \hbox (31.83145pt too wide) in alignment at lines 1462--1480
+ [] [] [] [] [] 
+ []
+
+[14]
+Underfull \hbox (badness 10000) in paragraph at lines 1483--1485
+
+ []
+
+[15] (./main.aux
+LaTeX Info: Redefining \. on input line 11.
+LaTeX Info: Redefining \% on input line 11.
+)
+ ***********
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-03-20>
+ ***********
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+ ) 
+Here is how much of TeX's memory you used:
+ 12784 strings out of 467356
+ 196275 string characters out of 5418691
+ 655064 words of memory out of 6000000
+ 41680 multiletter control sequences out of 15000+600000
+ 633586 words of font info for 62 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 69i,7n,79p,1193b,605s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on main.pdf (16 pages, 340954 bytes).
+PDF statistics:
+ 136 PDF objects out of 1000 (max. 8388607)
+ 104 compressed objects within 2 object streams
+ 42 named destinations out of 1000 (max. 500000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+

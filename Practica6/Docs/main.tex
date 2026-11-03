@@ -59,13 +59,15 @@
     Reynoso Ascencio Alexa \\
     Vega Navas Saúl \\
     \vspace{2cm}
+
     \textbf{Fecha de entrega: } 2 de Noviembre del 2026
+
     \vfill
 \end{center}
 \end{titlepage}
 \tableofcontents
 \newpage
-\section{Preguntas.}
+\section{Preguntas de investigación.}
 \subsection*{5. Con base a lo anterior, ¿cuál política utilizarán para su esquema, y por qué motivo?}
 
 Para nuestro esquema, en general usaremos la política cascade (ON DELETE CASCADE ON UPDATE CASCADE), ya que la mayoría de nuestras tablas con llave foránea están estrechamente relacionadas a la tabla con llave primaria, de modo que carece de sentido guardar su información si se elimina el registro principal, además cualquier actualización sobre la llave primaria es imprescindible que se actualice también en los ejemplares de llave foránea. Por ejemplo, para los casos de tablas producidas por atributos multivaluados y en las subentidades derivadas de herencias como: CorreoEmpleado, TelefonoCliente, Certificacion, Cajero, Destreza, etc. No tiene sentido guardarlas si se elimina el cliente, el empleado o el juego al que corresponden.

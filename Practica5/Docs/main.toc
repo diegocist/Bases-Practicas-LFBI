@@ -1,0 +1,4 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Consideraciones de Diseño.}{2}{section.1}%
+\contentsline {section}{\numberline {2}Restricciones de dominio de las tablas.}{3}{section.2}%
+\contentsline {section}{\numberline {3}Restaurar backup de una BD en Docker}{16}{section.3}%
