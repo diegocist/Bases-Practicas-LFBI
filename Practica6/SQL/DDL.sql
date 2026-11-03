@@ -290,6 +290,24 @@ CHECK(Sexo IN ('Masculino', 'Femenino', 'No binario'));
 ALTER TABLE Cliente ADD CONSTRAINT Cliente_pkey
 PRIMARY KEY (idCliente);
 
+-- Comentarios Cliente
+COMMENT ON TABLE Cliente IS 'Tabla que contiene a los clientes del negocio';
+
+COMMENT ON COLUMN Cliente.idCliente IS 'Identificador del cliente';
+
+COMMENT ON COLUMN Cliente.Nombre IS 'Nombre del cliente';
+COMMENT ON COLUMN Cliente.ApellidoPaterno IS 'Apellido paterno del cliente';
+COMMENT ON COLUMN Cliente.ApellidoMaterno IS 'Apellido materno del cliente, acepta NULL';
+COMMENT ON COLUMN Cliente.FechaNacimiento IS 'Fecha de nacimiento del cliente';
+COMMENT ON COLUMN Cliente.Sexo IS 'Sexo del cliente: Masculino, Femenino o No binario';
+
+COMMENT ON CONSTRAINT Cliente_pkey ON Cliente IS 'La llave primaria de la tabla Cliente';
+COMMENT ON CONSTRAINT Cliente_d1 ON Cliente IS 'Restriccion check que asegura que idCliente sea mayor a 0';
+COMMENT ON CONSTRAINT Cliente_d2 ON Cliente IS 'Restriccion check que asegura que Nombre no sea una cadena vacia';
+COMMENT ON CONSTRAINT Cliente_d3 ON Cliente IS 'Restriccion check que asegura que ApellidoPaterno no sea una cadena vacia';
+COMMENT ON CONSTRAINT Cliente_d4 ON Cliente IS 'Restriccion check que asegura que ApellidoMaterno, cuando no es NULL, no sea una cadena vacia';
+COMMENT ON CONSTRAINT Cliente_d5 ON Cliente IS 'Restriccion check que asegura que FechaNacimiento sea menor o igual a la fecha actual';
+COMMENT ON CONSTRAINT Cliente_d6 ON Cliente IS 'Restriccion check que asegura que Sexo sea Masculino, Femenino o No binario';
 
 CREATE TABLE Tarjeta(
     idTarjeta SERIAL4,
@@ -329,6 +347,22 @@ CHECK(Puntos >= 0);
 -- idTarjeta como llave primaria
 ALTER TABLE Tarjeta ADD CONSTRAINT Tarjeta_pkey
 PRIMARY KEY (idTarjeta);
+
+
+-- Comentarios Tarjeta
+COMMENT ON TABLE Tarjeta IS 'Tabla que contiene las tarjetas de los clientes';
+
+COMMENT ON COLUMN Tarjeta.idTarjeta IS 'Identificador de la tarjeta';
+COMMENT ON COLUMN Tarjeta.Estado IS 'Estado de la tarjeta: Activa, Bloqueada o Cancelada';
+COMMENT ON COLUMN Tarjeta.Saldo IS 'Saldo disponible de la tarjeta';
+COMMENT ON COLUMN Tarjeta.Puntos IS 'Puntos acumulados en la tarjeta';
+
+COMMENT ON CONSTRAINT Tarjeta_pkey ON Tarjeta IS 'La llave primaria de la tabla Tarjeta';
+COMMENT ON CONSTRAINT Tarjeta_d1 ON Tarjeta IS 'Restriccion check que asegura que idTarjeta sea mayor a 0';
+COMMENT ON CONSTRAINT Tarjeta_d2 ON Tarjeta IS 'Restriccion check que asegura que Estado sea Activa, Bloqueada o Cancelada';
+COMMENT ON CONSTRAINT Tarjeta_d3 ON Tarjeta IS 'Restriccion check que asegura que Saldo sea mayor o igual a 0';
+COMMENT ON CONSTRAINT Tarjeta_d4 ON Tarjeta IS 'Restriccion check que asegura que Puntos sea mayor o igual a 0';
+
 
 
 ---------------TABLAS CON LLAVES COMPUESTAS, FORÁNEAS Y HERENCIAS)----------
@@ -513,6 +547,7 @@ UNIQUE (Cedula);
 ALTER TABLE Gerente ADD CONSTRAINT Gerente_fkey
 FOREIGN KEY (CURP) REFERENCES Empleado(CURP)
 ON UPDATE CASCADE ON DELETE CASCADE;
+
 
 -- Comentarios Gerente
 COMMENT ON TABLE Gerente IS 'Tabla que contiene a los empleados que son gerentes';
@@ -827,7 +862,7 @@ ALTER TABLE Certificacion ADD CONSTRAINT Certificacion_fkey1
 FOREIGN KEY (CURP) REFERENCES Tecnico(CURP)
 ON UPDATE CASCADE ON DELETE CASCADE;
 
-CREATE TABLE Registrar(
+CREATE TABLE Registrar(           
     idCliente INT,
     idTarjeta INT
 );
@@ -850,11 +885,25 @@ CHECK(idTarjeta > 0);
 -- Referencial
 -- idCliente
 ALTER TABLE Registrar ADD CONSTRAINT Registrar_fkey1
-FOREIGN KEY (idCliente) REFERENCES Cliente(idCliente);
+FOREIGN KEY (idCliente) REFERENCES Cliente(idCliente)
+ON UPDATE CASCADE ON DELETE RESTRICT;
+
 
 -- idTarjeta
 ALTER TABLE Registrar ADD CONSTRAINT Registrar_fkey2
-FOREIGN KEY (idTarjeta) REFERENCES Tarjeta(idTarjeta);
+FOREIGN KEY (idTarjeta) REFERENCES Tarjeta(idTarjeta)
+ON UPDATE CASCADE ON DELETE RESTRICT;
+
+-- Comentarios Registrar
+COMMENT ON TABLE Registrar IS 'Tabla que relaciona a los clientes con sus tarjetas';
+
+COMMENT ON COLUMN Registrar.idCliente IS 'Identificador del cliente que registra la tarjeta';
+COMMENT ON COLUMN Registrar.idTarjeta IS 'Identificador de la tarjeta registrada';
+
+COMMENT ON CONSTRAINT Registrar_d1 ON Registrar IS 'Restriccion check que asegura que idCliente sea mayor a 0';
+COMMENT ON CONSTRAINT Registrar_d2 ON Registrar IS 'Restriccion check que asegura que idTarjeta sea mayor a 0';
+COMMENT ON CONSTRAINT Registrar_fkey1 ON Registrar IS 'Llave foranea de idCliente hacia Cliente(idCliente), ON UPDATE CASCADE ON DELETE RESTRICT';
+COMMENT ON CONSTRAINT Registrar_fkey2 ON Registrar IS 'Llave foranea de idTarjeta hacia Tarjeta(idTarjeta), ON UPDATE CASCADE ON DELETE RESTRICT';
 
 CREATE TABLE CorreoCliente(
     idCliente INT,
@@ -870,7 +919,17 @@ PRIMARY KEY (idCliente, Correo);
 
 --Referencial
 ALTER TABLE CorreoCliente ADD CONSTRAINT CorreoCliente_fkey
-FOREIGN KEY (idCliente) REFERENCES Cliente(idCliente);
+FOREIGN KEY (idCliente) REFERENCES Cliente(idCliente)
+ON UPDATE CASCADE ON DELETE CASCADE ;
+
+-- Comentarios CorreoCliente
+COMMENT ON TABLE CorreoCliente IS 'Tabla que contiene los correos de los clientes (atributo multivaluado)';
+
+COMMENT ON COLUMN CorreoCliente.idCliente IS 'Identificador del cliente dueno del correo';
+COMMENT ON COLUMN CorreoCliente.Correo IS 'Correo electronico del cliente';
+
+COMMENT ON CONSTRAINT CorreoCliente_pkey ON CorreoCliente IS 'La llave primaria compuesta de la tabla CorreoCliente';
+COMMENT ON CONSTRAINT CorreoCliente_fkey ON CorreoCliente IS 'Llave foranea de idCliente hacia Cliente(idCliente), ON UPDATE CASCADE ON DELETE CASCADE';
 
 CREATE TABLE TelefonoCliente(
     idCliente INT,
@@ -890,7 +949,18 @@ PRIMARY KEY (idCliente, Telefono);
 
 --Referencial
 ALTER TABLE TelefonoCliente ADD CONSTRAINT TelefonoCliente_fkey
-FOREIGN KEY (idCliente) REFERENCES Cliente(idCliente);
+FOREIGN KEY (idCliente) REFERENCES Cliente(idCliente)
+ON UPDATE CASCADE ON DELETE CASCADE ;
+
+-- Comentarios TelefonoCliente
+COMMENT ON TABLE TelefonoCliente IS 'Tabla que contiene los telefonos de los clientes (atributo multivaluado)';
+
+COMMENT ON COLUMN TelefonoCliente.idCliente IS 'Identificador del cliente dueno del telefono';
+COMMENT ON COLUMN TelefonoCliente.Telefono IS 'Telefono del cliente, compuesto por 10 digitos';
+
+COMMENT ON CONSTRAINT TelefonoCliente_d1 ON TelefonoCliente IS 'Restriccion check que asegura que Telefono tenga exactamente 10 digitos';
+COMMENT ON CONSTRAINT TelefonoCliente_pkey ON TelefonoCliente IS 'La llave primaria compuesta de la tabla TelefonoCliente';
+COMMENT ON CONSTRAINT TelefonoCliente_fkey ON TelefonoCliente IS 'Llave foranea de idCliente hacia Cliente(idCliente), ON UPDATE CASCADE ON DELETE CASCADE';
 
 CREATE TABLE Recarga(
     idTarjeta INT,
@@ -960,16 +1030,42 @@ PRIMARY KEY (idTarjeta, numRecarga);
 --Referencial
 -- idTarjeta
 ALTER TABLE Recarga ADD CONSTRAINT Recarga_fkey1
-FOREIGN KEY (idTarjeta) REFERENCES Tarjeta(idTarjeta);
+FOREIGN KEY (idTarjeta) REFERENCES Tarjeta(idTarjeta)
+ON UPDATE CASCADE ON DELETE RESTRICT;
 
 -- idSucursal 
 ALTER TABLE Recarga ADD CONSTRAINT Recarga_fkey2
-FOREIGN KEY (idSucursal) REFERENCES Sucursal(idSucursal);
+FOREIGN KEY (idSucursal) REFERENCES Sucursal(idSucursal)
+ON UPDATE CASCADE ON DELETE RESTRICT;
 
 -- CURP 
 ALTER TABLE Recarga ADD CONSTRAINT Recarga_fkey3
-FOREIGN KEY (CURP) REFERENCES Cajero(CURP);
+FOREIGN KEY (CURP) REFERENCES Cajero(CURP)
+ON UPDATE CASCADE ON DELETE RESTRICT;
 
+-- Comentarios Recarga
+COMMENT ON TABLE Recarga IS 'Tabla que contiene las recargas de saldo hechas a las tarjetas';
+
+COMMENT ON COLUMN Recarga.idTarjeta IS 'Identificador de la tarjeta recargada';
+COMMENT ON COLUMN Recarga.numRecarga IS 'Numero de recarga dentro de la tarjeta';
+COMMENT ON COLUMN Recarga.idSucursal IS 'Identificador de la sucursal donde se hizo la recarga';
+COMMENT ON COLUMN Recarga.CURP IS 'CURP del cajero que realizo la recarga';
+COMMENT ON COLUMN Recarga.Monto IS 'Monto recargado';
+COMMENT ON COLUMN Recarga.MetodoPago IS 'Metodo de pago: Efectivo, Credito, Debito o Paypal';
+COMMENT ON COLUMN Recarga.Hora IS 'Hora de la recarga';
+COMMENT ON COLUMN Recarga.Fecha IS 'Fecha de la recarga';
+
+COMMENT ON CONSTRAINT Recarga_d1 ON Recarga IS 'Restriccion check que asegura que idTarjeta sea mayor a 0';
+COMMENT ON CONSTRAINT Recarga_d2 ON Recarga IS 'Restriccion check que asegura que numRecarga sea mayor a 0';
+COMMENT ON CONSTRAINT Recarga_d3 ON Recarga IS 'Restriccion check que asegura que idSucursal sea mayor a 0';
+COMMENT ON CONSTRAINT Recarga_d4 ON Recarga IS 'Restriccion check que asegura que CURP tenga el formato estandar';
+COMMENT ON CONSTRAINT Recarga_d5 ON Recarga IS 'Restriccion check que asegura que Monto sea mayor a 0';
+COMMENT ON CONSTRAINT Recarga_d6 ON Recarga IS 'Restriccion check que asegura que MetodoPago sea Efectivo, Credito, Debito o Paypal';
+COMMENT ON CONSTRAINT Recarga_d7 ON Recarga IS 'Restriccion check que asegura que Fecha sea menor o igual a la fecha actual';
+COMMENT ON CONSTRAINT Recarga_pkey ON Recarga IS 'La llave primaria compuesta de la tabla Recarga';
+COMMENT ON CONSTRAINT Recarga_fkey1 ON Recarga IS 'Llave foranea de idTarjeta hacia Tarjeta(idTarjeta), ON UPDATE CASCADE ON DELETE RESTRICT';
+COMMENT ON CONSTRAINT Recarga_fkey2 ON Recarga IS 'Llave foranea de idSucursal hacia Sucursal(idSucursal), ON UPDATE CASCADE ON DELETE RESTRICT';
+COMMENT ON CONSTRAINT Recarga_fkey3 ON Recarga IS 'Llave foranea de CURP hacia Cajero(CURP),  ON UPDATE CASCADE ON DELETE RESTRICT';
 
 CREATE TABLE Canje(
     idCanje SERIAL4,
@@ -1026,16 +1122,38 @@ PRIMARY KEY (idCanje);
 
 -- idSucursal 
 ALTER TABLE Canje ADD CONSTRAINT Canje_fkey1
-FOREIGN KEY (idSucursal) REFERENCES Sucursal(idSucursal);
+FOREIGN KEY (idSucursal) REFERENCES Sucursal(idSucursal)
+ON UPDATE CASCADE ON DELETE RESTRICT;
 
 -- idTarjeta 
 ALTER TABLE Canje ADD CONSTRAINT Canje_fkey2
-FOREIGN KEY (idTarjeta) REFERENCES Tarjeta(idTarjeta);
+FOREIGN KEY (idTarjeta) REFERENCES Tarjeta(idTarjeta)
+ON UPDATE CASCADE ON DELETE RESTRICT;
 
 -- CURP 
 ALTER TABLE Canje ADD CONSTRAINT Canje_fkey3
-FOREIGN KEY (CURP) REFERENCES EncargadoPremios(CURP);
+FOREIGN KEY (CURP) REFERENCES EncargadoPremios(CURP)
+ON UPDATE CASCADE ON DELETE RESTRICT;
 
+-- Comentarios Canje
+COMMENT ON TABLE Canje IS 'Tabla que contiene los canjes de premios hechos con las tarjetas';
+
+COMMENT ON COLUMN Canje.idCanje IS 'Identificador del canje';
+COMMENT ON COLUMN Canje.idSucursal IS 'Identificador de la sucursal donde se hizo el canje';
+COMMENT ON COLUMN Canje.idTarjeta IS 'Identificador de la tarjeta usada en el canje';
+COMMENT ON COLUMN Canje.CURP IS 'CURP del encargado de premios que realizo el canje';
+COMMENT ON COLUMN Canje.Hora IS 'Hora del canje';
+COMMENT ON COLUMN Canje.Fecha IS 'Fecha del canje';
+
+COMMENT ON CONSTRAINT Canje_pkey ON Canje IS 'La llave primaria de la tabla Canje';
+COMMENT ON CONSTRAINT Canje_d1 ON Canje IS 'Restriccion check que asegura que idCanje sea mayor a 0';
+COMMENT ON CONSTRAINT Canje_d2 ON Canje IS 'Restriccion check que asegura que idSucursal sea mayor a 0';
+COMMENT ON CONSTRAINT Canje_d3 ON Canje IS 'Restriccion check que asegura que idTarjeta sea mayor a 0';
+COMMENT ON CONSTRAINT Canje_d4 ON Canje IS 'Restriccion check que asegura que CURP tenga el formato estandar';
+COMMENT ON CONSTRAINT Canje_d5 ON Canje IS 'Restriccion check que asegura que Fecha sea menor o igual a la fecha actual';
+COMMENT ON CONSTRAINT Canje_fkey1 ON Canje IS 'Llave foranea de idSucursal hacia Sucursal, ON UPDATE CASCADE ON DELETE RESTRICT';
+COMMENT ON CONSTRAINT Canje_fkey2 ON Canje IS 'Llave foranea de idTarjeta hacia Tarjeta, ON UPDATE CASCADE ON DELETE RESTRICT';
+COMMENT ON CONSTRAINT Canje_fkey3 ON Canje IS 'Llave foranea de CURP hacia EncargadoPremios, ON UPDATE CASCADE ON DELETE RESTRICT';
 
 CREATE TABLE Incluir(
     idCanje INT,
@@ -1065,24 +1183,35 @@ ALTER TABLE Incluir ADD CONSTRAINT Incluir_d3
 CHECK(Cantidad > 0);
 
 --Entidad
-ALTER TABLE Incluir ADD CONSTRAINT Incluir_pkey
-PRIMARY KEY (idCanje, idPremio);
+ALTER TABLE Incluir ADD CONSTRAINT Incluir_unique
+UNIQUE (idCanje, idPremio);
 
 --Referencial
 -- idPremio 
 ALTER TABLE Incluir ADD CONSTRAINT Incluir_fkey2
-FOREIGN KEY (idPremio) REFERENCES Premio(idPremio);
+FOREIGN KEY (idPremio) REFERENCES Premio(idPremio)
+ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- idCanje 
 ALTER TABLE Incluir ADD CONSTRAINT Incluir_fkey1
-FOREIGN KEY (idCanje) REFERENCES Canje(idCanje);
+FOREIGN KEY (idCanje) REFERENCES Canje(idCanje)
+ ON UPDATE CASCADE ON DELETE CASCADE;
 
----------------------------- CORRECCION ----------------------------
--- Incluir: se corrige el tipo de constraint de primary key a unique.
-ALTER TABLE Incluir DROP CONSTRAINT Incluir_pkey;
 
-ALTER TABLE Incluir ADD CONSTRAINT Incluir_unique
-UNIQUE (idCanje, idPremio);
+-- Comentarios Incluir
+COMMENT ON TABLE Incluir IS 'Tabla que contiene los premios incluidos en cada canje';
+
+COMMENT ON COLUMN Incluir.idCanje IS 'Identificador del canje';
+COMMENT ON COLUMN Incluir.idPremio IS 'Identificador del premio incluido';
+COMMENT ON COLUMN Incluir.Cantidad IS 'Cantidad del premio incluida en el canje';
+
+COMMENT ON CONSTRAINT Incluir_d1 ON Incluir IS 'Restriccion check que asegura que idCanje sea mayor a 0';
+COMMENT ON CONSTRAINT Incluir_d2 ON Incluir IS 'Restriccion check que asegura que idPremio sea mayor a 0';
+COMMENT ON CONSTRAINT Incluir_d3 ON Incluir IS 'Restriccion check que asegura que Cantidad sea mayor a 0';
+COMMENT ON CONSTRAINT Incluir_unique ON Incluir IS 'Restriccion unique que asegura que la combinacion (idCanje, idPremio) no se repita';
+COMMENT ON CONSTRAINT Incluir_fkey1 ON Incluir IS 'Llave foranea de idCanje hacia Canje(idCanje), ON UPDATE CASCADE ON DELETE CASCADE';
+COMMENT ON CONSTRAINT Incluir_fkey2 ON Incluir IS 'Llave foranea de idPremio hacia Premio(idPremio), ON UPDATE CASCADE ON DELETE RESTRICT';
+
 
 CREATE TABLE Partida(
     numPartida SERIAL4,
