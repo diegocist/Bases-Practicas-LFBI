@@ -988,6 +988,12 @@ FOREIGN KEY (idPremio) REFERENCES Premio(idPremio);
 ALTER TABLE Incluir ADD CONSTRAINT Incluir_fkey1
 FOREIGN KEY (idCanje) REFERENCES Canje(idCanje);
 
+---------------------------- CORRECCION ----------------------------
+-- Incluir: se corrige el tipo de constraint de primary key a unique.
+ALTER TABLE Incluir DROP CONSTRAINT Incluir_pkey;
+
+ALTER TABLE Incluir ADD CONSTRAINT Incluir_unique
+UNIQUE (idCanje, idPremio);
 
 CREATE TABLE Partida(
     numPartida SERIAL4,
