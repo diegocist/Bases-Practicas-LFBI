@@ -82,6 +82,23 @@ Las medidas que pueden prevenir la generación de estos errores se pueden agrega
     \item \textbf{RESTRICT.} Si existen registros asociados en la tabla hija, entonces todas las modificaciones a la tabla padre son bloqueadas.
 \end{itemize}
 
+\section*{2. Para cada política que investigaron, ¿cómo se indica en SQL?}
+
+Primero notemos que estas políticas se utilizan cuando un registro referenciado en una tabla se elimina o se actualiza. Esto se indica mediante las siguientes cláusulas:
+\begin{enumerate}
+    \item Para eliminar un registro: \texttt{ON DELETE}
+    \item Para actualizar un registro: \texttt{ON UPDATE}
+\end{enumerate}
+
+Así que las 5 políticas de mantenimiento de llaves foráneas se indican en SQL como:
+\begin{enumerate}
+    \item En cascada: \texttt{CASCADE}
+    \item Restringir: \texttt{RESTRICT}
+    \item Sin acción: \texttt{NO ACTION}
+    \item Asignar nulo: \texttt{SET NULL}
+    \item Asignar por defecto: \texttt{SET DEFAULT}
+\end{enumerate}
+
 \subsection*{5. Con base a lo anterior, ¿cuál política utilizarán para su esquema, y por qué motivo?}
 
 Para nuestro esquema, en general usaremos la política cascade (ON DELETE CASCADE ON UPDATE CASCADE), ya que la mayoría de nuestras tablas con llave foránea están estrechamente relacionadas a la tabla con llave primaria, de modo que carece de sentido guardar su información si se elimina el registro principal, además cualquier actualización sobre la llave primaria es imprescindible que se actualice también en los ejemplares de llave foránea. Por ejemplo, para los casos de tablas producidas por atributos multivaluados y en las subentidades derivadas de herencias como: CorreoEmpleado, TelefonoCliente, Certificacion, Cajero, Destreza, etc. No tiene sentido guardarlas si se elimina el cliente, el empleado o el juego al que corresponden.
