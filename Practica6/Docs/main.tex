@@ -71,7 +71,7 @@ Una política de mantenimiento de llaves foráneas, denominada en SQL como \text
 
 En una base de datos tabular, un registro padre en una tabla es aquel que  posee la llave primaria (PK) a la que hacen referencia otras tablas del sistema a través de llaves foráneas; si no se integran políticas de mantenimiento de llaves foráneas al SMBD $-$y si se excluyen las capturas de excepciones integradas en los motores de bases$-$, los registros que hacen uso de dichas llaves quedan huérfanos y generando inconsistencias al tener información incompleta que apunta a registros inexistentes, o incluso quedar corruptos.
 
-Algunas medidas que se pueden agregar para prevenir la generación de estos errores son:
+Las medidas que se pueden agregar para prevenir la generación de estos errores se pueden agregar en la actualización de tablas (en el apartado de \texttt{ALTER TABLE}), a través de las cláusulas \texttt{ON DELETE} y \texttt{ON UPDATE}, y son:
 \begin{itemize}
     \item \textbf{CASCADE.} Si el registro de la tabla padre se modifica, la actualización se propaga automáticamente a todos los registros dependientes en la tabla hija, incluso las eliminaciones.
     \item \textbf{SET NULL.} Al actualizar o eliminar el registro padre, la columna de la llave foránea en los registros hijos se cambia a valor \texttt{NULL}; no obstante, esto requiere que las tablas hijas permitan valores nulos.
