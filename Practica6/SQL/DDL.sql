@@ -780,6 +780,16 @@ ALTER TABLE Almacenamiento ADD CONSTRAINT Almacenamiento_fkey2
 FOREIGN KEY (idPremio) REFERENCES Premio(idPremio)
 ON UPDATE CASCADE ON DELETE RESTRICT;
 
+-- Comentarios Almacenamiento
+COMMENT ON TABLE Almacenamiento IS 'Tabla que registra el inventario de premios disponibles en cada sucursal.';
+COMMENT ON COLUMN Almacenamiento.idSucursal IS 'Identificador de la sucursal donde se almacena el premio';
+COMMENT ON COLUMN Almacenamiento.idPremio IS 'Identificador del premio almacenado';
+COMMENT ON COLUMN Almacenamiento.FechaRotacion IS 'Fecha en la que se actualizó o rotó el inventario del premio';
+COMMENT ON COLUMN Almacenamiento.CantidadRecibida IS 'Cantidad de unidades físicas recibidas del premio';
+COMMENT ON CONSTRAINT Almacenamiento_d1 ON Almacenamiento IS 'Restricción CHECK que verifica que la cantidad recibida sea mayor o igual a 0';
+COMMENT ON CONSTRAINT Almacenamiento_fkey1 ON Almacenamiento IS 'Llave foránea que hace referencia a Sucursal. Usa actualización y borrado en cascada';
+COMMENT ON CONSTRAINT Almacenamiento_fkey2 ON Almacenamiento IS 'Llave foránea que hace referencia a Premio. Usa actualización en cascada y restringe el borrado';
+
 
 CREATE TABLE Maquina(
     idMaquina SERIAL4,
@@ -827,6 +837,18 @@ ALTER TABLE Maquina ADD CONSTRAINT Maquina_fkey2
 FOREIGN KEY (idJuego) REFERENCES Juego(idJuego)
 ON UPDATE CASCADE ON DELETE RESTRICT;
 
+-- Comentarios Maquina
+COMMENT ON TABLE Maquina IS 'Tabla que almacena el registro de las máquinas físicas operando en las sucursales.';
+COMMENT ON COLUMN Maquina.idMaquina IS 'Identificador único secuencial de la máquina arcade';
+COMMENT ON COLUMN Maquina.idSucursal IS 'Sucursal a la que pertenece físicamente la máquina';
+COMMENT ON COLUMN Maquina.idJuego IS 'Juego que se encuentra instalado en la máquina';
+COMMENT ON COLUMN Maquina.EstadoMaquina IS 'Estado operativo de la máquina (activo, fuera de servicio o mantenimiento)';
+COMMENT ON CONSTRAINT Maquina_pkey ON Maquina IS 'Llave primaria de Maquina';
+COMMENT ON CONSTRAINT Maquina_d1 ON Maquina IS 'Restricción CHECK que verifica que el idMaquina sea un entero positivo';
+COMMENT ON CONSTRAINT Maquina_d2 ON Maquina IS 'Restricción CHECK que asegura que el estado sea un valor válido predefinido';
+COMMENT ON CONSTRAINT Maquina_fkey1 ON Maquina IS 'Llave foránea que hace referencia a Sucursal. Usa actualización en cascada y restringe el borrado';
+COMMENT ON CONSTRAINT Maquina_fkey2 ON Maquina IS 'Llave foránea que hace referencia a Juego. Usa actualización en cascada y restringe el borrado';
+
 
 CREATE TABLE Administrar(
     idSucursal INT,
@@ -854,6 +876,13 @@ ON UPDATE CASCADE ON DELETE CASCADE;
 ALTER TABLE Administrar ADD CONSTRAINT Administrar_fkey2
 FOREIGN KEY (CURP) REFERENCES Gerente(CURP)
 ON UPDATE CASCADE ON DELETE CASCADE;
+
+-- Comentarios Administrar
+COMMENT ON TABLE Administrar IS 'Tabla asociativa que vincula a un gerente con la sucursal que administra.';
+COMMENT ON COLUMN Administrar.idSucursal IS 'Identificador de la sucursal administrada';
+COMMENT ON COLUMN Administrar.CURP IS 'CURP del gerente encargado de la administración';
+COMMENT ON CONSTRAINT Administrar_fkey1 ON Administrar IS 'Llave foránea que hace referencia a Sucursal. Usa actualización y borrado en cascada';
+COMMENT ON CONSTRAINT Administrar_fkey2 ON Administrar IS 'Llave foránea que hace referencia a Gerente. Usa actualización y borrado en cascada';
 
 
 CREATE TABLE Reparar(
@@ -902,6 +931,18 @@ ALTER TABLE Reparar ADD CONSTRAINT Reparar_fkey2
 FOREIGN KEY (CURP) REFERENCES Tecnico(CURP)
 ON UPDATE CASCADE ON DELETE RESTRICT;
 
+-- Comentarios Reparar
+COMMENT ON TABLE Reparar IS 'Bitácora histórica que registra los mantenimientos y reparaciones realizadas a las máquinas por los técnicos.';
+COMMENT ON COLUMN Reparar.idMaquina IS 'Máquina que recibió el mantenimiento o reparación';
+COMMENT ON COLUMN Reparar.CURP IS 'CURP del técnico que realizó el trabajo';
+COMMENT ON COLUMN Reparar.Tipo IS 'Categoría o tipo de mantenimiento realizado';
+COMMENT ON COLUMN Reparar.Problema IS 'Descripción detallada del problema o falla de la máquina';
+COMMENT ON COLUMN Reparar.Fecha IS 'Fecha en la que se efectuó la reparación';
+COMMENT ON CONSTRAINT Reparar_d1 ON Reparar IS 'Restricción CHECK que valida que el tipo de mantenimiento no sea una cadena vacía';
+COMMENT ON CONSTRAINT Reparar_d2 ON Reparar IS 'Restricción CHECK que valida que la descripción del problema no sea una cadena vacía';
+COMMENT ON CONSTRAINT Reparar_fkey1 ON Reparar IS 'Llave foránea que hace referencia a Maquina. Usa actualización en cascada y restringe el borrado';
+COMMENT ON CONSTRAINT Reparar_fkey2 ON Reparar IS 'Llave foránea que hace referencia a Técnico. Usa actualización en cascada y restringe el borrado';
+
 
 CREATE TABLE Certificacion(
     CURP VARCHAR(18),
@@ -933,6 +974,15 @@ PRIMARY KEY (CURP, TituloCertificacion);
 ALTER TABLE Certificacion ADD CONSTRAINT Certificacion_fkey1
 FOREIGN KEY (CURP) REFERENCES Tecnico(CURP)
 ON UPDATE CASCADE ON DELETE CASCADE;
+
+-- Comentarios Certificacion
+COMMENT ON TABLE Certificacion IS 'Atributo multivaluado (entidad débil) que almacena los títulos y certificaciones de cada técnico.';
+COMMENT ON COLUMN Certificacion.CURP IS 'CURP del técnico al que le pertenece la certificación';
+COMMENT ON COLUMN Certificacion.TituloCertificacion IS 'Nombre o título de la certificación obtenida';
+COMMENT ON CONSTRAINT Certificacion_pkey ON Certificacion IS 'Llave primaria compuesta por el CURP y el título de la certificación';
+COMMENT ON CONSTRAINT Certificacion_d1 ON Certificacion IS 'Restricción CHECK que valida que el CURP del técnico cumpla el formato oficial';
+COMMENT ON CONSTRAINT Certificacion_d2 ON Certificacion IS 'Restricción CHECK que valida que el título de la certificación no sea una cadena vacía';
+COMMENT ON CONSTRAINT Certificacion_fkey1 ON Certificacion IS 'Llave foránea que hace referencia a Tecnico. Usa actualización y borrado en cascada';
 
 CREATE TABLE Registrar(           
     idCliente INT,
