@@ -1,3 +1,4 @@
+DROP SCHEMA IF EXISTS public CASCADE;
 CREATE SCHEMA public;
 
 -------------TABLAS CON LLAVES PRIMARIAS-----------------
@@ -63,6 +64,23 @@ CREATE TABLE Empleado(
 ALTER TABLE Empleado ADD CONSTRAINT Empleado_pkey
 PRIMARY KEY (CURP);
 
+COMMENT ON TABLE Empleado IS 'Tabla que contiene la información de los empleados de cada Sucursal.';
+COMMENT ON COLUMN Empleado.CURP IS 'CURP del empleado';
+COMMENT ON COLUMN Empleado.FechaNacimiento IS 'Fecha de nacimiento del empleado';
+COMMENT ON COLUMN Empleado.Nombre IS 'Nombre del empleado';
+COMMENT ON COLUMN Empleado.ApellidoPaterno IS 'Apellido Paterno del empleado';
+COMMENT ON COLUMN Empleado.ApellidoMaterno IS 'Apellido Materno del empleado';
+COMMENT ON COLUMN Empleado.RFC IS 'RFC del empleado';
+COMMENT ON COLUMN Empleado.tipoEmpleado IS 'Categoría para identificar al tipo de empleado: Gerente, Tecnico, EncargadoPremios y Cajero (0 a 3)';
+COMMENT ON CONSTRAINT Empleado_pkey ON Empleado IS 'Llave primaria de la tabla Empleado';
+
+COMMENT ON CONSTRAINT Empleado_d1 ON Empleado IS 'Restriccion CHECK que valida el formato estandar de 18 caracteres del CURP';
+COMMENT ON CONSTRAINT Empleado_d2 ON Empleado IS 'Restriccion CHECK que revisa que el empleado sea mayor de 18 años';
+COMMENT ON CONSTRAINT Empleado_d3 ON Empleado IS 'Restriccion CHECK que asegura que el nombre no sea una cadena vacía';
+COMMENT ON CONSTRAINT Empleado_d4 ON Empleado IS 'Restriccion CHECK que revisa que el apellido paterno no sea una cadena vacía';
+COMMENT ON CONSTRAINT Empleado_d5 ON Empleado IS 'Restriccion CHECK que revisa que el apellido materno no sea una cadena vacía';
+COMMENT ON CONSTRAINT Empleado_d6 ON Empleado IS 'Restriccion CHECK que valida el formato de 13 caracteres del RFC';
+COMMENT ON CONSTRAINT Empleado_d7 ON Empleado IS 'Restriccion CHECK que valida que el tipo de empleado esté en el rango de 0 a 3';
 
 CREATE TABLE Juego(
 	idJuego SERIAL4,
@@ -102,6 +120,17 @@ CHECK(Categoria >= 0 AND Categoria <= 3);
 ALTER TABLE Juego ADD CONSTRAINT Juego_pkey
 PRIMARY KEY (idJuego);
 
+COMMENT ON TABLE Juego IS 'Tabla que contiene los juegos disponibles en las Sucursales.';
+COMMENT ON COLUMN Juego.idJuego IS 'Identificador único del juego (es secuencial)';
+COMMENT ON COLUMN Juego.Nombre IS 'Nombre del juego';
+COMMENT ON COLUMN Juego.Costo IS 'Costo para jugar';
+COMMENT ON COLUMN Juego.Categoria IS 'Categoría para identificar al tipo de juego: Disparos, Destreza, Ritmo, Velocidad (0 a 3)';
+
+COMMENT ON CONSTRAINT Juego_pkey ON Juego IS 'Llave primaria de la tabla juego';
+COMMENT ON CONSTRAINT Juego_d1 ON Juego IS 'Restriccion CHECK que revisa que el idJuego sea mayor a 0';
+COMMENT ON CONSTRAINT Juego_d2 ON Juego IS 'Restriccion CHECK que asegura que el nombre del juego no sea vacío';
+COMMENT ON CONSTRAINT Juego_d3 ON Juego IS 'Restriccion CHECK que valida que el costo sea mayor a 0 y múltiplo de 10';
+COMMENT ON CONSTRAINT Juego_d4 ON Juego IS 'Restriccion CHECK que revisa que la categoría del juego esté en el intervalo de 0 a 3';
 
 CREATE TABLE Sucursal(
 	idSucursal SERIAL4,
@@ -380,8 +409,14 @@ PRIMARY KEY(CURP, Correo);
 
 --Referencial
 ALTER TABLE CorreoEmpleado ADD CONSTRAINT CorreoEmpleado_fkey
-FOREIGN KEY(CURP) REFERENCES Empleado(curp);
+FOREIGN KEY(CURP) REFERENCES Empleado(curp) ON DELETE CASCADE ON UPDATE CASCADE;
 
+COMMENT ON TABLE CorreoEmpleado IS 'Tabla que almacena los correos electrónicos asociados a cada empleado.';
+COMMENT ON COLUMN CorreoEmpleado.CURP IS 'CURP del empleado al que pertenece el correo';
+COMMENT ON COLUMN CorreoEmpleado.Correo IS 'Dirección de correo electrónico del empleado';
+
+COMMENT ON CONSTRAINT CorreoEmpleado_pkey ON CorreoEmpleado IS 'Llave primaria compuesta por CURP y Correo';
+COMMENT ON CONSTRAINT CorreoEmpleado_fkey ON CorreoEmpleado IS 'Llave foránea que hace referencia al CURP del empleado. Usa borrado y actualización en Cascada';
 
 CREATE TABLE TelefonoEmpleado(
 	CURP VARCHAR(18),
@@ -399,8 +434,15 @@ PRIMARY KEY(CURP, Telefono);
 
 --Referencial
 ALTER TABLE TelefonoEmpleado ADD CONSTRAINT TelefonoEmpleado_fkey
-FOREIGN KEY(CURP) REFERENCES Empleado(curp);
+FOREIGN KEY(CURP) REFERENCES Empleado(curp) ON DELETE CASCADE ON UPDATE CASCADE;
 
+COMMENT ON TABLE TelefonoEmpleado IS 'Tabla que almacena los números telefono asociados a cada empleado.';
+COMMENT ON COLUMN TelefonoEmpleado.CURP IS 'CURP del empleado al que pertenece el teléfono.';
+COMMENT ON COLUMN TelefonoEmpleado.Telefono IS 'Número de telefono del empleado.';
+
+COMMENT ON CONSTRAINT TelefonoEmpleado_pkey ON TelefonoEmpleado IS 'Llave primaria compuesta por CURP y Telefono';
+COMMENT ON CONSTRAINT TelefonoEmpleado_d1 ON TelefonoEmpleado IS 'Restriccion CHECK que verifica que el teléfono tenga exactamente 10 dígitos.';
+COMMENT ON CONSTRAINT TelefonoEmpleado_fkey ON TelefonoEmpleado IS 'Llave foránea que hace referencia al CURP del Empleado. Usa borrado y actualización en cascada';
 
 CREATE TABLE Disparos(
 	idJuego INT,
@@ -427,8 +469,15 @@ PRIMARY KEY (idJuego);
 
 --Referencial
 ALTER TABLE Disparos ADD CONSTRAINT Disparos_fkey
-FOREIGN KEY (idJuego) REFERENCES Juego(idJuego);
+FOREIGN KEY (idJuego) REFERENCES Juego(idJuego) ON DELETE CASCADE ON UPDATE CASCADE;
 
+COMMENT ON TABLE Disparos IS 'Tabla que almacena los juegos de disparos. Es Subtipo de la tabla Juego.';
+COMMENT ON COLUMN Disparos.idJuego IS 'Identificador unico del juego. (Secuencial y Heredado)';
+COMMENT ON COLUMN Disparos.PuntosPorAcierto IS 'Puntos otorgados por cada acierto';
+COMMENT ON CONSTRAINT Disparos_pkey ON Disparos IS 'Llave primaria de Disparos (Heredada de Disparos)';
+COMMENT ON CONSTRAINT Disparos_d1 ON Disparos IS 'Restriccion CHECK que verifica que el idJuego sea un entero positivo';
+COMMENT ON CONSTRAINT Disparos_d2 ON Disparos IS 'Restriccion CHECK que valida que los puntos por acierto sean iguales a 1';
+COMMENT ON CONSTRAINT Disparos_fkey ON Disparos IS 'Llave foránea que hace referencia a Juego. Usa borrado y actualización en cascada';
 
 CREATE TABLE Destreza(
 	idJuego INT,
@@ -455,8 +504,16 @@ PRIMARY KEY (idJuego);
 
 --Referencial
 ALTER TABLE Destreza ADD CONSTRAINT Destreza_fkey
-FOREIGN KEY (idJuego) REFERENCES Juego(idJuego);
+FOREIGN KEY (idJuego) REFERENCES Juego(idJuego) ON DELETE CASCADE ON UPDATE CASCADE;
 
+COMMENT ON TABLE Destreza IS 'Tabla que almacena los juegos de destreza. Es Subtipo de la tabla Juego.';
+COMMENT ON COLUMN Destreza.idJuego IS 'Identificador unico del juego. (Secuencial y Heredado)';
+COMMENT ON COLUMN Destreza.PuntosPorAcierto IS 'Puntos otorgados por cada acierto';
+
+COMMENT ON CONSTRAINT Destreza_pkey ON Destreza IS 'Llave primaria de Destreza (Heredada de Juego)';
+COMMENT ON CONSTRAINT Destreza_d1 ON Destreza IS 'Restriccion CHECK que verifica que el idJuego sea un entero positivo';
+COMMENT ON CONSTRAINT Destreza_d2 ON Destreza IS 'Restriccion CHECK que valida que los puntos por acierto sean iguales a 1';
+COMMENT ON CONSTRAINT Destreza_fkey ON Destreza IS 'Llave foránea que hace referencia a Juego. Usa borrado y actualización en cascada';
 
 CREATE TABLE Ritmo(
 	idJuego INT,
@@ -483,8 +540,16 @@ PRIMARY KEY (idJuego);
 
 --Referencial
 ALTER TABLE Ritmo ADD CONSTRAINT Ritmo_fkey
-FOREIGN KEY (idJuego) REFERENCES Juego(idJuego);
+FOREIGN KEY (idJuego) REFERENCES Juego(idJuego) ON DELETE CASCADE ON UPDATE CASCADE;
 
+COMMENT ON TABLE Ritmo IS 'Tabla que almacena los juegos de ritmo. Es Subtipo de la tabla Juego.';
+COMMENT ON COLUMN Ritmo.idJuego IS 'Identificador unico del juego. (Secuencial y Heredado)';
+COMMENT ON COLUMN Ritmo.PuntosTop5 IS 'Puntos otorgados por posicionarse en el Top 5';
+
+COMMENT ON CONSTRAINT Ritmo_pkey ON Ritmo IS 'Llave primaria de Ritmo (Heredada de Juego)';
+COMMENT ON CONSTRAINT Ritmo_d1 ON Ritmo IS 'Restriccion CHECK que verifica que el idJuego sea mayor a 0';
+COMMENT ON CONSTRAINT Ritmo_d2 ON Ritmo IS 'Restriccion CHECK que valida que los puntos otorgados para el del Top 5 sean iguales a 20';
+COMMENT ON CONSTRAINT Ritmo_fkey ON Ritmo IS 'Llave foránea que hace referencia a Juego. Usa borrado y actualización en cascada';
 
 CREATE TABLE Velocidad(
 	idJuego INT,
@@ -511,8 +576,15 @@ PRIMARY KEY (idJuego);
 
 --Referencial
 ALTER TABLE Velocidad ADD CONSTRAINT Velocidad_fkey
-FOREIGN KEY (idJuego) REFERENCES Juego(idJuego);
+FOREIGN KEY (idJuego) REFERENCES Juego(idJuego) ON DELETE CASCADE ON UPDATE CASCADE;
 
+COMMENT ON TABLE Velocidad IS 'Tabla que almacena los juegos de velocidad. Es Subtipo de la tabla Juego.';
+COMMENT ON COLUMN Velocidad.idJuego IS 'Identificador unico del juego. (Secuencial y Heredado)';
+COMMENT ON COLUMN Velocidad.PuntosTop5 IS 'Puntos otorgados por posicionarse en el Top 5';
+COMMENT ON CONSTRAINT Velocidad_pkey ON Velocidad IS 'Llave primaria de Velocidad (Heredada de Juego)';
+COMMENT ON CONSTRAINT Velocidad_d1 ON Velocidad IS 'Restriccion CHECK que verifica que el idJuego sea mayor a 0';
+COMMENT ON CONSTRAINT Velocidad_d2 ON Velocidad IS 'Restriccion CHECK que valida que los puntos otorgados para el Top 5 sean iguales a 20';
+COMMENT ON CONSTRAINT Velocidad_fkey ON Velocidad IS 'Llave foránea que hace referencia a Juego. Usa borrado y actualización en cascada';
 
 CREATE TABLE Gerente(
 	CURP VARCHAR(18),
@@ -1273,12 +1345,31 @@ PRIMARY KEY (numPartida, idMaquina);
 -- Referencial
 -- idMaquina hace referencia a Maquina(idMaquina)
 ALTER TABLE Partida ADD CONSTRAINT Partida_fkey1 
-FOREIGN KEY (idMaquina) REFERENCES Maquina(idMaquina);
+FOREIGN KEY (idMaquina) REFERENCES Maquina(idMaquina) ON DELETE RESTRICT ON UPDATE CASCADE;
+
 
 -- idTarjeta hace referencia a Tarjeta(idTarjeta)
 ALTER TABLE Partida ADD CONSTRAINT Partida_fkey2 
-FOREIGN KEY (idTarjeta) REFERENCES Tarjeta(idTarjeta);
+FOREIGN KEY (idTarjeta) REFERENCES Tarjeta(idTarjeta) ON DELETE RESTRICT ON UPDATE CASCADE;
 
+COMMENT ON TABLE Partida IS 'Tabla que almacena los registros de partidas jugadas en las máquinas.';
+COMMENT ON COLUMN Partida.numPartida IS 'Identificador de la partida (Es secuencial)';
+COMMENT ON COLUMN Partida.idMaquina IS 'Identificador de la máquina en la que se jugó la partida';
+COMMENT ON COLUMN Partida.idTarjeta IS 'Identificador de la tarjeta utilizada para jugar';
+COMMENT ON COLUMN Partida.FechaPartida IS 'Fecha en que se llevó a cabo la partida';
+COMMENT ON COLUMN Partida.HoraFin IS 'Hora en que finalizó la partida';
+COMMENT ON COLUMN Partida.PuntosObtenidos IS 'Cantidad de puntos acumulados en la partida';
+COMMENT ON COLUMN Partida.Puntaje IS 'Puntaje final registrado en la partida';
+
+COMMENT ON CONSTRAINT Partida_pkey ON Partida IS 'Llave primaria compuesta por numPartida e idMaquina';
+COMMENT ON CONSTRAINT Partida_d1 ON Partida IS 'Restriccion CHECK que revisa que el numPartida sea mayor a 0';
+COMMENT ON CONSTRAINT Partida_d2 ON Partida IS 'Restriccion CHECK que revisa que el idMaquina sea mayor a 0';
+COMMENT ON CONSTRAINT Partida_d3 ON Partida IS 'Restriccion CHECK que revisa que el idTarjeta sea mayor a 0';
+COMMENT ON CONSTRAINT Partida_d4 ON Partida IS 'Restriccion CHECK que valida que la fecha de la partida no sea posterior a la fecha actual';
+COMMENT ON CONSTRAINT Partida_d5 ON Partida IS 'Restriccion CHECK que valida que los puntos obtenidos sean mayores o iguales a 0';
+COMMENT ON CONSTRAINT Partida_d6 ON Partida IS 'Restriccion CHECK que valida que el puntaje sea mayor o igual a 0';
+COMMENT ON CONSTRAINT Partida_fkey1 ON Partida IS 'Llave foránea que hace referencia a Maquina. Usa borrado en RESTRICT y actualización en cascada';
+COMMENT ON CONSTRAINT Partida_fkey2 ON Partida IS 'Llave foránea que hace referencia a Tarjeta. Usa borrado en RESTRICT y actualización en cascada';
 
 CREATE TABLE DiaApertura(
     idSucursal INT,
@@ -1315,11 +1406,25 @@ CHECK(HoraCierre > HoraApertura);
 ALTER TABLE DiaApertura ADD CONSTRAINT DiaApertura_pkey 
 PRIMARY KEY (idSucursal, Dia);
 
+-- Correcciones: llave primaria compuesta por: idSucursal, Dia, HoraApertura, HoraCierre.
+ALTER TABLE DiaApertura DROP CONSTRAINT DiaApertura_pkey;
+
+ALTER TABLE DiaApertura ADD CONSTRAINT DiaApertura_pkey 
+PRIMARY KEY (idSucursal, Dia, HoraApertura, HoraCierre);
+
 -- Referencial
 -- idSucursal hace referencia a Sucursal(idSucursal)
 ALTER TABLE DiaApertura ADD CONSTRAINT DiaApertura_fkey1 
-FOREIGN KEY (idSucursal) REFERENCES Sucursal(idSucursal);
+FOREIGN KEY (idSucursal) REFERENCES Sucursal(idSucursal) ON DELETE CASCADE ON UPDATE CASCADE;
 
+COMMENT ON TABLE DiaApertura IS 'Tabla que almacena los días y horarios de apertura de cada sucursal.';
+COMMENT ON COLUMN DiaApertura.idSucursal IS 'Identificador de la sucursal';
+COMMENT ON COLUMN DiaApertura.Dia IS 'Abreviación del día de la semana de servicio';
+COMMENT ON COLUMN DiaApertura.HoraApertura IS 'Hora en la que abre la sucursal';
+COMMENT ON COLUMN DiaApertura.HoraCierre IS 'Hora en la que cierra la sucursal';
+COMMENT ON CONSTRAINT DiaApertura_pkey ON DiaApertura IS 'Llave primaria compuesta por idSucursal, Dia, HoraApertura y HoraCierre';
+COMMENT ON CONSTRAINT DiaApertura_d1 ON DiaApertura IS 'Restriccion CHECK que valida que la hora de cierre sea posterior a la hora de apertura';
+COMMENT ON CONSTRAINT DiaApertura_fkey1 ON DiaApertura IS 'Llave foránea que hace referencia a Sucursal. Usa borrado y actualización en cascada';
 
 CREATE TABLE Trabajar(
     idSucursal INT,
@@ -1359,9 +1464,30 @@ CHECK(HoraFin > HoraInicio);
 ALTER TABLE Trabajar ADD CONSTRAINT Trabajar_pkey 
 PRIMARY KEY (idSucursal, CURP);
 
+-- Correcciones: No usar llave primaria, pero usar UNIQUE, para que las tuplas no se repitan.
+ALTER TABLE Trabajar DROP CONSTRAINT Trabajar_pkey;
+
+ALTER TABLE Trabajar ADD CONSTRAINT Trabajar_u1 UNIQUE (idSucursal, CURP);
+
 -- Referencial
 ALTER TABLE Trabajar ADD CONSTRAINT Trabajar_fkey1 
-FOREIGN KEY (idSucursal) REFERENCES Sucursal(idSucursal);
+FOREIGN KEY (idSucursal) REFERENCES Sucursal(idSucursal) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 ALTER TABLE Trabajar ADD CONSTRAINT Trabajar_fkey2 
-FOREIGN KEY (CURP) REFERENCES Empleado(CURP);
+FOREIGN KEY (CURP) REFERENCES Empleado(CURP) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+
+COMMENT ON TABLE Trabajar IS 'Tabla que almacena la relación entre empleados y sucursales.';
+COMMENT ON COLUMN Trabajar.idSucursal IS 'Identificador de la sucursal donde labora el empleado';
+COMMENT ON COLUMN Trabajar.CURP IS 'CURP del empleado';
+COMMENT ON COLUMN Trabajar.FechaContratacion IS 'Fecha de contratación del empleado';
+COMMENT ON COLUMN Trabajar.Salario IS 'Salario del empleado';
+COMMENT ON COLUMN Trabajar.HoraInicio IS 'Hora de inicio de la jornada del empleado';
+COMMENT ON COLUMN Trabajar.HoraFin IS 'Hora de fin de la jornada del empleado';
+
+COMMENT ON CONSTRAINT Trabajar_u1 ON Trabajar IS 'Restriccion UNIQUE que asegura la unicidad de la combinación idSucursal y CURP';
+COMMENT ON CONSTRAINT Trabajar_d1 ON Trabajar IS 'Restriccion CHECK que valida que el salario sea mayor a 0';
+COMMENT ON CONSTRAINT Trabajar_d2 ON Trabajar IS 'Restriccion CHECK que valida que la hora de fin sea posterior a la hora de inicio';
+COMMENT ON CONSTRAINT Trabajar_fkey1 ON Trabajar IS 'Llave foránea que hace referencia a Sucursal. Usa borrado en RESTRICT y actualización en cascada';
+COMMENT ON CONSTRAINT Trabajar_fkey2 ON Trabajar IS 'Llave foránea que hace referencia a Empleado. Usa borrado en RESTRICT y actualización en cascada';
+
